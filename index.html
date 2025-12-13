@@ -9,7 +9,6 @@
 
     body { background:#000; color:#fff; }
 
-    /* HLAVIČKA */
     header {
       position: fixed;
       top:0;
@@ -35,10 +34,9 @@
 
     header nav a:hover { background:#fff; color:#000; }
 
-    /* HERO SEKNCIA */
     .hero {
       position:relative;
-      height:100vh;
+      height:500px;
       width:100%;
       overflow:hidden;
     }
@@ -76,7 +74,6 @@
     .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
     .hero-text p { font-size:18px; opacity:0.8; }
 
-    /* VIDEÁ */
     .videos {
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -87,7 +84,7 @@
 
     .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
 
-    /* PÄTA */
+  
     footer {
       background:#000;
       padding:40px;
@@ -105,7 +102,7 @@
 </head>
 <body>
 
-  <!-- HLAVIČKA -->
+
   <header>
     <h1>Viktor Bogusky</h1>
     <nav>
@@ -113,7 +110,7 @@
     </nav>
   </header>
 
-  <!-- HERO -->
+
   <section class="hero">
     <video autoplay muted loop>
       <source src="uvod_video.mp4" type="video/mp4">
@@ -125,15 +122,41 @@
     </div>
   </section>
 
-  <!-- VIDEÁ -->
+
   <section class="videos">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/3zES1AlxCd4?start=6" 
+    title="YouTube video" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/V8z1SuHkfCk?start=6" 
+    title="YouTube video" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/lsN4McYuqKs?start=0" 
+    title="YouTube video" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+</iframe>
+
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/OFbEqTHUjWs&t?start=6" 
+    title="YouTube video" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
+
   </section>
 
-  <!-- PÄTA / KONTAKT -->
+
   <footer id="kontakt">
     <p>
       Viktor Bogusky<br>
