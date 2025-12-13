@@ -1,45 +1,152 @@
-<!-- GOOGLE SITES – HTML EMBED (bez hlavičky) -->
-<div style="width:100%; background:#000; color:#fff; font-family:Arial, Helvetica, sans-serif;">
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
 
-  <!-- HERO SEKNCIA -->
-  <div style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;">
-    
-    <div style="position:relative; width:100%; padding-top:56.25%; background:url('TVOJA_FOTKA.jpg') center/cover no-repeat;">
-  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.45);"></div>
-  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#fff;">
-    
+    body { background:#000; color:#fff; }
 
+    /* HLAVIČKA */
+    header {
+      position: fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(0,0,0,0.6);
+      z-index:100;
+    }
 
-    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.45);"></div>
+    header h1 { font-size:18px; letter-spacing:2px; }
 
-    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center; padding:20px;">
-      <h1 style="margin:0; font-size:42px; letter-spacing:3px;">VIKTOR BOGUSKY</h1>
-      <p style="margin-top:10px; font-size:18px; opacity:0.85;">Kamera & Postprodukcia</p>
+    header nav a {
+      color:#fff;
+      text-decoration:none;
+      margin-left:20px;
+      padding:8px 16px;
+      border:1px solid #fff;
+      transition:0.3s;
+    }
+
+    header nav a:hover { background:#fff; color:#000; }
+
+    /* HERO SEKNCIA */
+    .hero {
+      position:relative;
+      height:100vh;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .hero video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      min-width:100%;
+      min-height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+
+    .hero-overlay {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      z-index:0;
+    }
+
+    .hero-text {
+      position:relative;
+      z-index:1;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
+    .hero-text p { font-size:18px; opacity:0.8; }
+
+    /* VIDEÁ */
+    .videos {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+      padding:80px 40px;
+      background:#111;
+    }
+
+    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
+
+    /* PÄTA */
+    footer {
+      background:#000;
+      padding:40px;
+      text-align:center;
+      font-size:14px;
+    }
+
+    footer a { color:#fff; margin:0 10px; text-decoration:none; opacity:0.7; transition:0.3s; }
+    footer a:hover { opacity:1; }
+
+    @media(max-width:768px) {
+      .hero-text h2 { font-size:32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HLAVIČKA -->
+  <header>
+    <h1>Viktor Bogusky</h1>
+    <nav>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h2>Kamera & Postprodukcia</h2>
+      <p>Emócia. Príbeh. Obraz.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- PORTFÓLIO VIDEÁ -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px; padding:60px 40px; background:#111;">
+  <!-- VIDEÁ -->
+  <section class="videos">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+  </section>
 
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>
-
-  </div>
-
-  <!-- KONTAKT -->
-  <div style="padding:50px 20px; text-align:center; background:#000;">
-    <p style="margin:0; font-size:15px; opacity:0.8;">
+  <!-- PÄTA / KONTAKT -->
+  <footer id="kontakt">
+    <p>
+      Viktor Bogusky<br>
+      Kamera & Postprodukcia<br>
       Email: tvojemail@email.sk<br>
       Tel: +421 XXX XXX XXX
     </p>
-
-    <div style="margin-top:20px;">
-      <a href="https://www.instagram.com/" target="_blank" style="margin:0 10px; color:#fff; text-decoration:none;">Instagram</a>
-      <a href="https://www.facebook.com/" target="_blank" style="margin:0 10px; color:#fff; text-decoration:none;">Facebook</a>
-      <a href="https://www.tiktok.com/" target="_blank" style="margin:0 10px; color:#fff; text-decoration:none;">TikTok</a>
+    <div>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
     </div>
-  </div>
+  </footer>
 
-</div>
+</body>
+</html>
