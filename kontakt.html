@@ -336,6 +336,60 @@ body{
     gap: 40px;
   }
 }
+.stuzkova-calculator {
+  background: #111;
+  color: #fff;
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 0 auto 80px auto;
+  border: 1px solid #333;
+}
+
+.stuzkova-calculator h2, .stuzkova-calculator h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stuzkova-calculator label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.stuzkova-calculator select,
+.stuzkova-calculator input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 14px;
+}
+
+.stuzkova-calculator button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.stuzkova-calculator button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .stuzkova-calculator {
+    padding: 30px 15px;
+  }
+}
 
 </style>
 </head>
@@ -418,6 +472,46 @@ body{
 
   </div>
 </section>
+  <section class="stuzkova-calculator">
+  <h2>Kalkulačka stužkovej</h2>
+
+  <!-- Výber balíka -->
+  <label for="balik">Vyber balík:</label>
+  <select id="balik">
+    <option value="0">-- Vyber balík --</option>
+    <option value="150">Combo Start – 150€</option>
+    <option value="250">Combo Memory – 250€</option>
+    <option value="300">Combo Premium – 300€</option>
+    <option value="350">Combo Deluxe – 350€</option>
+    <option value="custom">Vlastný výber služieb</option>
+  </select>
+
+  <!-- Vlastný výber služieb -->
+  <div id="customServices" style="display:none; margin-top:15px;">
+    <label><input type="checkbox" value="50"> Klip zo stužkovej (+50€)</label><br>
+    <label><input type="checkbox" value="40"> Pozvánka alebo úvodné video (+40€)</label><br>
+    <label><input type="checkbox" value="30"> Natáčanie vybraných častí (+30€)</label>
+  </div>
+
+  <!-- Dodanie -->
+  <label for="dodanie">Doba dodania:</label>
+  <select id="dodanie">
+    <option value="0">-- Vyber dodanie --</option>
+    <option value="0">7 dní (bez príplatku)</option>
+    <option value="20">30 dní (+20€)</option>
+    <option value="40">60 dní (+40€)</option>
+  </select>
+
+  <!-- Počet USB -->
+  <label for="usb">Počet USB (15€/ks):</label>
+  <input type="number" id="usb" value="0" min="0">
+
+  <!-- Výsledok -->
+  <h3>Celková cena: <span id="total">0</span> €</h3>
+
+  <button id="calculateBtn">Spočítať cenu</button>
+</section>
+
 
 <footer class="footer">
   <div class="footer-top">
@@ -437,6 +531,44 @@ body{
     Vytvoril: Viktor Boguský
   </div>
 </footer>
+<script>
+const balik = document.getElementById('balik');
+const customServices = document.getElementById('customServices');
+const dodanie = document.getElementById('dodanie');
+const usb = document.getElementById('usb');
+const total = document.getElementById('total');
+const calculateBtn = document.getElementById('calculateBtn');
+
+// Zobrazenie vlastného výberu služieb
+balik.addEventListener('change', () => {
+  if (balik.value === 'custom') {
+    customServices.style.display = 'block';
+  } else {
+    customServices.style.display = 'none';
+  }
+});
+
+// Výpočet ceny
+calculateBtn.addEventListener('click', () => {
+  let cena = 0;
+
+  if (balik.value === 'custom') {
+    document.querySelectorAll('#customServices input[type="checkbox"]:checked').forEach(cb => {
+      cena += parseInt(cb.value);
+    });
+  } else {
+    cena += parseInt(balik.value);
+  }
+
+  // Dodanie
+  cena += parseInt(dodanie.value);
+
+  // USB
+  cena += parseInt(usb.value) * 15;
+
+  total.textContent = cena;
+});
+</script>
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
