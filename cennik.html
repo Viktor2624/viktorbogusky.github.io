@@ -23,16 +23,50 @@
 
     header h1 { font-size:18px; letter-spacing:2px; }
 
-    header nav a {
-      color:#fff;
-      text-decoration:none;
-      margin-left:20px;
-      padding:8px 16px;
-      border:1px solid #fff;
-      transition:0.3s;
-    }
+      /* Reset základného štýlu ul a li */
+nav ul {
+  list-style: none;       /* Zruší bodky */
+  margin: 0;
+  padding: 0;
+  display: flex;          /* Horizontálne zarovnanie */
+  justify-content: flex-end; /* Zarovná odkazy doprava */
+  flex-wrap: wrap;        /* Zalamovanie pri menších obrazovkách */
+}
 
-    header nav a:hover { background:#fff; color:#000; }
+nav li {
+  margin: 0;
+}
+
+/* Štýl odkazov */
+nav a {
+  display: block;         /* Klikacia oblasť */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: 1px solid #fff;
+  transition: 0.3s;
+}
+
+/* Hover efekt */
+nav a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responzívna navigácia pre mobily */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;  /* Odkazy pod sebou */
+    align-items: center;     /* Na stred */
+  }
+
+  nav a {
+    margin: 4px 0;           /* menšia vzdialenosť medzi odkazmi */
+    padding: 8px 12px;       /* menšia klikacia oblasť */
+    font-size: 14px;         /* menší text pre lepšie zapadnutie */
+  }
+}
 
     .hero {
       position:relative;
@@ -175,29 +209,6 @@
     padding: 10px 20px;
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; 
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-nav ul li a:hover {
-    color: #ff9800;
-}
 
 .hero-text h2{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -207,15 +218,6 @@ nav ul li a:hover {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-@media (max-width: 768px) {
-    .nav {
-        flex-direction: column;  /* z horizontálnej na vertikálnu */
-        align-items: center;
-    }
-    .nav li {
-        margin: 10px 0;  /* väčšie medzery medzi položkami */
-    }
-  }
    header h1 a {
   color: #fff;
   text-decoration: none;
