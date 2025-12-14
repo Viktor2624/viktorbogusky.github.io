@@ -336,11 +336,11 @@ body{
     gap: 40px;
   }
 }
-.stuzkova-calculator {
+  .stuzkova-calculator {
   background: #111;
   color: #fff;
   padding: 40px 20px;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 80px auto;
   border: 1px solid #333;
 }
@@ -384,12 +384,35 @@ body{
   color: #000;
 }
 
+.usb-info {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  gap: 15px;
+}
+
+.usb-info img {
+  width: 80px;
+  height: auto;
+  border: 1px solid #333;
+}
+
 /* Mobil */
 @media (max-width: 768px) {
   .stuzkova-calculator {
     padding: 30px 15px;
   }
+
+  .usb-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .usb-info img {
+    width: 100px;
+  }
 }
+
 
 </style>
 </head>
@@ -472,7 +495,7 @@ body{
 
   </div>
 </section>
-  <section class="stuzkova-calculator">
+<section class="stuzkova-calculator">
   <h2>Kalkulačka stužkovej</h2>
 
   <!-- Výber balíka -->
@@ -483,28 +506,42 @@ body{
     <option value="250">Combo Memory – 250€</option>
     <option value="300">Combo Premium – 300€</option>
     <option value="350">Combo Deluxe – 350€</option>
-    <option value="custom">Vlastný výber služieb</option>
   </select>
 
-  <!-- Vlastný výber služieb -->
-  <div id="customServices" style="display:none; margin-top:15px;">
-    <label><input type="checkbox" value="50"> Klip zo stužkovej (+50€)</label><br>
-    <label><input type="checkbox" value="40"> Pozvánka alebo úvodné video (+40€)</label><br>
-    <label><input type="checkbox" value="30"> Natáčanie vybraných častí (+30€)</label>
+  <!-- Možnosť natáčať celé časti (len pre Combo Start) -->
+  <div id="extraParts" style="display:none; margin-top:15px;">
+    <label>Chcete natáčať celé časti? (40€/časť)</label>
+    <input type="number" id="fullParts" value="0" min="0">
   </div>
 
   <!-- Dodanie -->
   <label for="dodanie">Doba dodania:</label>
   <select id="dodanie">
-    <option value="0">-- Vyber dodanie --</option>
-    <option value="0">7 dní (bez príplatku)</option>
+    <option value="50">7 dní (+50€)</option>
     <option value="20">30 dní (+20€)</option>
-    <option value="40">60 dní (+40€)</option>
+    <option value="0">60 dní (bez príplatku)</option>
   </select>
 
   <!-- Počet USB -->
-  <label for="usb">Počet USB (15€/ks):</label>
+  <label for="usb">Počet USB (10€/ks):</label>
   <input type="number" id="usb" value="0" min="0">
+
+  <!-- Fotka USB -->
+  <div class="usb-info">
+    <img src="usb_krabicka.jpg" alt="USB v krabičke" />
+    <p>USB dodané v krabičke s názvom školy, dátumom a názvom udalosti.</p>
+  </div>
+
+  <!-- Zľavový kód -->
+  <label for="discount">Zľavový kód:</label>
+  <input type="text" id="discount" placeholder="Zadajte kód">
+
+  <!-- Typ objednávky -->
+  <label for="typeOrder">Typ:</label>
+  <select id="typeOrder">
+    <option value="order">Objednávka (platba celá suma)</option>
+    <option value="reservation">Rezervácia (50% záloha, nevratná pri zrušení)</option>
+  </select>
 
   <!-- Výsledok -->
   <h3>Celková cena: <span id="total">0</span> €</h3>
@@ -533,40 +570,47 @@ body{
 </footer>
 <script>
 const balik = document.getElementById('balik');
-const customServices = document.getElementById('customServices');
+const extraParts = document.getElementById('extraParts');
+const fullParts = document.getElementById('fullParts');
 const dodanie = document.getElementById('dodanie');
 const usb = document.getElementById('usb');
+const discount = document.getElementById('discount');
+const typeOrder = document.getElementById('typeOrder');
 const total = document.getElementById('total');
 const calculateBtn = document.getElementById('calculateBtn');
 
-// Zobrazenie vlastného výberu služieb
+// Zobrazenie natáčania celých častí iba pre Combo Start
 balik.addEventListener('change', () => {
-  if (balik.value === 'custom') {
-    customServices.style.display = 'block';
-  } else {
-    customServices.style.display = 'none';
-  }
+  extraParts.style.display = (balik.value == '150') ? 'block' : 'none';
 });
 
 // Výpočet ceny
 calculateBtn.addEventListener('click', () => {
-  let cena = 0;
+  let cena = parseInt(balik.value);
 
-  if (balik.value === 'custom') {
-    document.querySelectorAll('#customServices input[type="checkbox"]:checked').forEach(cb => {
-      cena += parseInt(cb.value);
-    });
-  } else {
-    cena += parseInt(balik.value);
+  // Full parts
+  if (balik.value == '150') {
+    cena += parseInt(fullParts.value) * 40;
   }
 
   // Dodanie
   cena += parseInt(dodanie.value);
 
   // USB
-  cena += parseInt(usb.value) * 15;
+  cena += parseInt(usb.value) * 10;
 
-  total.textContent = cena;
+  // Zľavový kód
+  const code = discount.value.trim();
+  if (code === "STUZKOVA2620") {
+    cena *= 0.8; // zľava 20%
+  }
+
+  // Typ objednávky
+  if (typeOrder.value === "reservation") {
+    cena = cena * 0.5; // len záloha 50%
+  }
+
+  total.textContent = cena.toFixed(2);
 });
 </script>
 
