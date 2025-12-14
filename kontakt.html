@@ -155,32 +155,33 @@ button{
   </div>
 </section>
 
-<!-- ===== OBJEDNÁVKA ===== -->
-<section class="order-section">
+<section class="order-wrapper">
 
-  <!-- KONTAKT -->
-  <div class="box">
-    <h2>Kontakt</h2>
-    <p><strong>Email</strong><br>kontakt@viktorbogusky.sk</p><br>
-    <p><strong>Telefón</strong><br>+421 948 933 109</p><br>
-    <p>Instagram / Facebook / TikTok</p>
-  </div>
-
-  <!-- KALKULÁCIA -->
-  <div class="box">
+  <!-- ===== VÝBER SLUŽBY ===== -->
+  <div class="service-selector">
     <h2>Výber služby uskutočnite na tomto formulári</h2>
 
-    <label>Balík</label>
+    <label>Služba / balík</label>
     <select id="balik">
-      <option value="0">-- Vyber balík --</option>
-      <option value="150">Combo Start – 150€</option>
-      <option value="250">Combo Memory – 250€</option>
-      <option value="300">Combo Premium – 300€</option>
-      <option value="350">Combo Deluxe – 350€</option>
+      <option value="0">-- Vyber službu --</option>
+
+      <optgroup label="Stužková">
+        <option value="150">Stužková – Combo Start (150€)</option>
+        <option value="250">Stužková – Combo Memory (250€)</option>
+        <option value="300">Stužková – Combo Premium (300€)</option>
+        <option value="350">Stužková – Combo Deluxe (350€)</option>
+      </optgroup>
+
+      <optgroup label="Svadba">
+        <option value="400">Svadba – Wedding Record (400€)</option>
+        <option value="550">Svadba – Wedding Clip (550€)</option>
+        <option value="750">Svadba – Wedding Complete (750€)</option>
+      </optgroup>
     </select>
 
-    <div id="extraParts" style="display:none">
-      <label>Celé časti (40€/časť)</label>
+    <!-- EXTRA ČASTI – LEN PRE COMBO START -->
+    <div id="extraParts" style="display:none;">
+      <label>Celé časti programu (40€/časť)</label>
       <input type="number" id="fullParts" min="0" value="0">
     </div>
 
@@ -191,46 +192,51 @@ button{
       <option value="50">7 dní (+50€)</option>
     </select>
 
-    <label>Počet USB (10€/ks)</label>
+    <label>Počet USB (20€/ks)</label>
     <input type="number" id="usb" min="0" value="0">
 
-    <div class="usb-info">
-      <img src="P1015136-Edit.png">
-      <p>USB v krabičke s potlačou</p>
-    </div>
+    <p style="font-size:13px; opacity:.7; margin-top:6px;">
+      1× USB zdarma • pri každých 5 ks + 1 ks zdarma
+    </p>
 
     <label>Zľavový kód</label>
-    <input type="text" id="discount">
+    <input type="text" id="discount" placeholder="Zadajte kód">
 
     <label>Typ</label>
-    <select id="typeOrder">
-      <option value="order">Objednávka</option>
-      <option value="reservation">Rezervácia (50% záloha)</option>
+    <select id="orderType">
+      <option value="order">Objednávka – platba celá suma</option>
+      <option value="reservation">Rezervácia – 50 % záloha</option>
     </select>
 
-    <h3>Cena: <span id="total">0</span> €</h3>
+    <h3>Celková cena: <span id="total">0</span> €</h3>
+    <p id="depositInfo" style="font-size:14px; opacity:.8;"></p>
 
-    <div class="calc-buttons">
-      <button class="calc" id="calcOnly">Iba vypočítať</button>
-      <button class="add" id="addToOrder">Pridať do objednávky</button>
+    <div class="buttons">
+      <button type="button" id="calcOnly">Iba vypočítať</button>
+      <button type="button" id="addToOrder">Pridať do objednávky</button>
     </div>
   </div>
 
-  <!-- FORMULÁR -->
-  <div class="box">
+  <!-- ===== OBJEDNÁVKA ===== -->
+  <div class="contact-form-wrapper">
     <h2>Objednávka</h2>
+
     <form action="https://formspree.io/f/xjknzwew" method="POST">
-      <input type="text" name="meno" placeholder="Meno*" required>
+      <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
       <input type="email" name="email" placeholder="Email*" required>
-      <input type="text" name="lokacia" placeholder="Lokalita*" required>
+      <input type="text" name="lokacia" placeholder="Lokalita akcie*" required>
       <input type="date" name="datum" required>
-      <textarea id="summary" name="objednavka" readonly></textarea>
+      <small style="opacity:.6;">Dátum konania akcie</small>
+
+      <textarea name="objednavka" id="orderSummary" readonly placeholder="Vybraná služba"></textarea>
       <input type="hidden" name="cena" id="finalPrice">
+
       <button type="submit">Odoslať objednávku</button>
     </form>
   </div>
 
 </section>
+
 
 <footer class="footer">
   <div class="footer-top">
@@ -248,44 +254,85 @@ button{
 </footer>
 
 <script>
-const toggle=document.querySelector('.menu-toggle');
-const nav=document.querySelector('nav');
-toggle.onclick=()=>nav.classList.toggle('active');
+const balik = document.getElementById('balik');
+const extraParts = document.getElementById('extraParts');
+const fullParts = document.getElementById('fullParts');
+const dodanie = document.getElementById('dodanie');
+const usb = document.getElementById('usb');
+const discount = document.getElementById('discount');
+const orderType = document.getElementById('orderType');
+const total = document.getElementById('total');
+const depositInfo = document.getElementById('depositInfo');
+const orderSummary = document.getElementById('orderSummary');
+const finalPrice = document.getElementById('finalPrice');
 
-const balik=document.getElementById('balik');
-const extra=document.getElementById('extraParts');
-const full=document.getElementById('fullParts');
-const dod=document.getElementById('dodanie');
-const usb=document.getElementById('usb');
-const dis=document.getElementById('discount');
-const type=document.getElementById('typeOrder');
-const total=document.getElementById('total');
-const summary=document.getElementById('summary');
-const final=document.getElementById('finalPrice');
+// extra časti len pre Combo Start
+balik.addEventListener('change', () => {
+  extraParts.style.display = balik.value === "150" ? "block" : "none";
+});
 
-balik.onchange=()=>extra.style.display=balik.value=="150"?"block":"none";
+function calculatePrice() {
+  let price = Number(balik.value);
 
-function calc(){
- let p=+balik.value + +dod.value + usb.value*10;
- if(balik.value=="150")p+=full.value*40;
- if(dis.value=="STUZKOVA2620")p*=0.8;
- if(type.value=="reservation")p*=0.5;
- total.textContent=p.toFixed(2);
- return p.toFixed(2);
+  if (balik.value === "150") {
+    price += Number(fullParts.value) * 40;
+  }
+
+  price += Number(dodanie.value);
+
+  // USB – 20€, 1 zdarma + každých 5 = 1 zdarma
+  let usbCount = Number(usb.value);
+  let freeUsb = 0;
+
+  if (usbCount > 0) freeUsb = 1 + Math.floor(usbCount / 5);
+  let paidUsb = Math.max(usbCount - freeUsb, 0);
+
+  price += paidUsb * 20;
+
+  // zľava 10 %
+  if (discount.value.trim() === "STUZKOVA2610") {
+    price *= 0.9;
+  }
+
+  let now = price;
+  let later = 0;
+
+  if (orderType.value === "reservation") {
+    now = price * 0.5;
+    later = price * 0.5;
+    depositInfo.textContent = `Platba teraz: ${now.toFixed(2)} € • Doplatok neskôr: ${later.toFixed(2)} €`;
+  } else {
+    depositInfo.textContent = "";
+  }
+
+  total.textContent = price.toFixed(2);
+  finalPrice.value = price.toFixed(2);
+
+  return {
+    price: price.toFixed(2),
+    now: now.toFixed(2),
+    later: later.toFixed(2)
+  };
 }
 
-document.getElementById('calcOnly').onclick=calc;
-document.getElementById('addToOrder').onclick=()=>{
- const p=calc();
- summary.value=`Balík: ${balik.options[balik.selectedIndex].text}
-Celé časti: ${full.value}
-Dodanie: ${dod.options[dod.selectedIndex].text}
+document.getElementById('calcOnly').onclick = calculatePrice;
+
+document.getElementById('addToOrder').onclick = () => {
+  const result = calculatePrice();
+
+  orderSummary.value =
+`Balík: ${balik.options[balik.selectedIndex].text}
+Celé časti: ${fullParts.value}
+Dodanie: ${dodanie.options[dodanie.selectedIndex].text}
 USB: ${usb.value} ks
-Typ: ${type.options[type.selectedIndex].text}
-Cena: ${p} €`;
- final.value=p;
+Typ: ${orderType.options[orderType.selectedIndex].text}
+
+Celková cena: ${result.price} €
+Platba teraz: ${result.now} €
+Doplatok: ${result.later} €`;
 };
 </script>
+
 
 </body>
 </html>
