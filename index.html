@@ -1,294 +1,274 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
-   <link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
-    body { background:#000; color:#fff; }
-  header h1 a {
-  color: #fff;
-  text-decoration: none;
-  }
- header {
-      position: fixed;
-      top:0;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-      background:rgba(0,0,0,0.6);
-      z-index:100;
-    }
-
-    header h1 { font-size:18px; letter-spacing:2px; }
-
-      /* Reset základného štýlu ul a li */
-nav ul {
-  list-style: none;       /* Zruší bodky */
-  margin: 0;
-  padding: 0;
-  display: flex;          /* Horizontálne zarovnanie */
-  justify-content: flex-end; /* Zarovná odkazy doprava */
-  flex-wrap: wrap;        /* Zalamovanie pri menších obrazovkách */
-}
-
-nav li {
-  margin: 0;
-}
-
-/* Štýl odkazov */
-nav a {
-  display: block;         /* Klikacia oblasť */
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: 1px solid #fff;
-  transition: 0.3s;
-}
-
-/* Hover efekt */
-nav a:hover {
-  background-color: #fff;
-  color: #000;
-}
-
-/* Responzívna navigácia pre mobily */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;  /* Odkazy pod sebou */
-    align-items: center;     /* Na stred */
-  }
-
-  nav a {
-    margin: 4px 0;           /* menšia vzdialenosť medzi odkazmi */
-    padding: 8px 12px;       /* menšia klikacia oblasť */
-    font-size: 14px;         /* menší text pre lepšie zapadnutie */
-  }
-}
-
-    .hero {
-      position:relative;
-      height:500px;
-      width:100%;
-      overflow:hidden;
-    }
-
-    .hero video {
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      min-width:100%;
-      min-height:100%;
-      object-fit:cover;
-      z-index:-1;
-    }
-
-    .hero-overlay {
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:rgba(0,0,0,0.5);
-      z-index:0;
-    }
-
-    .hero-text {
-      position:relative;
-      z-index:1;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-    }
-
-    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
-    .hero-text p { font-size:18px; opacity:0.8; }
-
-    .videos {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px;
-      padding:80px 40px;
-      background:#111;
-    }
-
-    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
-
-    .footer {
-  background: #000;
-  color: #fff;
-  padding: 50px 20px;
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* horná časť – obmedzená šírka, centrovaná */
-.footer-top {
-  max-width: 900px;          /* toto ich posunie bližšie k stredu */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+body{
+  background:#000;
+  color:#fff;
 }
 
-/* kontakt vľavo */
-.footer-contact {
-  text-align: center;
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
 }
 
-.footer-contact p {
-  margin: 0;
-  opacity: 0.8;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-/* sociálne siete vpravo */
-.footer-socials {
-  text-align: center;
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
 }
 
-.footer-socials a {
-  margin-left: 20px;
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: 0.3s;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* NAV */
+nav{
+  display:flex;
+  gap:24px;
 }
 
-.footer-socials a:hover {
-  opacity: 1;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.85;
 }
 
-/* spodný text */
-.footer-bottom {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  letter-spacing: 1px;
-  opacity: 0.6;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+nav a:hover{
+  opacity:1;
 }
 
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+  .menu-toggle{
+    display:block;
   }
 
-  .footer-socials a {
-    margin: 0 10px;
+  nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+
+  nav a{
+    padding:12px 0;
+    font-size:15px;
+  }
+
+  nav.active{
+    display:flex;
   }
 }
 
-
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .footer-socials a {
-    margin: 0 10px;
-  }
+/* BODY OFFSET */
+body{
+  padding-top:60px;
 }
 
+/* ================= HERO ================= */
 
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
 
-    @media(max-width:768px) {
-      .hero-text h2 { font-size:32px; }
-    }
+.hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+}
 
-   
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-text{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
 .hero-text h2{
+  font-size:48px;
+  letter-spacing:3px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .hero-text p{
+  font-size:18px;
+  opacity:0.85;
+  margin-top:10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-  </style>
+@media(max-width:768px){
+  .hero{
+    height:420px;
+  }
+  .hero-text h2{
+    font-size:32px;
+  }
+}
+
+/* ================= VIDEOS ================= */
+
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:30px;
+}
+
+.videos iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  background:#000;
+  padding:50px 20px;
+}
+
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+}
+
+.footer-contact p{
+  opacity:0.8;
+}
+
+.footer-socials a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
+}
+
+.footer-socials a:hover{
+  opacity:1;
+}
+
+.footer-bottom{
+  margin-top:30px;
+  text-align:center;
+  font-size:13px;
+  opacity:0.6;
+}
+
+@media(max-width:768px){
+  .footer-top{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .footer-socials a{
+    margin:0 10px;
+  }
+}
+</style>
 </head>
+
 <body>
+
 <header>
-  <h1><a href="index.html">Viktor Boguský</a></h1>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
+
+    <button class="menu-toggle" aria-label="Menu">☰</button>
 
     <nav>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
 
-    <ul>
-        <li><a href="referencie.html">Referencie</a></li>
-        <li><a href="omne.html">O mne</a></li>
-        <li><a href="sluzby.html">Služby</a></li>
-        <li><a href="portfolio.html">Portfólio</a></li>
-        <li><a href="cennik.html">Cenník</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-</nav>
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy...</p>
+  </div>
+</section>
 
-  </header>
-
-
-
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="uvod_video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <h2>Kamera & Postprodukcia</h2>
-      <p>Stužkové, svadby, eventy, klipy...</p>
-    </div>
-  </section>
-
-
-  <section class="videos">
-    <iframe width="560" height="250" 
-    src="https://www.youtube.com/embed/3zES1AlxCd4?start=0" 
-    title="YouTube video" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-</iframe>
-
-    <iframe width="560" height="250" 
-    src="https://www.youtube.com/embed/V8z1SuHkfCk?start=0" 
-    title="YouTube video" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-</iframe>
-
-    <iframe width="560" height="250" 
-    src="https://www.youtube.com/embed/LnRKT-GFs0k?start=0" 
-    title="YouTube video" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-</iframe>
-
-    <iframe width="560" height="250" 
-    src="https://www.youtube.com/embed/9Z8BojDP5no?start=0" 
-    title="YouTube video" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-</iframe>
-
-  </section>
-
+<section class="videos">
+  <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
+</section>
 
 <footer class="footer">
   <div class="footer-top">
-
     <div class="footer-contact">
       <p>kontakt@viktorbogusky.sk</p>
       <p>+421 948 933 109</p>
@@ -296,10 +276,9 @@ nav a:hover {
 
     <div class="footer-socials">
       <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823" target="_blank">Facebook</a>
       <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
     </div>
-
   </div>
 
   <div class="footer-bottom">
@@ -307,7 +286,14 @@ nav a:hover {
   </div>
 </footer>
 
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
 
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
