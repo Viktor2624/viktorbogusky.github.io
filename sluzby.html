@@ -1,267 +1,267 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
-    body { background:#000; color:#fff; }
-
-    header {
-      position: fixed;
-      top:0;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-      background:rgba(0,0,0,0.6);
-      z-index:100;
-    }
-
-    header h1 { font-size:18px; letter-spacing:2px; }
-
-     /* Reset základného štýlu ul a li */
-nav ul {
-  list-style: none;       /* Zruší bodky */
-  margin: 0;
-  padding: 0;
-  display: flex;          /* Horizontálne zarovnanie */
-  justify-content: flex-end; /* Zarovná odkazy doprava */
-  flex-wrap: wrap;        /* Zalamovanie pri menších obrazovkách */
-}
-
-nav li {
-  margin: 0;
-}
-
-/* Štýl odkazov */
-nav a {
-  display: block;         /* Klikacia oblasť */
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: 1px solid #fff;
-  transition: 0.3s;
-}
-
-/* Hover efekt */
-nav a:hover {
-  background-color: #fff;
-  color: #000;
-}
-
-/* Responzívna navigácia pre mobily */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;  /* Odkazy pod sebou */
-    align-items: center;     /* Na stred */
-  }
-
-  nav a {
-    margin: 4px 0;           /* menšia vzdialenosť medzi odkazmi */
-    padding: 8px 12px;       /* menšia klikacia oblasť */
-    font-size: 14px;         /* menší text pre lepšie zapadnutie */
-  }
-}
-    .hero {
-      position:relative;
-      height:500px;
-      width:100%;
-      overflow:hidden;
-    }
-
-    .hero video {
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      min-width:100%;
-      min-height:100%;
-      object-fit:cover;
-      z-index:-1;
-    }
-
-    .hero-overlay {
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:rgba(0,0,0,0.5);
-      z-index:0;
-    }
-
-    .hero-text {
-      position:relative;
-      z-index:1;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-    }
-
-    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
-    .hero-text p { font-size:18px; opacity:0.8; }
-
-    .videos {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px;
-      padding:80px 40px;
-      background:#111;
-    }
-
-    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
-
-    .footer {
-  background: #000;
-  color: #fff;
-  padding: 50px 20px;
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* horná časť – obmedzená šírka, centrovaná */
-.footer-top {
-  max-width: 900px;          /* toto ich posunie bližšie k stredu */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+body{
+  background:#000;
+  color:#fff;
 }
 
-/* kontakt vľavo */
-.footer-contact {
-  text-align: center;
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
 }
 
-.footer-contact p {
-  margin: 0;
-  opacity: 0.8;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-/* sociálne siete vpravo */
-.footer-socials {
-  text-align: center;
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
 }
 
-.footer-socials a {
-  margin-left: 20px;
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: 0.3s;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* NAV */
+nav{
+  display:flex;
+  gap:24px;
 }
 
-.footer-socials a:hover {
-  opacity: 1;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.85;
 }
 
-/* spodný text */
-.footer-bottom {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  letter-spacing: 1px;
-  opacity: 0.6;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+nav a:hover{
+  opacity:1;
 }
 
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+  .menu-toggle{
+    display:block;
   }
 
-  .footer-socials a {
-    margin: 0 10px;
+  nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+
+  nav a{
+    padding:12px 0;
+    font-size:15px;
+  }
+
+  nav.active{
+    display:flex;
   }
 }
 
-
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .footer-socials a {
-    margin: 0 10px;
-  }
+/* BODY OFFSET */
+body{
+  padding-top:60px;
 }
 
+/* ================= HERO ================= */
 
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
 
-    @media(max-width:768px) {
-      .hero-text h2 { font-size:32px; }
-    }
+.hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+}
 
-   
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-text{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
 .hero-text h2{
+  font-size:48px;
+  letter-spacing:3px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .hero-text p{
+  font-size:18px;
+  opacity:0.85;
+  margin-top:10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-@media (max-width: 768px) {
-    .nav {
-        flex-direction: column;  /* z horizontálnej na vertikálnu */
-        align-items: center;
-    }
-    .nav li {
-        margin: 10px 0;  /* väčšie medzery medzi položkami */
-    }
+@media(max-width:768px){
+  .hero{
+    height:420px;
+  }
+  .hero-text h2{
+    font-size:32px;
+  }
+}
+
+/* ================= VIDEOS ================= */
+
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:30px;
+}
+
+.videos iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  background:#000;
+  padding:50px 20px;
+}
+
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+}
+
+.footer-contact p{
+  opacity:0.8;
+}
+
+.footer-socials a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
+}
+
+.footer-socials a:hover{
+  opacity:1;
+}
+
+.footer-bottom{
+  margin-top:30px;
+  text-align:center;
+  font-size:13px;
+  opacity:0.6;
+}
+
+@media(max-width:768px){
+  .footer-top{
+    flex-direction:column;
+    gap:20px;
   }
 
-  .services {
-  background: #000;
+  .footer-socials a{
+    margin:0 10px;
+  }
+}
+  /* ===== SLUŽBY ===== */
+.services {
+  background: #111;
   color: #fff;
-  padding: 90px 20px;
+  padding: 80px 20px;
 }
 
-.services h2 {
-  text-align: center;
-  font-size: 32px;
-  letter-spacing: 2px;
-  margin-bottom: 60px;
-}
-
-/* grid */
 .services-grid {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
-/* blok – Kamerové služby (vľavo) */
-.service-block:first-child {
-  text-align: left;
+/* Blok služby */
+.service-block {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 35px;
+  transition: 0.3s;
 }
 
-/* blok – Postprodukcia (vpravo) */
-.service-block:last-child {
-  text-align: right;
+.service-block:hover {
+  transform: translateY(-5px);
+  border-color: #fff;
 }
 
+/* Nadpis */
 .service-block h3 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
-  letter-spacing: 1px;
 }
 
+/* Zoznam */
 .service-block ul {
   list-style: none;
   padding: 0;
@@ -269,103 +269,74 @@ nav a:hover {
 }
 
 .service-block li {
-  margin-bottom: 12px;
-  opacity: 0.85;
-  line-height: 1.6;
-  position: relative;
-  padding-left: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* jemná bodka pre list */
-.service-block li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  opacity: 0.5;
+.service-block li:last-child {
+  border-bottom: none;
 }
 
-/* mobil – všetko na stred */
+/* ===== MOBIL ===== */
 @media (max-width: 768px) {
+  .services {
+    padding: 50px 15px;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
+
   .service-block {
-    text-align: center !important;
+    padding: 25px 20px;
   }
-  .service-block li::before {
-    left: 50%;
-    transform: translateX(-50%);
+
+  .service-block h3 {
+    font-size: 20px;
   }
-}
 
-/* blok – Postprodukcia (vpravo) */
-.service-block:last-child {
-  text-align: right;
-}
-
-.service-block:last-child li {
-  padding-left: 0;       /* odstránime ľavý padding */
-  padding-right: 18px;   /* pridáme pravý padding pre bodku */
-}
-
-/* bodka vpravo */
-.service-block:last-child li::before {
-  left: auto;
-  right: 0;
-  transform: none;
-  opacity: 0.5;
-}
-    @media (max-width: 768px) {
-  .service-block {
-    text-align: center !important;
-  }
-  .service-block li::before {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+  .service-block li {
+    font-size: 14px;
   }
 }
 
- header h1 a {
-  color: #fff;
-  text-decoration: none;
-}
-  </style>
+</style>
 </head>
+
 <body>
 
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
 
-  <header>
-  <h1><a href="index.html">Viktor Boguský</a></h1>
- 
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+
     <nav>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
 
-    <ul>
-        <li><a href="referencie.html">Referencie</a></li>
-        <li><a href="omne.html">O mne</a></li>
-        <li><a href="sluzby.html">Služby</a></li>
-        <li><a href="portfolio.html">Portfólio</a></li>
-        <li><a href="cennik.html">Cenník</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-</nav>
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy...</p>
+  </div>
+</section>
 
-  </header>
-
-
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="uvod_video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <h2>Služby</h2>
-      <p>Kamera a Postprodukcia</p>
-    </div>
-    </section>
-
-    <section class="services">
+  <section class="services">
 
   <div class="services-grid">
 
@@ -398,12 +369,10 @@ nav a:hover {
     </div>
 
   </div>
-</section>
-
+  </section>
 
 <footer class="footer">
   <div class="footer-top">
-
     <div class="footer-contact">
       <p>kontakt@viktorbogusky.sk</p>
       <p>+421 948 933 109</p>
@@ -411,10 +380,9 @@ nav a:hover {
 
     <div class="footer-socials">
       <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823" target="_blank">Facebook</a>
       <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
     </div>
-
   </div>
 
   <div class="footer-bottom">
@@ -422,7 +390,14 @@ nav a:hover {
   </div>
 </footer>
 
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
 
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
