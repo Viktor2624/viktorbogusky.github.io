@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+
+    body { background:#000; color:#fff; }
+
+    header {
+      position: fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(0,0,0,0.6);
+      z-index:100;
+    }
+
+    header h1 { font-size:18px; letter-spacing:2px; }
+
+    header nav a {
+      color:#fff;
+      text-decoration:none;
+      margin-left:20px;
+      padding:8px 16px;
+      border:1px solid #fff;
+      transition:0.3s;
+    }
+
+    header nav a:hover { background:#fff; color:#000; }
+
+    .hero {
+      position:relative;
+      height:500px;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .hero video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      min-width:100%;
+      min-height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+
+    .hero-overlay {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      z-index:0;
+    }
+
+    .hero-text {
+      position:relative;
+      z-index:1;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
+    .hero-text p { font-size:18px; opacity:0.8; }
+
+    .videos {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+      padding:80px 40px;
+      background:#111;
+    }
+
+    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
+
+    .footer {
+  background: #000;
+  color: #fff;
+  padding: 50px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* horná časť – obmedzená šírka, centrovaná */
+.footer-top {
+  max-width: 900px;          /* toto ich posunie bližšie k stredu */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* kontakt vľavo */
+.footer-contact {
+  text-align: center;
+}
+
+.footer-contact p {
+  margin: 0;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* sociálne siete vpravo */
+.footer-socials {
+  text-align: center;
+}
+
+.footer-socials a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.3s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+/* spodný text */
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+
+    @media(max-width:768px) {
+      .hero-text h2 { font-size:32px; }
+    }
+
+    nav {
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+
+.hero-text h2{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-text p{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;  /* z horizontálnej na vertikálnu */
+        align-items: center;
+    }
+    .nav li {
+        margin: 10px 0;  /* väčšie medzery medzi položkami */
+    }
+  }
+   header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+    .pricing {
+  background: #000;
+  color: #fff;
+  padding: 100px 20px;
+}
+
+.pricing h2 {
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+}
+
+.pricing-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 80px 0 40px;
+  letter-spacing: 1px;
+}
+
+/* grid balíkov */
+.pricing-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* karta */
+.price-card {
+  background: #111;
+  padding: 35px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+
+.price-card h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.price-card li {
+  margin-bottom: 10px;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* zvýraznený balík */
+.highlight {
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* promo kontakt */
+.pricing-contact {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.pricing-contact p {
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.contact-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+  </style>
+</head>
+<body>
+<header>
+  <h1><a href="index.html">Viktor Boguský</a></h1>
+
+    <nav>
+
+    <ul>
+        <li><a href="referencie.html">Referencie</a></li>
+        <li><a href="omne.html">O mne</a></li>
+        <li><a href="sluzby.html">Služby</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="cennik.html">Cenník</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+</nav>
+
+  </header>
+
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="uvod_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h2>Cenník</h2>
+      <p>Kamera a Postprodukcia</p>
+    </div>
+  </section>
+
+  <section class="pricing">
+
+  <div class="pricing-section">
+
+    <!-- STUŽKOVÉ -->
+    <h3 class="pricing-title">Stužkové</h3>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h4>Combo Start</h4>
+        <div class="price">150 €</div>
+        <ul>
+          <li>Klip zo stužkovej</li>
+          <li>Pozvánka alebo úvodné video</li>
+          <li>Možnosť natáčania vybraných častí podľa dohody</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h4>Combo Memory</h4>
+        <div class="price">250 €</div>
+        <ul>
+          <li>Záznam zo stužkovej</li>
+          <li>Pozvánka alebo úvodné video</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h4>Combo Premium</h4>
+        <div class="price">300 €</div>
+        <ul>
+          <li>Záznam zo stužkovej</li>
+          <li>Klip zo stužkovej</li>
+        </ul>
+      </div>
+
+      <div class="price-card highlight">
+        <h4>Combo Deluxe</h4>
+        <div class="price">350 €</div>
+        <ul>
+          <li>Záznam zo stužkovej</li>
+          <li>Klip zo stužkovej</li>
+          <li>Úvodné video alebo pozvánka</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SVADBY -->
+    <h3 class="pricing-title">Svadby</h3>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h4>Wedding Record</h4>
+        <div class="price">400 €</div>
+        <ul>
+          <li>Záznam svadby v plnej dĺžke</li>
+          <li>Farebná korekcia</li>
+          <li>Úprava zvuku</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h4>Wedding Clip</h4>
+        <div class="price">250 €</div>
+        <ul>
+          <li>3–7 minútový svadobný klip</li>
+          <li>Dynamický strih</li>
+          <li>Colorgrading</li>
+        </ul>
+      </div>
+
+      <div class="price-card highlight">
+        <h4>Wedding Complete</h4>
+        <div class="price">500 €</div>
+        <ul>
+          <li>Záznam svadby v plnej dĺžke</li>
+          <li>3–7 minútový svadobný klip</li>
+          <li>Kompletná postprodukcia</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- PROMO -->
+    <div class="pricing-contact">
+      <h3>Promo videá a iné projekty</h3>
+      <p>
+        Každý projekt je individuálny.<br>
+        Pre cenovú ponuku ma prosím kontaktujte.
+      </p>
+      <a href="kontakt.html" class="contact-btn">Kontaktovať</a>
+    </div>
+
+  </div>
+</section>
+
+  
+
+
+<footer class="footer">
+  <div class="footer-top">
+
+    <div class="footer-contact">
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Vytvoril: Viktor Boguský
+  </div>
+</footer>
+
+
+
+</body>
+</html>

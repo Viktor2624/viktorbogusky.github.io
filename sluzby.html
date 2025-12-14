@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+
+    body { background:#000; color:#fff; }
+
+    header {
+      position: fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(0,0,0,0.6);
+      z-index:100;
+    }
+
+    header h1 { font-size:18px; letter-spacing:2px; }
+
+    header nav a {
+      color:#fff;
+      text-decoration:none;
+      margin-left:20px;
+      padding:8px 16px;
+      border:1px solid #fff;
+      transition:0.3s;
+    }
+
+    header nav a:hover { background:#fff; color:#000; }
+
+    .hero {
+      position:relative;
+      height:500px;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .hero video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      min-width:100%;
+      min-height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+
+    .hero-overlay {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      z-index:0;
+    }
+
+    .hero-text {
+      position:relative;
+      z-index:1;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
+    .hero-text p { font-size:18px; opacity:0.8; }
+
+    .videos {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+      padding:80px 40px;
+      background:#111;
+    }
+
+    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
+
+    .footer {
+  background: #000;
+  color: #fff;
+  padding: 50px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* horná časť – obmedzená šírka, centrovaná */
+.footer-top {
+  max-width: 900px;          /* toto ich posunie bližšie k stredu */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* kontakt vľavo */
+.footer-contact {
+  text-align: center;
+}
+
+.footer-contact p {
+  margin: 0;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* sociálne siete vpravo */
+.footer-socials {
+  text-align: center;
+}
+
+.footer-socials a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.3s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+/* spodný text */
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+
+    @media(max-width:768px) {
+      .hero-text h2 { font-size:32px; }
+    }
+
+    nav {
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+
+.hero-text h2{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-text p{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;  /* z horizontálnej na vertikálnu */
+        align-items: center;
+    }
+    .nav li {
+        margin: 10px 0;  /* väčšie medzery medzi položkami */
+    }
+  }
+
+  .services {
+  background: #000;
+  color: #fff;
+  padding: 90px 20px;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+}
+
+/* grid */
+.services-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+/* blok – Kamerové služby (vľavo) */
+.service-block:first-child {
+  text-align: left;
+}
+
+/* blok – Postprodukcia (vpravo) */
+.service-block:last-child {
+  text-align: right;
+}
+
+.service-block h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.service-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-block li {
+  margin-bottom: 12px;
+  opacity: 0.85;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+
+/* jemná bodka pre list */
+.service-block li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* mobil – všetko na stred */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .service-block {
+    text-align: center !important;
+  }
+  .service-block li::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* blok – Postprodukcia (vpravo) */
+.service-block:last-child {
+  text-align: right;
+}
+
+.service-block:last-child li {
+  padding-left: 0;       /* odstránime ľavý padding */
+  padding-right: 18px;   /* pridáme pravý padding pre bodku */
+}
+
+/* bodka vpravo */
+.service-block:last-child li::before {
+  left: auto;
+  right: 0;
+  transform: none;
+  opacity: 0.5;
+}
+    @media (max-width: 768px) {
+  .service-block {
+    text-align: center !important;
+  }
+  .service-block li::before {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+ header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+
+
+  <header>
+  <h1><a href="index.html">Viktor Boguský</a></h1>
+ 
+    <nav>
+
+    <ul>
+        <li><a href="referencie.html">Referencie</a></li>
+        <li><a href="omne.html">O mne</a></li>
+        <li><a href="sluzby.html">Služby</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="cennik.html">Cenník</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+</nav>
+
+  </header>
+
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="uvod_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h2>Služby</h2>
+      <p>Kamera a Postprodukcia</p>
+    </div>
+    </section>
+
+    <section class="services">
+
+  <div class="services-grid">
+
+    <div class="service-block">
+      <h3>Kamerové služby</h3>
+      <ul>
+        <li>Záznam stužkovej – v plnej dĺžke + 3–7 minútový zostrih</li>
+        <li>Záznam svadby – v plnej dĺžke + 3–7 minútový zostrih</li>
+        <li>Pozvánka na stúžkovú</li>
+        <li>Eventy / Koncerty / Festivaly</li>
+        <li>Promo video</li>
+        <li>Video na sociálne siete</li>
+        <li>Video vizitka / profilové video</li>
+        <li>Dokumentárne video</li>
+      </ul>
+    </div>
+
+    <div class="service-block">
+      <h3>Postprodukcia</h3>
+      <ul>
+        <li>Kompletná postprodukcia videa</li>
+        <li>Colorgrading</li>
+        <li>Úprava zvuku</li>
+        <li>Dynamický strih</li>
+        <li>Titulky</li>
+        <li>Efekty</li>
+        <li>Greenscreen</li>
+        <li>Postprodukčné zaostrenie videa</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-top">
+
+    <div class="footer-contact">
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Vytvoril: Viktor Boguský
+  </div>
+</footer>
+
+
+
+</body>
+</html>
