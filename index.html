@@ -227,13 +227,69 @@ nav a:hover {
   color: #fff;
   text-decoration: none;
 }
+    /* Základne pre mobil */
+#mobile-nav {
+  display: none;           /* Skryté štandardne */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  z-index: 1000;
+}
+
+#mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mobile-nav li {
+  margin: 3px 0;
+}
+
+#mobile-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  transition: 0.3s;
+}
+
+#mobile-nav a:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Zobrazenie menu len na mobile */
+@media (min-width: 769px) {
+  #mobile-nav {
+    display: none !important; /* Desktop neukazuje */
+  }
+}
+</style>
+
+<script>
+const mobileNav = document.getElementById('mobile-nav');
+
+window.addEventListener('scroll', () => {
+  if(window.scrollY === 0) {
+    mobileNav.style.display = 'flex';  // Zobraz menu, keď sme úplne hore
+  } else {
+    mobileNav.style.display = 'none';  // Skryj menu pri scrollovaní dole
+  }
+});
+</script>
   </style>
 </head>
 <body>
 <header>
   <h1><a href="index.html">Viktor Boguský</a></h1>
 
-    <nav>
+    <nav id="mobile-nav">
 
     <ul>
         <li><a href="referencie.html">Referencie</a></li>
