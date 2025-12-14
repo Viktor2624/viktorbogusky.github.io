@@ -451,102 +451,88 @@ body{
 
   <div class="contact-grid">
 
-    <!-- KONTAKTNÉ INFO -->
-    <div class="contact-info">
-      <p><strong>Email</strong><br>kontakt@viktorbogusky.sk</p>
-      <p><strong>Telefón</strong><br>+421 948 933 109</p>
+    <section class="stuzkova-order">
 
-      <div class="contact-socials">
-        <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
-        <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
-      </div>
-    </div>
-
-    <!-- FORMULÁR -->
-    <form
-      class="contact-form"
-      action="https://formspree.io/f/xjknzwew"
-      method="POST"
-    >
-
-      <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
-      <input type="email" name="email" placeholder="Email*" required>
-
-      <select name="balicek" required>
-        <option value="">Vyber balík / službu*</option>
-        <option>Stužková – Combo Start</option>
-        <option>Stužková – Combo Memory</option>
-        <option>Stužková – Combo Premium</option>
-        <option>Stužková – Combo Deluxe</option>
-        <option>Svadba – Wedding Record</option>
-        <option>Svadba – Wedding Clip</option>
-        <option>Svadba – Wedding Complete</option>
-        <option>Individuálna ponuka</option>
-      </select>
-
-      <input type="text" name="lokacia" placeholder="Lokalita natáčania*" required>
-      <input type="date" name="datum" required>
-
-      <textarea name="sprava" placeholder="Správa (nepovinné)"></textarea>
-
-      <button type="submit">Odoslať správu</button>
-    </form>
-
-  </div>
-</section>
-<section class="stuzkova-calculator">
   <h2>Kalkulačka stužkovej</h2>
 
-  <!-- Výber balíka -->
-  <label for="balik">Vyber balík:</label>
-  <select id="balik">
-    <option value="0">-- Vyber balík --</option>
-    <option value="150">Combo Start – 150€</option>
-    <option value="250">Combo Memory – 250€</option>
-    <option value="300">Combo Premium – 300€</option>
-    <option value="350">Combo Deluxe – 350€</option>
-  </select>
+  <!-- KALKULAČKA -->
+  <div class="stuzkova-calculator">
 
-  <!-- Možnosť natáčať celé časti (len pre Combo Start) -->
-  <div id="extraParts" style="display:none; margin-top:15px;">
-    <label>Chcete natáčať celé časti? (40€/časť)</label>
-    <input type="number" id="fullParts" value="0" min="0">
+    <label>Vyber balík:</label>
+    <select id="balik" required>
+      <option value="0">-- Vyber balík --</option>
+      <option value="150">Combo Start – 150€</option>
+      <option value="250">Combo Memory – 250€</option>
+      <option value="300">Combo Premium – 300€</option>
+      <option value="350">Combo Deluxe – 350€</option>
+    </select>
+
+    <div id="extraParts" style="display:none;">
+      <label>Počet natáčaných častí v plnej dĺžke (40€/časť)</label>
+      <input type="number" id="fullParts" min="0" value="0">
+    </div>
+
+    <label>Doba dodania:</label>
+    <select id="dodanie">
+      <option value="0">60 dní (bez príplatku)</option>
+      <option value="20">30 dní (+20€)</option>
+      <option value="50">7 dní (+50€)</option>
+    </select>
+
+    <label>Počet USB (10€/ks)</label>
+    <input type="number" id="usb" min="0" value="0">
+
+    <div class="usb-info">
+      <img src="P1015136-Edit.png" alt="USB v krabičke">
+      <p>USB dodané v krabičke s názvom školy, dátumom a názvom udalosti.</p>
+    </div>
+
+    <label>Zľavový kód</label>
+    <input type="text" id="discount" placeholder="Zadajte kód">
+
+    <label>Typ:</label>
+    <select id="typeOrder">
+      <option value="order">Objednávka – platba celej sumy</option>
+      <option value="reservation">Rezervácia – 50 % nevratná záloha</option>
+    </select>
+
+    <h3>Výsledná cena: <span id="total">0</span> €</h3>
+
+    <button type="button" id="calculateBtn">Prepočítať cenu</button>
   </div>
 
-  <!-- Dodanie -->
-  <label for="dodanie">Doba dodania:</label>
-  <select id="dodanie">
-    <option value="50">7 dní (+50€)</option>
-    <option value="20">30 dní (+20€)</option>
-    <option value="0">60 dní (bez príplatku)</option>
-  </select>
+  <!-- OBJEDNÁVKOVÝ FORMULÁR -->
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/xjknzwew"
+    method="POST"
+  >
 
-  <!-- Počet USB -->
-  <label for="usb">Počet USB (10€/ks):</label>
-  <input type="number" id="usb" value="0" min="0">
+    <h3>Objednávka / Rezervácia</h3>
 
-  <!-- Fotka USB -->
-  <div class="usb-info">
-    <img src="P1015136-Edit.png" alt="USB v krabičke" />
-    <p>USB dodané v krabičke s názvom školy, dátumom a názvom udalosti.</p>
-  </div>
+    <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
+    <input type="email" name="email" placeholder="Email*" required>
+    <input type="text" name="lokacia" placeholder="Lokalita natáčania*" required>
+    <input type="date" name="datum" required>
 
-  <!-- Zľavový kód -->
-  <label for="discount">Zľavový kód:</label>
-  <input type="text" id="discount" placeholder="Zadajte kód">
+    <!-- SKRYTÉ POLIA Z KALKULAČKY -->
+    <input type="hidden" name="balik" id="formBalik">
+    <input type="hidden" name="dodanie" id="formDodanie">
+    <input type="hidden" name="usb" id="formUsb">
+    <input type="hidden" name="plne_casti" id="formParts">
+    <input type="hidden" name="typ_objednavky" id="formType">
+    <input type="hidden" name="cena" id="formCena">
 
-  <!-- Typ objednávky -->
-  <label for="typeOrder">Typ:</label>
-  <select id="typeOrder">
-    <option value="order">Objednávka (platba celá suma)</option>
-    <option value="reservation">Rezervácia (50% záloha, nevratná pri zrušení)</option>
-  </select>
+    <textarea name="sprava" placeholder="Poznámka (nepovinné)"></textarea>
 
-  <!-- Výsledok -->
-  <h3>Celková cena: <span id="total">0</span> €</h3>
+    <label>
+      <input type="checkbox" required>
+      Rozumiem, že záloha pri rezervácii je nevratná
+    </label>
 
-  <button id="calculateBtn">Spočítať cenu</button>
+    <button type="submit">Odoslať objednávku</button>
+  </form>
+
 </section>
 
 
@@ -577,51 +563,48 @@ const usb = document.getElementById('usb');
 const discount = document.getElementById('discount');
 const typeOrder = document.getElementById('typeOrder');
 const total = document.getElementById('total');
-const calculateBtn = document.getElementById('calculateBtn');
 
-// Zobrazenie natáčania celých častí iba pre Combo Start
-balik.addEventListener('change', () => {
-  extraParts.style.display = (balik.value == '150') ? 'block' : 'none';
-});
+const formBalik = document.getElementById('formBalik');
+const formDodanie = document.getElementById('formDodanie');
+const formUsb = document.getElementById('formUsb');
+const formParts = document.getElementById('formParts');
+const formType = document.getElementById('formType');
+const formCena = document.getElementById('formCena');
 
-// Výpočet ceny
-calculateBtn.addEventListener('click', () => {
-  let cena = parseInt(balik.value);
+document.getElementById('calculateBtn').addEventListener('click', () => {
+  let cena = parseInt(balik.value || 0);
 
-  // Full parts
-  if (balik.value == '150') {
-    cena += parseInt(fullParts.value) * 40;
+  extraParts.style.display = balik.value === "150" ? "block" : "none";
+
+  if (balik.value === "150") {
+    cena += (parseInt(fullParts.value || 0) * 40);
   }
 
-  // Dodanie
   cena += parseInt(dodanie.value);
-
-  // USB
   cena += parseInt(usb.value) * 10;
 
-  // Zľavový kód
-  const code = discount.value.trim();
-  if (code === "STUZKOVA2620") {
-    cena *= 0.8; // zľava 20%
+  if (discount.value.trim() === "STUZKOVA2620") {
+    cena *= 0.8;
   }
 
-  // Typ objednávky
+  let finalCena = cena;
+
   if (typeOrder.value === "reservation") {
-    cena = cena * 0.5; // len záloha 50%
+    finalCena = cena * 0.5;
   }
 
-  total.textContent = cena.toFixed(2);
+  total.textContent = finalCena.toFixed(2);
+
+  /* PRENOS DO FORMULÁRA */
+  formBalik.value = balik.options[balik.selectedIndex].text;
+  formDodanie.value = dodanie.options[dodanie.selectedIndex].text;
+  formUsb.value = usb.value + " ks";
+  formParts.value = fullParts.value;
+  formType.value = typeOrder.options[typeOrder.selectedIndex].text;
+  formCena.value = finalCena.toFixed(2) + " €";
 });
 </script>
 
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
-
-toggle.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
-</script>
 
 </body>
 </html>
