@@ -4,106 +4,116 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:#000;color:#fff;padding-top:70px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#000;color:#fff;padding-top:60px}
 
 /* ===== HEADER ===== */
 header{
   position:fixed;top:0;width:100%;
-  background:rgba(0,0,0,.9);z-index:1000
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
+  z-index:1000;
 }
 .header-inner{
   max-width:1200px;margin:auto;
-  padding:15px 20px;
-  display:flex;justify-content:space-between;align-items:center
+  padding:12px 20px;
+  display:flex;justify-content:space-between;align-items:center;
 }
 .logo{color:#fff;text-decoration:none;font-weight:600;letter-spacing:2px}
 nav{display:flex;gap:24px}
-nav a{color:#fff;text-decoration:none;opacity:.8}
+nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.8}
 nav a:hover{opacity:1}
-.menu-toggle{display:none;font-size:24px;background:none;border:none;color:#fff}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px}
 
-/* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle{display:block}
   nav{
-    display:none;flex-direction:column;
-    background:#000;position:absolute;
-    top:60px;left:0;width:100%
+    position:absolute;top:56px;left:0;width:100%;
+    background:#000;flex-direction:column;
+    align-items:center;display:none
   }
   nav.active{display:flex}
-  nav a{padding:12px;text-align:center}
+  nav a{padding:12px 0}
 }
 
 /* ===== HERO ===== */
-.hero{height:420px;position:relative;overflow:hidden}
+.hero{position:relative;height:520px;overflow:hidden}
 .hero video{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
   min-width:100%;min-height:100%;object-fit:cover
 }
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background:rgba(0,0,0,.5)
-}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero-text{
   position:relative;height:100%;
   display:flex;flex-direction:column;
   justify-content:center;align-items:center;text-align:center
 }
-.hero-text h1{font-size:42px;letter-spacing:3px}
-.hero-text p{opacity:.8;margin-top:10px}
+.hero-text h2{font-size:48px;letter-spacing:3px}
+.hero-text p{margin-top:10px;opacity:.85}
+
+@media(max-width:768px){
+  .hero{height:420px}
+  .hero-text h2{font-size:32px}
+}
 
 /* ===== ORDER SECTION ===== */
 .order-section{
-  max-width:1200px;margin:80px auto;
+  max-width:1200px;
+  margin:80px auto;
   padding:0 20px;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:50px
+  display:grid;
+  grid-template-columns:1fr 1.3fr 1.3fr;
+  gap:40px;
 }
 
-.card{
-  background:#111;padding:30px;border-radius:16px
+.box{
+  background:#111;
+  padding:30px;
+  border-radius:14px;
 }
+
+.box h2{margin-bottom:20px;font-size:20px}
 
 label{display:block;margin-top:15px;font-weight:600}
 input,select,textarea{
   width:100%;padding:12px;margin-top:6px;
-  background:#1c1c1c;border:none;
-  border-radius:10px;color:#fff
+  background:#1c1c1c;color:#fff;border:none;border-radius:8px
 }
 textarea{min-height:140px}
 
-.buttons{
-  display:flex;gap:15px;margin-top:20px
-}
 button{
-  padding:14px;border-radius:30px;
-  font-weight:700;border:none;cursor:pointer
+  margin-top:20px;padding:14px;
+  border:none;border-radius:30px;
+  font-weight:700;cursor:pointer
 }
-.primary{background:#fff;color:#000}
-.secondary{background:#333;color:#fff}
+.calc-buttons{display:flex;gap:12px}
+.calc-buttons button{flex:1}
+.calc{background:#fff;color:#000}
+.add{background:#00ff88;color:#000}
 
-.usb-box{text-align:center;margin-top:20px}
-.usb-box img{max-width:140px;border-radius:12px;margin-bottom:10px}
+.usb-info{text-align:center;margin-top:15px}
+.usb-info img{width:120px;border-radius:10px;margin-bottom:8px}
+
+/* ===== FOOTER ===== */
+.footer{padding:50px 20px;background:#000}
+.footer-top{
+  max-width:900px;margin:auto;
+  display:flex;justify-content:space-between;
+  text-align:center
+}
+.footer-socials a{
+  margin-left:20px;color:#fff;text-decoration:none;opacity:.7
+}
+.footer-socials a:hover{opacity:1}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.6}
 
 @media(max-width:900px){
   .order-section{grid-template-columns:1fr}
 }
-
-/* ===== FOOTER ===== */
-footer{
-  background:#000;padding:50px 20px;margin-top:80px
-}
-.footer-inner{
-  max-width:1000px;margin:auto;
-  display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;text-align:center
-}
-footer a{color:#fff;text-decoration:none;opacity:.7}
-footer a:hover{opacity:1}
 </style>
 </head>
 
@@ -111,14 +121,15 @@ footer a:hover{opacity:1}
 
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">VIKTOR BOGUSKÝ</a>
+    <a href="index.html" class="logo">Viktor Boguský</a>
     <button class="menu-toggle">☰</button>
     <nav>
-      <a href="#">Referencie</a>
-      <a href="#">O mne</a>
-      <a href="#">Služby</a>
-      <a href="#">Portfólio</a>
-      <a href="#">Kontakt</a>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -127,17 +138,26 @@ footer a:hover{opacity:1}
   <video autoplay muted loop playsinline>
     <source src="uvod_video.mp4" type="video/mp4">
   </video>
+  <div class="hero-overlay"></div>
   <div class="hero-text">
-    <h1>Kamera & Postprodukcia</h1>
-    <p>Stužkové • Svadby • Eventy</p>
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy…</p>
   </div>
 </section>
 
-<!-- ===== KALKULÁTOR + OBJEDNÁVKA ===== -->
+<!-- ===== OBJEDNÁVKA ===== -->
 <section class="order-section">
 
-  <!-- VÝBER SLUŽBY -->
-  <div class="card">
+  <!-- KONTAKT -->
+  <div class="box">
+    <h2>Kontakt</h2>
+    <p><strong>Email</strong><br>kontakt@viktorbogusky.sk</p><br>
+    <p><strong>Telefón</strong><br>+421 948 933 109</p><br>
+    <p>Instagram / Facebook / TikTok</p>
+  </div>
+
+  <!-- KALKULÁCIA -->
+  <div class="box">
     <h2>Výber služby uskutočnite na tomto formulári</h2>
 
     <label>Balík</label>
@@ -155,7 +175,7 @@ footer a:hover{opacity:1}
     </div>
 
     <label>Doba dodania</label>
-    <select id="delivery">
+    <select id="dodanie">
       <option value="0">60 dní (bez príplatku)</option>
       <option value="20">30 dní (+20€)</option>
       <option value="50">7 dní (+50€)</option>
@@ -164,100 +184,98 @@ footer a:hover{opacity:1}
     <label>Počet USB (10€/ks)</label>
     <input type="number" id="usb" min="0" value="0">
 
-    <div class="usb-box">
+    <div class="usb-info">
       <img src="P1015136-Edit.png">
-      <p>USB v krabičke s názvom školy a dátumom</p>
+      <p>USB v krabičke s potlačou</p>
     </div>
 
     <label>Zľavový kód</label>
     <input type="text" id="discount">
 
     <label>Typ</label>
-    <select id="type">
-      <option value="order">Objednávka (100%)</option>
+    <select id="typeOrder">
+      <option value="order">Objednávka</option>
       <option value="reservation">Rezervácia (50% záloha)</option>
     </select>
 
     <h3>Cena: <span id="total">0</span> €</h3>
 
-    <div class="buttons">
-      <button class="secondary" id="calc">Iba vypočítať</button>
-      <button class="primary" id="add">Pridať do objednávky</button>
+    <div class="calc-buttons">
+      <button class="calc" id="calcOnly">Iba vypočítať</button>
+      <button class="add" id="addToOrder">Pridať do objednávky</button>
     </div>
   </div>
 
-  <!-- OBJEDNÁVKA -->
-  <div class="card">
+  <!-- FORMULÁR -->
+  <div class="box">
     <h2>Objednávka</h2>
-
     <form action="https://formspree.io/f/xjknzwew" method="POST">
-      <input name="meno" placeholder="Meno a priezvisko*" required>
-      <input name="email" type="email" placeholder="Email*" required>
-      <input name="lokacia" placeholder="Lokalita*" required>
-      <input name="datum" type="date" required>
-
-      <textarea name="objednavka" id="summary" readonly></textarea>
+      <input type="text" name="meno" placeholder="Meno*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+      <input type="text" name="lokacia" placeholder="Lokalita*" required>
+      <input type="date" name="datum" required>
+      <textarea id="summary" name="objednavka" readonly></textarea>
       <input type="hidden" name="cena" id="finalPrice">
-
-      <button class="primary" type="submit">Odoslať objednávku</button>
+      <button type="submit">Odoslať objednávku</button>
     </form>
   </div>
 
 </section>
 
-<footer>
-  <div class="footer-inner">
-    <p>kontakt@viktorbogusky.sk | +421 948 933 109</p>
+<footer class="footer">
+  <div class="footer-top">
     <div>
-      <a href="#">Instagram</a> ·
-      <a href="#">Facebook</a> ·
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
       <a href="#">TikTok</a>
     </div>
   </div>
+  <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
 </footer>
 
 <script>
-const balik=document.getElementById("balik")
-const extra=document.getElementById("extraParts")
-const full=document.getElementById("fullParts")
-const delivery=document.getElementById("delivery")
-const usb=document.getElementById("usb")
-const discount=document.getElementById("discount")
-const type=document.getElementById("type")
-const total=document.getElementById("total")
-const summary=document.getElementById("summary")
-const finalPrice=document.getElementById("finalPrice")
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('nav');
+toggle.onclick=()=>nav.classList.toggle('active');
 
-balik.onchange=()=>extra.style.display=balik.value==="150"?"block":"none"
+const balik=document.getElementById('balik');
+const extra=document.getElementById('extraParts');
+const full=document.getElementById('fullParts');
+const dod=document.getElementById('dodanie');
+const usb=document.getElementById('usb');
+const dis=document.getElementById('discount');
+const type=document.getElementById('typeOrder');
+const total=document.getElementById('total');
+const summary=document.getElementById('summary');
+const final=document.getElementById('finalPrice');
 
-function calculate(){
-  let price=Number(balik.value)
-  if(balik.value==="150")price+=full.value*40
-  price+=Number(delivery.value)
-  price+=usb.value*10
-  if(discount.value==="STUZKOVA2620")price*=0.8
-  if(type.value==="reservation")price*=0.5
-  total.textContent=price.toFixed(2)
-  return price.toFixed(2)
+balik.onchange=()=>extra.style.display=balik.value=="150"?"block":"none";
+
+function calc(){
+ let p=+balik.value + +dod.value + usb.value*10;
+ if(balik.value=="150")p+=full.value*40;
+ if(dis.value=="STUZKOVA2620")p*=0.8;
+ if(type.value=="reservation")p*=0.5;
+ total.textContent=p.toFixed(2);
+ return p.toFixed(2);
 }
 
-document.getElementById("calc").onclick=calculate
-document.getElementById("add").onclick=()=>{
-  const p=calculate()
-  summary.value=`Balík: ${balik.options[balik.selectedIndex].text}
+document.getElementById('calcOnly').onclick=calc;
+document.getElementById('addToOrder').onclick=()=>{
+ const p=calc();
+ summary.value=`Balík: ${balik.options[balik.selectedIndex].text}
 Celé časti: ${full.value}
-Dodanie: ${delivery.options[delivery.selectedIndex].text}
+Dodanie: ${dod.options[dod.selectedIndex].text}
 USB: ${usb.value} ks
 Typ: ${type.options[type.selectedIndex].text}
-Cena: ${p} €`
-  finalPrice.value=p
-}
-
-document.querySelector(".menu-toggle").onclick=()=>{
-  document.querySelector("nav").classList.toggle("active")
-}
+Cena: ${p} €`;
+ final.value=p;
+};
 </script>
 
 </body>
 </html>
-
