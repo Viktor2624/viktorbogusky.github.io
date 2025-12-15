@@ -1,96 +1,312 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt | Viktor Boguský</title>
-<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-body{background:#000;color:#fff;padding-top:60px}
+    body { background:#000; color:#fff; }
 
-/* ===== HEADER ===== */
-header{
-  position:fixed;top:0;width:100%;
-  background:rgba(0,0,0,.85);
-  backdrop-filter:blur(8px);
-  z-index:1000;
+    header {
+      position: fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(0,0,0,0.6);
+      z-index:100;
+    }
+
+    header h1 { font-size:18px; letter-spacing:2px; }
+
+    /* Reset základného štýlu ul a li */
+nav ul {
+  list-style: none;       /* Zruší bodky */
+  margin: 0;
+  padding: 0;
+  display: flex;          /* Horizontálne zarovnanie */
+  justify-content: flex-end; /* Zarovná odkazy doprava */
+  flex-wrap: wrap;        /* Zalamovanie pri menších obrazovkách */
 }
-.header-inner{
-  max-width:1200px;margin:auto;
-  padding:12px 20px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.logo{color:#fff;text-decoration:none;font-weight:600;letter-spacing:2px}
-nav{display:flex;gap:24px}
-nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.8}
-nav a:hover{opacity:1}
-.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px}
 
-@media(max-width:768px){
-  .menu-toggle{display:block}
-  nav{
-    position:absolute;top:56px;left:0;width:100%;
-    background:#000;flex-direction:column;
-    align-items:center;display:none
+nav li {
+  margin: 0;
+}
+
+/* Štýl odkazov */
+nav a {
+  display: block;         /* Klikacia oblasť */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: 1px solid #fff;
+  transition: 0.3s;
+}
+
+/* Hover efekt */
+nav a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responzívna navigácia pre mobily */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;  /* Odkazy pod sebou */
+    align-items: center;     /* Na stred */
   }
-  nav.active{display:flex}
-  nav a{padding:12px 0}
+
+  nav a {
+    margin: 4px 0;           /* menšia vzdialenosť medzi odkazmi */
+    padding: 8px 12px;       /* menšia klikacia oblasť */
+    font-size: 14px;         /* menší text pre lepšie zapadnutie */
+  }
 }
 
-/* ===== HERO ===== */
-.hero{position:relative;height:420px;overflow:hidden}
-.hero video{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  min-width:100%;min-height:100%;object-fit:cover
+
+
+    .hero {
+      position:relative;
+      height:500px;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .hero video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      min-width:100%;
+      min-height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+
+    .hero-overlay {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      z-index:0;
+    }
+
+    .hero-text {
+      position:relative;
+      z-index:1;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .hero-text h2 { font-size:48px; letter-spacing:3px; margin-bottom:10px; }
+    .hero-text p { font-size:18px; opacity:0.8; }
+
+    .videos {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+      padding:80px 40px;
+      background:#111;
+    }
+
+    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
+
+    .footer {
+  background: #000;
+  color: #fff;
+  padding: 50px 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.hero-text{
-  position:relative;height:100%;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center
+
+/* horná časť – obmedzená šírka, centrovaná */
+.footer-top {
+  max-width: 900px;          /* toto ich posunie bližšie k stredu */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+/* kontakt vľavo */
+.footer-contact {
+  text-align: center;
+}
+
+.footer-contact p {
+  margin: 0;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* sociálne siete vpravo */
+.footer-socials {
+  text-align: center;
+}
+
+.footer-socials a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.3s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+/* spodný text */
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+/* mobil */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+
+
+    @media(max-width:768px) {
+      .hero-text h2 { font-size:32px; }
+    }
+
+    nav {
+    padding: 10px 20px;
+}
+
+
+
 .hero-text h2{
-  font-size:42px;
-  letter-spacing:3px;
-  font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.hero-text p{opacity:.8;margin-top:10px}
 
-/* ===== KALKULAČKA + FORM ===== */
-.order-wrapper{
+.hero-text p{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+   header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+    .order-wrapper{
   max-width:1200px;
-  margin:80px auto;
-  padding:0 20px;
+  margin:0 auto;
+  padding:80px 20px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:50px;
 }
-.service-selector,.contact-form-wrapper{
+
+.service-selector,
+.contact-form-wrapper{
   background:#111;
   padding:30px;
   border-radius:14px;
 }
-label{display:block;margin-top:15px;font-weight:600}
-input,select,textarea{
-  width:100%;padding:12px;margin-top:6px;
-  background:#1c1c1c;color:#fff;border:none;border-radius:8px
+
+h2{
+  margin-bottom:20px;
 }
-textarea{min-height:140px}
-.usb-note{font-size:13px;opacity:.75;margin-top:10px}
-.price-box{margin-top:20px}
-.buttons{display:flex;gap:15px;margin-top:25px}
-button{padding:14px;border:none;border-radius:30px;font-weight:700;cursor:pointer}
-#calcOnly{background:#333;color:#fff}
-#addToOrder{background:#fff;color:#000}
+
+label{
+  display:block;
+  margin-top:15px;
+  font-weight:600;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  background:#1c1c1c;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+}
+
+textarea{
+  min-height:140px;
+}
+
+.usb-note{
+  margin-top:10px;
+  font-size:13px;
+  opacity:0.75;
+}
+
+.price-box{
+  margin-top:20px;
+  font-size:16px;
+}
+
+.buttons{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+}
+
+button{
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#calcOnly{
+  background:#333;
+  color:#fff;
+}
+
+#addToOrder{
+  background:#fff;
+  color:#000;
+}
 
 @media(max-width:900px){
-  .order-wrapper{grid-template-columns:1fr}
+  .order-wrapper{
+    grid-template-columns:1fr;
+  }
 }
-
-/* ===== KALENDÁR ===== */
+    /* ===== KALENDÁR ===== */
 .events-calendar{
   max-width:1100px;
   margin:80px auto;
@@ -138,71 +354,91 @@ button{padding:14px;border:none;border-radius:30px;font-weight:700;cursor:pointe
   .event-title{font-size:11px}
 }
 
-/* ===== FOOTER ===== */
-.footer{padding:50px 20px;background:#000}
-.footer-top{
-  max-width:900px;margin:auto;
-  display:flex;justify-content:space-between;text-align:center
-}
-.footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.6}
-</style>
+  </style>
 </head>
-
 <body>
-
 <header>
-  <div class="header-inner">
-    <a href="index.html" class="logo">Viktor Boguský</a>
-    <button class="menu-toggle">☰</button>
-    <nav>
-      <a href="referencie.html">Referencie</a>
-      <a href="omne.html">O mne</a>
-      <a href="sluzby.html">Služby</a>
-      <a href="portfolio.html">Portfólio</a>
-      <a href="cennik.html">Cenník</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </div>
-</header>
+  <h1><a href="index.html">Viktor Boguský</a></h1>
 
-<section class="hero">
-  <video autoplay muted loop playsinline>
-    <source src="uvod_video.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-text">
-    <h2>Kontakt & objednávka</h2>
-    <p>Rezervácie, stužkové, svadby</p>
-  </div>
-</section>
+    <nav>
+
+    <ul>
+        <li><a href="referencie.html">Referencie</a></li>
+        <li><a href="omne.html">O mne</a></li>
+        <li><a href="sluzby.html">Služby</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="cennik.html">Cenník</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+</nav>
+
+  </header>
+
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="uvod_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h2>Kamera & Postprodukcia</h2>
+      <p>Stužkové, svadby, eventy, klipy...</p>
+    </div>
+  </section>
+
 
 <section class="order-wrapper">
-  <!-- KALKULAČKA -->
-  <div class="service-selector">
-    <h2>Výber služby</h2>
 
-    <label>Služba</label>
+  <!-- ===== VÝBER SLUŽBY / KALKULAČKA ===== -->
+  <div class="service-selector">
+    <h2>Výber služby uskutočnite na tomto formulári</h2>
+
+    <label>Služba / balík</label>
     <select id="balik">
-      <option value="0">-- Vyber --</option>
-      <option value="150">Stužková – Combo Start</option>
-      <option value="250">Stužková – Combo Memory</option>
-      <option value="400">Svadba – Wedding Record</option>
+      <option value="0">-- Vyber službu --</option>
+
+      <optgroup label="Stužková">
+        <option value="150">Stužková – Combo Start (150€)</option>
+        <option value="250">Stužková – Combo Memory (250€)</option>
+        <option value="300">Stužková – Combo Premium (300€)</option>
+        <option value="350">Stužková – Combo Deluxe (350€)</option>
+      </optgroup>
+
+      <optgroup label="Svadba">
+        <option value="400">Svadba – Wedding Record (400€)</option>
+        <option value="250">Svadba – Wedding Clip (250€)</option>
+        <option value="500">Svadba – Wedding Complete (500€)</option>
+      </optgroup>
     </select>
 
-    <label>Počet USB</label>
+    <!-- Len pre Combo Start -->
+    <div id="extraParts">
+      <label>Celé časti (40€ / časť – len Combo Start)</label>
+      <input type="number" id="fullParts" min="0" value="0">
+    </div>
+
+    <label>Doba dodania</label>
+    <select id="dodanie">
+      <option value="0">60 dní – bez príplatku</option>
+      <option value="20">30 dní (+20€)</option>
+      <option value="50">7 dní (+50€)</option>
+    </select>
+
+    <label>Počet USB (20€ / ks)</label>
     <input type="number" id="usb" min="0" value="0">
+
     <p class="usb-note">
-      1 USB zdarma + každých 5 = 1 zdarma<br>
-      USB v krabičke s názvom akcie
+      1 USB je zdarma. Pri objednávke každých 5 ks získate 1 USB navyše zdarma.<br>
+      USB je dodané v krabičke s názvom školy / svadby, dátumom a názvom udalosti.
     </p>
 
     <label>Zľavový kód</label>
-    <input type="text" id="discount">
+    <input type="text" id="discount" placeholder="Zadajte kód">
 
     <label>Typ</label>
     <select id="typeOrder">
-      <option value="order">Objednávka</option>
-      <option value="reservation">Rezervácia (50 %)</option>
+      <option value="order">Objednávka – platba celej sumy</option>
+      <option value="reservation">Rezervácia – 50 % záloha</option>
     </select>
 
     <div class="price-box">
@@ -211,25 +447,30 @@ button{padding:14px;border:none;border-radius:30px;font-weight:700;cursor:pointe
     </div>
 
     <div class="buttons">
-      <button id="calcOnly">Vypočítať</button>
-      <button id="addToOrder">Pridať do objednávky</button>
+      <button type="button" id="calcOnly">Iba vypočítať</button>
+      <button type="button" id="addToOrder">Pridať do objednávky</button>
     </div>
   </div>
 
-  <!-- FORM -->
+  <!-- ===== OBJEDNÁVKOVÝ FORMULÁR ===== -->
   <div class="contact-form-wrapper">
     <h2>Objednávka</h2>
-    <form>
-      <input placeholder="Meno a priezvisko">
-      <input placeholder="Email">
-      <input type="date">
-      <textarea id="orderSummary" readonly></textarea>
-      <button>Odoslať</button>
+
+    <form action="https://formspree.io/f/xjknzwew" method="POST">
+      <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+      <input type="text" name="lokacia" placeholder="Lokalita*" required>
+      <input type="date" name="datum" required>
+
+      <textarea name="objednavka" id="orderSummary" placeholder="Zhrnutie objednávky" readonly></textarea>
+      <input type="hidden" name="cena" id="finalPrice">
+
+      <button type="submit">Odoslať objednávku</button>
     </form>
   </div>
-</section>
 
-<section class="events-calendar">
+</section>
+  <section class="events-calendar">
   <h2>Kalendár akcií</h2>
   <div class="calendar-header">
     <button id="prevMonth">‹</button>
@@ -239,40 +480,101 @@ button{padding:14px;border:none;border-radius:30px;font-weight:700;cursor:pointe
   <div class="calendar-grid" id="calendar"></div>
 </section>
 
+
+
 <footer class="footer">
-  <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
+  <div class="footer-top">
+
+    <div class="footer-contact">
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Vytvoril: Viktor Boguský
+  </div>
 </footer>
-
 <script>
-/* ===== MENU ===== */
-document.querySelector(".menu-toggle").onclick=()=>{
-  document.querySelector("nav").classList.toggle("active")
-}
+const balik = document.getElementById('balik');
+const fullPartsBox = document.getElementById('extraParts');
+const fullParts = document.getElementById('fullParts');
+const dodanie = document.getElementById('dodanie');
+const usb = document.getElementById('usb');
+const discount = document.getElementById('discount');
+const typeOrder = document.getElementById('typeOrder');
+const total = document.getElementById('total');
+const reservationInfo = document.getElementById('reservationInfo');
+const orderSummary = document.getElementById('orderSummary');
+const finalPrice = document.getElementById('finalPrice');
 
-/* ===== KALKULAČKA ===== */
-const total=document.getElementById("total");
-const reservationInfo=document.getElementById("reservationInfo");
-const summary=document.getElementById("orderSummary");
+function calculate() {
+  let price = Number(balik.value);
 
-function calc(){
-  let price=Number(balik.value);
-  let usbCount=Number(usb.value);
-  let free=usbCount>0?1+Math.floor(usbCount/5):0;
-  price+=Math.max(usbCount-free,0)*20;
-  if(discount.value==="STUZKOVA2610")price*=0.9;
-  total.textContent=price.toFixed(2);
-  if(typeOrder.value==="reservation"){
-    reservationInfo.textContent=`Záloha: ${(price/2).toFixed(2)} €`;
-  }else reservationInfo.textContent="";
+  // Extra časti – len Combo Start
+  if (balik.value === "150") {
+    fullPartsBox.style.display = "block";
+    price += fullParts.value * 40;
+  } else {
+    fullPartsBox.style.display = "none";
+  }
+
+  // Dodanie
+  price += Number(dodanie.value);
+
+  // USB – 1 zdarma + každých 5 = 1 zdarma
+  let usbCount = Number(usb.value);
+  let freeUsb = 0;
+  if (usbCount > 0) freeUsb = 1 + Math.floor(usbCount / 5);
+  let paidUsb = Math.max(usbCount - freeUsb, 0);
+  price += paidUsb * 20;
+
+  // Zľava 10 %
+  if (discount.value.trim() === "STUZKOVA2610") {
+    price *= 0.9;
+  }
+
+  total.textContent = price.toFixed(2);
+
+  // Rezervácia
+  if (typeOrder.value === "reservation") {
+    let now = price * 0.5;
+    let later = price * 0.5;
+    reservationInfo.textContent =
+      `Záloha teraz: ${now.toFixed(2)} € | Doplatok neskôr: ${later.toFixed(2)} €`;
+  } else {
+    reservationInfo.textContent = "";
+  }
+
   return price.toFixed(2);
 }
-calcOnly.onclick=calc;
-addToOrder.onclick=()=>{
-  const p=calc();
-  summary.value=`Služba: ${balik.options[balik.selectedIndex].text}\nCena: ${p} €`;
-}
 
-/* ===== KALENDÁR ===== */
+document.getElementById('calcOnly').onclick = calculate;
+
+document.getElementById('addToOrder').onclick = () => {
+  const price = calculate();
+
+  orderSummary.value =
+`Služba: ${balik.options[balik.selectedIndex].text}
+Celé časti: ${fullParts.value}
+Dodanie: ${dodanie.options[dodanie.selectedIndex].text}
+USB: ${usb.value} ks
+Typ: ${typeOrder.options[typeOrder.selectedIndex].text}
+
+Celková cena: ${price} €`;
+
+  finalPrice.value = price;
+};
+</script>
+  <script>
+    /* ===== KALENDÁR ===== */
 const events={
   "2026-05-30":{type:"ordered",title:"Svadba P&P Ranch 13"},
   "2026-11-07":{type:"reserved",title:"Stužková Vranov"}
@@ -299,6 +601,7 @@ prevMonth.onclick=()=>{d.setMonth(d.getMonth()-1);render()}
 nextMonth.onclick=()=>{d.setMonth(d.getMonth()+1);render()}
 render();
 </script>
+
 
 </body>
 </html>
