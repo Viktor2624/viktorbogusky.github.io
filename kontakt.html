@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viktor Bogusky | Kamera & Postprodukcia</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
-    body { background:#000; color:#fff; }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-   header{
+body{
+  background:#000;
+  color:#fff;
+}
+
+/* ================= HEADER ================= */
+
+header{
   position:fixed;
   top:0;
   width:100%;
@@ -150,123 +162,72 @@ body{
   }
 }
 
-    .videos {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px;
-      padding:80px 40px;
-      background:#111;
-    }
+/* ================= VIDEOS ================= */
 
-    .videos iframe { width:100%; aspect-ratio:16/9; border:none; }
-
-    .footer {
-  background: #000;
-  color: #fff;
-  padding: 50px 20px;
-  font-family: Arial, Helvetica, sans-serif;
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:30px;
 }
 
-/* horná časť – obmedzená šírka, centrovaná */
-.footer-top {
-  max-width: 900px;          /* toto ich posunie bližšie k stredu */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.videos iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
 }
 
-/* kontakt vľavo */
-.footer-contact {
-  text-align: center;
+/* ================= FOOTER ================= */
+
+.footer{
+  background:#000;
+  padding:50px 20px;
 }
 
-.footer-contact p {
-  margin: 0;
-  opacity: 0.8;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
 }
 
-/* sociálne siete vpravo */
-.footer-socials {
-  text-align: center;
+.footer-contact p{
+  opacity:0.8;
 }
 
-.footer-socials a {
-  margin-left: 20px;
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: 0.3s;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.footer-socials a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
 }
 
-.footer-socials a:hover {
-  opacity: 1;
+.footer-socials a:hover{
+  opacity:1;
 }
 
-/* spodný text */
-.footer-bottom {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  letter-spacing: 1px;
-  opacity: 0.6;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.footer-bottom{
+  margin-top:30px;
+  text-align:center;
+  font-size:13px;
+  opacity:0.6;
 }
 
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
+@media(max-width:768px){
+  .footer-top{
+    flex-direction:column;
+    gap:20px;
   }
 
-  .footer-socials a {
-    margin: 0 10px;
+  .footer-socials a{
+    margin:0 10px;
   }
 }
-
-
-/* mobil */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .footer-socials a {
-    margin: 0 10px;
-  }
-}
-
-
-
-    @media(max-width:768px) {
-      .hero-text h2 { font-size:32px; }
-    }
-
-    nav {
-    padding: 10px 20px;
-}
-
-
-
-.hero-text h2{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.hero-text p{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-
-   header h1 a {
-  color: #fff;
-  text-decoration: none;
-}
-    .order-wrapper{
+  .order-wrapper{
   max-width:1200px;
   margin:0 auto;
   padding:80px 20px;
@@ -346,7 +307,7 @@ button{
     grid-template-columns:1fr;
   }
 }
-    /* ===== KALENDÁR ===== */
+  /* ===== KALENDÁR ===== */
 .events-calendar{
   max-width:1100px;
   margin:80px auto;
@@ -394,38 +355,45 @@ button{
   .event-title{font-size:11px}
 }
 
-  </style>
+/* ===== FOOTER ===== */
+.footer{padding:50px 20px;background:#000}
+.footer-top{
+  max-width:900px;margin:auto;
+  display:flex;justify-content:space-between;text-align:center
+}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.6}
+</style>
 </head>
+
 <body>
+
 <header>
-  <h1><a href="index.html">Viktor Boguský</a></h1>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
+
+    <button class="menu-toggle" aria-label="Menu">☰</button>
 
     <nav>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
 
-    <ul>
-        <li><a href="referencie.html">Referencie</a></li>
-        <li><a href="omne.html">O mne</a></li>
-        <li><a href="sluzby.html">Služby</a></li>
-        <li><a href="portfolio.html">Portfólio</a></li>
-        <li><a href="cennik.html">Cenník</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-</nav>
-
-  </header>
-
-
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="uvod_video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <h2>Kamera & Postprodukcia</h2>
-      <p>Stužkové, svadby, eventy, klipy...</p>
-    </div>
-  </section>
-
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy...</p>
+  </div>
+</section>
 
 <section class="order-wrapper">
 
@@ -510,6 +478,24 @@ button{
   </div>
 
 </section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-contact">
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    Vytvoril: Viktor Boguský
+  </div>
   <section class="events-calendar">
   <h2>Kalendár akcií</h2>
   <div class="calendar-header">
@@ -520,29 +506,19 @@ button{
   <div class="calendar-grid" id="calendar"></div>
 </section>
 
-
-
 <footer class="footer">
-  <div class="footer-top">
-
-    <div class="footer-contact">
-      <p>kontakt@viktorbogusky.sk</p>
-      <p>+421 948 933 109</p>
-    </div>
-
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=100079203706823&locale=sk_SK" target="_blank">Facebook</a>
-      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    Vytvoril: Viktor Boguský
-  </div>
+  <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
 </footer>
+
 <script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+</script>
+  <script>
 const balik = document.getElementById('balik');
 const fullPartsBox = document.getElementById('extraParts');
 const fullParts = document.getElementById('fullParts');
