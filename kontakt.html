@@ -271,7 +271,25 @@ button{
     font-size: 13px;
   }
 }
+.usb-photo-section {
+  background: #111; /* tmavé pozadie, môžeš zmeniť */
+  padding: 40px 20px;
+  text-align: center;
+}
 
+.usb-photo-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usb-photo {
+  height: 120px; /* výška fotky */
+  width: auto;   /* zachovanie pomeru strán */
+  max-width: 100%; /* aby sa nezobrazila mimo obrazovky */
+  object-fit: contain;
+  border-radius: 12px; /* jemne zaoblené rohy */
+}
 </style>
 </head>
 
@@ -386,6 +404,12 @@ button{
   </div>
 
 </section>
+  <section class="usb-photo-section">
+  <div class="usb-photo-wrapper">
+    <img src="P1015136-Edit.png" alt="USB v krabičke" class="usb-photo">
+  </div>
+</section>
+
 <section class="events-calendar">
   <h2>Kalendár akcií</h2>
   <p class="calendar-desc">
