@@ -3,268 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt & Objednávka | Viktor Boguský</title>
+<title>Kontakt | Viktor Boguský</title>
 <link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#000;color:#fff;padding-top:60px}
 
-body{
-  background:#000;
-  color:#fff;
-  padding-top:60px;
-}
-
-/* ================= HEADER ================= */
-
+/* ===== HEADER ===== */
 header{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
+  position:fixed;top:0;width:100%;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
   z-index:1000;
 }
-
 .header-inner{
-  max-width:1200px;
-  margin:auto;
+  max-width:1200px;margin:auto;
   padding:12px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;justify-content:space-between;align-items:center;
 }
-
-.logo{
-  color:#fff;
-  text-decoration:none;
-  font-size:18px;
-  letter-spacing:2px;
-  font-weight:600;
-}
-
-nav{
-  display:flex;
-  gap:24px;
-}
-
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  opacity:0.85;
-}
-
+.logo{color:#fff;text-decoration:none;font-weight:600;letter-spacing:2px}
+nav{display:flex;gap:24px}
+nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.8}
 nav a:hover{opacity:1}
-
-.menu-toggle{
-  display:none;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:26px;
-}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px}
 
 @media(max-width:768px){
   .menu-toggle{display:block}
   nav{
-    position:absolute;
-    top:56px;
-    left:0;
-    width:100%;
-    background:#000;
-    flex-direction:column;
-    align-items:center;
-    display:none;
+    position:absolute;top:56px;left:0;width:100%;
+    background:#000;flex-direction:column;
+    align-items:center;display:none
   }
   nav.active{display:flex}
   nav a{padding:12px 0}
 }
 
-/* ================= HERO ================= */
-
-.hero{
-  height:360px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:linear-gradient(to bottom, rgba(0,0,0,.4), #000);
+/* ===== HERO ===== */
+.hero{position:relative;height:420px;overflow:hidden}
+.hero video{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;object-fit:cover
 }
-
-.hero h2{
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.hero-text{
+  position:relative;height:100%;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center
+}
+.hero-text h2{
   font-size:42px;
   letter-spacing:3px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;
 }
+.hero-text p{opacity:.8;margin-top:10px}
 
-.hero p{
-  margin-top:10px;
-  opacity:.8;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-/* ================= OBJEDNÁVKA ================= */
-
+/* ===== KALKULAČKA + FORM ===== */
 .order-wrapper{
   max-width:1200px;
-  margin:auto;
-  padding:80px 20px;
+  margin:80px auto;
+  padding:0 20px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:50px;
 }
-
-.service-selector,
-.contact-form-wrapper{
+.service-selector,.contact-form-wrapper{
   background:#111;
   padding:30px;
   border-radius:14px;
 }
-
-h2{margin-bottom:20px}
-
-label{
-  display:block;
-  margin-top:15px;
-  font-weight:600;
+label{display:block;margin-top:15px;font-weight:600}
+input,select,textarea{
+  width:100%;padding:12px;margin-top:6px;
+  background:#1c1c1c;color:#fff;border:none;border-radius:8px
 }
-
-input, select, textarea{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  background:#1c1c1c;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-}
-
 textarea{min-height:140px}
-
-.usb-note{
-  margin-top:10px;
-  font-size:13px;
-  opacity:.75;
-}
-
-.price-box{
-  margin-top:20px;
-  font-size:16px;
-}
-
-.buttons{
-  margin-top:25px;
-  display:flex;
-  gap:15px;
-}
-
-button{
-  padding:14px;
-  border:none;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-#calcOnly{
-  background:#333;
-  color:#fff;
-}
-
-#addToOrder{
-  background:#fff;
-  color:#000;
-}
+.usb-note{font-size:13px;opacity:.75;margin-top:10px}
+.price-box{margin-top:20px}
+.buttons{display:flex;gap:15px;margin-top:25px}
+button{padding:14px;border:none;border-radius:30px;font-weight:700;cursor:pointer}
+#calcOnly{background:#333;color:#fff}
+#addToOrder{background:#fff;color:#000}
 
 @media(max-width:900px){
   .order-wrapper{grid-template-columns:1fr}
 }
 
-/* ================= KALENDÁR ================= */
-
+/* ===== KALENDÁR ===== */
 .events-calendar{
   max-width:1100px;
   margin:80px auto;
   padding:0 20px;
   text-align:center;
 }
-
-.calendar-legend{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  margin:25px 0;
-  font-size:14px;
-}
-
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  display:inline-block;
-}
-
-.dot.reserved{background:#f1c40f}
-.dot.ordered{background:#e74c3c}
-.dot.private{background:#555}
-
 .calendar-header{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  margin-bottom:20px;
+  display:flex;justify-content:center;align-items:center;gap:20px;
 }
-
 .calendar-header button{
-  background:none;
-  border:1px solid #444;
-  color:#fff;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  font-size:22px;
+  background:none;border:1px solid #444;color:#fff;
+  width:40px;height:40px;border-radius:50%;cursor:pointer;
 }
-
 .calendar-grid{
   display:grid;
   grid-template-columns:repeat(7,1fr);
-  gap:10px;
+  gap:10px;margin-top:25px;
 }
-
 .calendar-day{
   background:#111;
   border-radius:10px;
   min-height:90px;
-  padding:10px;
-  position:relative;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 }
-
-.calendar-day.empty{background:transparent}
-
 .day-number{
-  position:absolute;
-  top:8px;
-  right:10px;
   font-size:13px;
   opacity:.6;
+  align-self:flex-end;
 }
-
 .event-title{
-  margin-top:25px;
+  margin-top:8px;
   font-size:12px;
   line-height:1.3;
   word-break:break-word;
 }
-
-.calendar-day.reserved{border:2px solid #f1c40f}
 .calendar-day.ordered{border:2px solid #e74c3c}
+.calendar-day.reserved{border:2px solid #f1c40f}
 .calendar-day.private{border:2px solid #555}
 
 @media(max-width:700px){
@@ -272,36 +138,13 @@ button{
   .event-title{font-size:11px}
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-  padding:50px 20px;
-  background:#000;
-}
-
+/* ===== FOOTER ===== */
+.footer{padding:50px 20px;background:#000}
 .footer-top{
-  max-width:900px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  text-align:center;
+  max-width:900px;margin:auto;
+  display:flex;justify-content:space-between;text-align:center
 }
-
-.footer-socials a{
-  margin-left:20px;
-  color:#fff;
-  text-decoration:none;
-  opacity:.7;
-}
-
-.footer-socials a:hover{opacity:1}
-
-.footer-bottom{
-  margin-top:30px;
-  text-align:center;
-  font-size:13px;
-  opacity:.6;
-}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.6}
 </style>
 </head>
 
@@ -323,65 +166,43 @@ button{
 </header>
 
 <section class="hero">
-  <div>
-    <h2>Kontakt & Objednávka</h2>
-    <p>Rezervuj si termín alebo si vypočítaj cenu</p>
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kontakt & objednávka</h2>
+    <p>Rezervácie, stužkové, svadby</p>
   </div>
 </section>
 
-<!-- 👉 SEM PATRÍ TVOJA KALKULAČKA + FORMULÁR (nezmenené) -->
 <section class="order-wrapper">
-
-  <!-- ===== VÝBER SLUŽBY / KALKULAČKA ===== -->
+  <!-- KALKULAČKA -->
   <div class="service-selector">
-    <h2>Výber služby uskutočnite na tomto formulári</h2>
+    <h2>Výber služby</h2>
 
-    <label>Služba / balík</label>
+    <label>Služba</label>
     <select id="balik">
-      <option value="0">-- Vyber službu --</option>
-
-      <optgroup label="Stužková">
-        <option value="150">Stužková – Combo Start (150€)</option>
-        <option value="250">Stužková – Combo Memory (250€)</option>
-        <option value="300">Stužková – Combo Premium (300€)</option>
-        <option value="350">Stužková – Combo Deluxe (350€)</option>
-      </optgroup>
-
-      <optgroup label="Svadba">
-        <option value="400">Svadba – Wedding Record (400€)</option>
-        <option value="250">Svadba – Wedding Clip (250€)</option>
-        <option value="500">Svadba – Wedding Complete (500€)</option>
-      </optgroup>
+      <option value="0">-- Vyber --</option>
+      <option value="150">Stužková – Combo Start</option>
+      <option value="250">Stužková – Combo Memory</option>
+      <option value="400">Svadba – Wedding Record</option>
     </select>
 
-    <!-- Len pre Combo Start -->
-    <div id="extraParts">
-      <label>Celé časti (40€ / časť – len Combo Start)</label>
-      <input type="number" id="fullParts" min="0" value="0">
-    </div>
-
-    <label>Doba dodania</label>
-    <select id="dodanie">
-      <option value="0">60 dní – bez príplatku</option>
-      <option value="20">30 dní (+20€)</option>
-      <option value="50">7 dní (+50€)</option>
-    </select>
-
-    <label>Počet USB (20€ / ks)</label>
+    <label>Počet USB</label>
     <input type="number" id="usb" min="0" value="0">
-
     <p class="usb-note">
-      1 USB je zdarma. Pri objednávke každých 5 ks získate 1 USB navyše zdarma.<br>
-      USB je dodané v krabičke s názvom školy / svadby, dátumom a názvom udalosti.
+      1 USB zdarma + každých 5 = 1 zdarma<br>
+      USB v krabičke s názvom akcie
     </p>
 
     <label>Zľavový kód</label>
-    <input type="text" id="discount" placeholder="Zadajte kód">
+    <input type="text" id="discount">
 
     <label>Typ</label>
     <select id="typeOrder">
-      <option value="order">Objednávka – platba celej sumy</option>
-      <option value="reservation">Rezervácia – 50 % záloha</option>
+      <option value="order">Objednávka</option>
+      <option value="reservation">Rezervácia (50 %)</option>
     </select>
 
     <div class="price-box">
@@ -390,101 +211,93 @@ button{
     </div>
 
     <div class="buttons">
-      <button type="button" id="calcOnly">Iba vypočítať</button>
-      <button type="button" id="addToOrder">Pridať do objednávky</button>
+      <button id="calcOnly">Vypočítať</button>
+      <button id="addToOrder">Pridať do objednávky</button>
     </div>
   </div>
 
-  <!-- ===== OBJEDNÁVKOVÝ FORMULÁR ===== -->
+  <!-- FORM -->
   <div class="contact-form-wrapper">
     <h2>Objednávka</h2>
-
-    <form action="https://formspree.io/f/xjknzwew" method="POST">
-      <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
-      <input type="email" name="email" placeholder="Email*" required>
-      <input type="text" name="lokacia" placeholder="Lokalita*" required>
-      <input type="date" name="datum" required>
-
-      <textarea name="objednavka" id="orderSummary" placeholder="Zhrnutie objednávky" readonly></textarea>
-      <input type="hidden" name="cena" id="finalPrice">
-
-      <button type="submit">Odoslať objednávku</button>
+    <form>
+      <input placeholder="Meno a priezvisko">
+      <input placeholder="Email">
+      <input type="date">
+      <textarea id="orderSummary" readonly></textarea>
+      <button>Odoslať</button>
     </form>
   </div>
-
 </section>
-<!-- ================= KALENDÁR ================= -->
 
 <section class="events-calendar">
   <h2>Kalendár akcií</h2>
-
-  <div class="calendar-legend">
-    <span><i class="dot reserved"></i> Rezervované</span>
-    <span><i class="dot ordered"></i> Objednané</span>
-    <span><i class="dot private"></i> Súkromné</span>
-  </div>
-
   <div class="calendar-header">
     <button id="prevMonth">‹</button>
     <h3 id="monthYear"></h3>
     <button id="nextMonth">›</button>
   </div>
-
   <div class="calendar-grid" id="calendar"></div>
 </section>
 
 <footer class="footer">
-  <div class="footer-top">
-    <div>
-      <p>kontakt@viktorbogusky.sk</p>
-      <p>+421 948 933 109</p>
-    </div>
-    <div class="footer-socials">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">TikTok</a>
-    </div>
-  </div>
   <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
 </footer>
 
 <script>
-const calendar = document.getElementById("calendar");
-const monthYear = document.getElementById("monthYear");
-let currentDate = new Date();
+/* ===== MENU ===== */
+document.querySelector(".menu-toggle").onclick=()=>{
+  document.querySelector("nav").classList.toggle("active")
+}
 
-const events = {
-  "2026-05-30": { type: "ordered", title: "Svadba P&P Ranch 13" },
-  "2026-11-07": { type: "reserved", title: "Stužková – Vranov n/T" },
-  "2026-11-17": { type: "private", title: "Súkromná akcia" }
-};
+/* ===== KALKULAČKA ===== */
+const total=document.getElementById("total");
+const reservationInfo=document.getElementById("reservationInfo");
+const summary=document.getElementById("orderSummary");
 
-function renderCalendar(){
+function calc(){
+  let price=Number(balik.value);
+  let usbCount=Number(usb.value);
+  let free=usbCount>0?1+Math.floor(usbCount/5):0;
+  price+=Math.max(usbCount-free,0)*20;
+  if(discount.value==="STUZKOVA2610")price*=0.9;
+  total.textContent=price.toFixed(2);
+  if(typeOrder.value==="reservation"){
+    reservationInfo.textContent=`Záloha: ${(price/2).toFixed(2)} €`;
+  }else reservationInfo.textContent="";
+  return price.toFixed(2);
+}
+calcOnly.onclick=calc;
+addToOrder.onclick=()=>{
+  const p=calc();
+  summary.value=`Služba: ${balik.options[balik.selectedIndex].text}\nCena: ${p} €`;
+}
+
+/* ===== KALENDÁR ===== */
+const events={
+  "2026-05-30":{type:"ordered",title:"Svadba P&P Ranch 13"},
+  "2026-11-07":{type:"reserved",title:"Stužková Vranov"}
+}
+let d=new Date();
+function render(){
   calendar.innerHTML="";
-  const y=currentDate.getFullYear();
-  const m=currentDate.getMonth();
-  monthYear.textContent=currentDate.toLocaleDateString("sk-SK",{month:"long",year:"numeric"});
-  const first=(new Date(y,m,1).getDay()+6)%7;
-  const days=new Date(y,m+1,0).getDate();
-
-  for(let i=0;i<first;i++){
-    calendar.innerHTML+=`<div class="calendar-day empty"></div>`;
-  }
-
-  for(let d=1;d<=days;d++){
-    const key=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-    const e=events[key];
+  monthYear.textContent=d.toLocaleDateString("sk-SK",{month:"long",year:"numeric"});
+  let y=d.getFullYear(),m=d.getMonth();
+  let first=(new Date(y,m,1).getDay()+6)%7;
+  let days=new Date(y,m+1,0).getDate();
+  for(let i=0;i<first;i++)calendar.innerHTML+=`<div></div>`;
+  for(let i=1;i<=days;i++){
+    let k=`${y}-${String(m+1).padStart(2,"0")}-${String(i).padStart(2,"0")}`;
+    let e=events[k];
     calendar.innerHTML+=`
       <div class="calendar-day ${e?e.type:""}">
-        <div class="day-number">${d}</div>
+        <div class="day-number">${i}</div>
         ${e?`<div class="event-title">${e.title}</div>`:""}
       </div>`;
   }
 }
-
-document.getElementById("prevMonth").onclick=()=>{currentDate.setMonth(currentDate.getMonth()-1);renderCalendar();}
-document.getElementById("nextMonth").onclick=()=>{currentDate.setMonth(currentDate.getMonth()+1);renderCalendar();}
-renderCalendar();
+prevMonth.onclick=()=>{d.setMonth(d.getMonth()-1);render()}
+nextMonth.onclick=()=>{d.setMonth(d.getMonth()+1);render()}
+render();
 </script>
 
 </body>
