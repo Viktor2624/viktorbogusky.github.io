@@ -362,6 +362,20 @@ button{
   display:flex;justify-content:space-between;text-align:center
 }
 .footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.6}
+  
+  .small-portrait{
+  height: 160px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 600px){
+  .small-portrait{
+    height: 120px;
+  }
+}
+
 </style>
 </head>
 
@@ -434,6 +448,7 @@ button{
 
     <label>Počet USB (20€ / ks)</label>
     <input type="number" id="usb" min="0" value="0">
+    <img src="P1015136-Edit.png" class="small-portrait" alt="USB v krabičke">
 
     <p class="usb-note">
       1 USB je zdarma. Pri objednávke každých 5 ks získate 1 USB navyše zdarma.<br>
