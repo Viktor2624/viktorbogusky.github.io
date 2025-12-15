@@ -1,1 +1,83 @@
+<section class="order-wrapper">
 
+  <!-- ===== VÝBER SLUŽBY / KALKULAČKA ===== -->
+  <div class="service-selector">
+    <h2>Výber služby uskutočnite na tomto formulári</h2>
+
+    <label>Služba / balík</label>
+    <select id="balik">
+      <option value="0">-- Vyber službu --</option>
+
+      <optgroup label="Stužková">
+        <option value="150">Stužková – Combo Start (150€)</option>
+        <option value="250">Stužková – Combo Memory (250€)</option>
+        <option value="300">Stužková – Combo Premium (300€)</option>
+        <option value="350">Stužková – Combo Deluxe (350€)</option>
+      </optgroup>
+
+      <optgroup label="Svadba">
+        <option value="400">Svadba – Wedding Record (400€)</option>
+        <option value="250">Svadba – Wedding Clip (250€)</option>
+        <option value="500">Svadba – Wedding Complete (500€)</option>
+      </optgroup>
+    </select>
+
+    <!-- Len pre Combo Start -->
+    <div id="extraParts">
+      <label>Celé časti (40€ / časť – len Combo Start)</label>
+      <input type="number" id="fullParts" min="0" value="0">
+    </div>
+
+    <label>Doba dodania</label>
+    <select id="dodanie">
+      <option value="0">60 dní – bez príplatku</option>
+      <option value="20">30 dní (+20€)</option>
+      <option value="50">7 dní (+50€)</option>
+    </select>
+
+    <label>Počet USB (20€ / ks)</label>
+    <input type="number" id="usb" min="0" value="0">
+
+    <p class="usb-note">
+      1 USB je zdarma. Pri objednávke každých 5 ks získate 1 USB navyše zdarma.<br>
+      USB je dodané v krabičke s názvom školy / svadby, dátumom a názvom udalosti.
+    </p>
+
+    <label>Zľavový kód</label>
+    <input type="text" id="discount" placeholder="Zadajte kód">
+
+    <label>Typ</label>
+    <select id="typeOrder">
+      <option value="order">Objednávka – platba celej sumy</option>
+      <option value="reservation">Rezervácia – 50 % záloha</option>
+    </select>
+
+    <div class="price-box">
+      <p>Celková cena: <strong><span id="total">0</span> €</strong></p>
+      <p id="reservationInfo"></p>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="calcOnly">Iba vypočítať</button>
+      <button type="button" id="addToOrder">Pridať do objednávky</button>
+    </div>
+  </div>
+
+  <!-- ===== OBJEDNÁVKOVÝ FORMULÁR ===== -->
+  <div class="contact-form-wrapper">
+    <h2>Objednávka</h2>
+
+    <form action="https://formspree.io/f/xjknzwew" method="POST">
+      <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+      <input type="text" name="lokacia" placeholder="Lokalita*" required>
+      <input type="date" name="datum" required>
+
+      <textarea name="objednavka" id="orderSummary" placeholder="Zhrnutie objednávky" readonly></textarea>
+      <input type="hidden" name="cena" id="finalPrice">
+
+      <button type="submit">Odoslať objednávku</button>
+    </form>
+  </div>
+
+</section>
