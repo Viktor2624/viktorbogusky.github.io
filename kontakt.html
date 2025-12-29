@@ -332,10 +332,10 @@ button{
       <option value="0">-- Vyber službu --</option>
 
       <optgroup label="Stužková">
-        <option value="150">Stužková – Combo Start (150€)</option>
-        <option value="250">Stužková – Combo Memory (250€)</option>
-        <option value="300">Stužková – Combo Premium (300€)</option>
-        <option value="350">Stužková – Combo Deluxe (350€)</option>
+        <option value="200">Stužková – Combo Start (200€)</option>
+        <option value="300">Stužková – Combo Memory (300€)</option>
+        <option value="350">Stužková – Combo Premium (350€)</option>
+        <option value="400">Stužková – Combo Deluxe (400€)</option>
       </optgroup>
 
       <optgroup label="Svadba">
@@ -347,7 +347,7 @@ button{
 
     <!-- Len pre Combo Start -->
     <div id="extraParts">
-      <label>Celé časti (40€ / časť – len Combo Start)</label>
+      <label>Celé časti (50€ / časť – len Combo Start)</label>
       <input type="number" id="fullParts" min="0" value="0">
     </div>
 
@@ -466,7 +466,7 @@ function calculate() {
   // Extra časti – len Combo Start
   if (balik.value === "150") {
     fullPartsBox.style.display = "block";
-    price += fullParts.value * 40;
+    price += fullParts.value * 50;
   } else {
     fullPartsBox.style.display = "none";
   }
