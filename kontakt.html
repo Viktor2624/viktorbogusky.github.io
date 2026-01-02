@@ -485,6 +485,10 @@ function calculate() {
   if (discount.value.trim() === "STUZKOVA2610") {
     price *= 0.9;
   }
+  // Zľava 25 %
+  if (discount.value.trim() === "STUZKOVA25") {
+    price *= 0.75;
+  }
 
   total.textContent = price.toFixed(2);
 
