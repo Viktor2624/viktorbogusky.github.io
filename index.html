@@ -227,6 +227,43 @@ body{
     margin:0 10px;
   }
 }
+
+  .cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 15px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+.cookie-banner a {
+  color: #4ea3ff;
+}
+
+.cookie-buttons button {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+#accept-cookies {
+  background: #4caf50;
+  color: white;
+}
+
+#decline-cookies {
+  background: #f44336;
+  color: white;
+}
+
 </style>
 </head>
 
@@ -285,6 +322,17 @@ body{
     Vytvoril: Viktor Boguský
   </div>
 </footer>
+  
+<div id="cookie-banner" class="cookie-banner">
+  <p>
+    Táto stránka používa cookies na zlepšenie funkčnosti a analýzu návštevnosti.
+    <a href="/ochrana-osobnych-udajov.html" target="_blank">Viac informácií</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Súhlasím</button>
+    <button id="decline-cookies">Odmietnuť</button>
+  </div>
+</div>
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
@@ -294,6 +342,32 @@ toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("accept-cookies");
+  const declineBtn = document.getElementById("decline-cookies");
+
+  const consent = localStorage.getItem("cookieConsent");
+
+  if (!consent) {
+    banner.style.display = "flex";
+  }
+
+  acceptBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    banner.style.display = "none";
+    // TU môžeš načítať analytiku (napr. Google Analytics)
+  });
+
+  declineBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "declined");
+    banner.style.display = "none";
+  });
+});
+</script>
+
 
 </body>
 </html>
