@@ -173,10 +173,25 @@ body{
   gap:30px;
 }
 
-.videos iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
+.yt {
+  position: relative;
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.yt::before {
+  content: "▶ Prehrať video (vyžaduje cookies)";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  background: rgba(0,0,0,.6);
 }
 
 /* ================= FOOTER ================= */
@@ -298,10 +313,11 @@ body{
 </section>
 
 <section class="videos">
-  <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
+
+  <div class="yt" data-id="3zES1AlxCd4"></div>
+  <div class="yt" data-id="V8z1SuHkfCk"></div>
+  <div class="yt" data-id="LnRKT-GFs0k"></div>
+
 </section>
 
 <footer class="footer">
@@ -367,6 +383,34 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+  <script>
+  document.querySelectorAll('.yt').forEach(el => {
+    const id = el.dataset.id;
+
+    el.style.backgroundImage =
+      `url(https://img.youtube.com/vi/${id}/hqdefault.jpg)`;
+    el.style.backgroundSize = 'cover';
+
+    el.addEventListener('click', () => {
+      const consent = localStorage.getItem('cookie_consent');
+
+      if (consent !== 'accepted') {
+        alert('Pre prehratie videa je potrebné povoliť cookies.');
+        return;
+      }
+
+      el.innerHTML = `
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+      `;
+    });
+  });
+</script>
+
 
 
 </body>
