@@ -243,15 +243,15 @@ body{
   }
 }
 
-  .cookie-banner {
+.cookie-banner {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background: #111;
   color: #fff;
-  padding: 15px;
-  display: none;
+  padding: 16px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 9999;
@@ -259,7 +259,8 @@ body{
 }
 
 .cookie-banner a {
-  color: #4ea3ff;
+  color: #4ea1ff;
+  text-decoration: underline;
 }
 
 .cookie-buttons button {
@@ -270,13 +271,17 @@ body{
 }
 
 #accept-cookies {
-  background: #4caf50;
+  background: #4CAF50;
   color: white;
 }
 
-#decline-cookies {
-  background: #f44336;
+#reject-cookies {
+  background: #555;
   color: white;
+}
+
+.hidden {
+  display: none;
 }
 
 </style>
@@ -339,16 +344,19 @@ body{
   </div>
 </footer>
   
-<div id="cookie-banner" class="cookie-banner">
+<div id="cookie-banner" class="cookie-banner hidden">
   <p>
-    Táto stránka používa cookies na zlepšenie funkčnosti a analýzu návštevnosti.
-    <a href="/ochrana-osobnych-udajov.html" target="_blank">Viac informácií</a>
+    Používame cookies na zlepšenie fungovania webu, analýzu návštevnosti a marketing.
+    Viac informácií nájdeš v
+    <a href="/cookies" target="_blank">zásadách používania cookies</a>.
   </p>
+
   <div class="cookie-buttons">
-    <button id="accept-cookies">Súhlasím</button>
-    <button id="decline-cookies">Odmietnuť</button>
+    <button id="accept-cookies">Prijať všetky</button>
+    <button id="reject-cookies">Odmietnuť</button>
   </div>
 </div>
+
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
@@ -359,30 +367,34 @@ toggle.addEventListener('click', () => {
 });
 </script>
 
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const banner = document.getElementById("cookie-banner");
-  const acceptBtn = document.getElementById("accept-cookies");
-  const declineBtn = document.getElementById("decline-cookies");
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
 
-  const consent = localStorage.getItem("cookieConsent");
+  const consent = localStorage.getItem('cookie_consent');
 
   if (!consent) {
-    banner.style.display = "flex";
+    banner.classList.remove('hidden');
   }
 
-  acceptBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "accepted");
-    banner.style.display = "none";
-    // TU môžeš načítať analytiku (napr. Google Analytics)
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'accepted');
+    banner.classList.add('hidden');
+    enableCookies();
   });
 
-  declineBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "declined");
-    banner.style.display = "none";
+  rejectBtn.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'rejected');
+    banner.classList.add('hidden');
   });
-});
+
+  function enableCookies() {
+    // TU zapneš analytics / pixel
+    console.log('Cookies povolené');
+  }
 </script>
+
   <script>
   document.querySelectorAll('.yt').forEach(el => {
     const id = el.dataset.id;
