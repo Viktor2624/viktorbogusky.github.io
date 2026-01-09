@@ -1,1 +1,385 @@
 
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#000;
+  color:#fff;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  gap:24px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.85;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+  .menu-toggle{
+    display:block;
+  }
+
+  nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+
+  nav a{
+    padding:12px 0;
+    font-size:15px;
+  }
+
+  nav.active{
+    display:flex;
+  }
+}
+
+/* BODY OFFSET */
+body{
+  padding-top:60px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
+
+.hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-text{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-text h2{
+  font-size:48px;
+  letter-spacing:3px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-text p{
+  font-size:18px;
+  opacity:0.85;
+  margin-top:10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+@media(max-width:768px){
+  .hero{
+    height:420px;
+  }
+  .hero-text h2{
+    font-size:32px;
+  }
+}
+
+/* ================= VIDEOS ================= */
+
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:30px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  background:#000;
+  padding:50px 20px;
+}
+
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+}
+
+.footer-contact p{
+  opacity:0.8;
+}
+
+.footer-socials a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
+}
+
+.footer-socials a:hover{
+  opacity:1;
+}
+
+.footer-bottom{
+  margin-top:30px;
+  text-align:center;
+  font-size:13px;
+  opacity:0.6;
+}
+
+@media(max-width:768px){
+  .footer-top{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .footer-socials a{
+    margin:0 10px;
+  }
+}
+  .gdpr {
+  background: #111;
+  color: #fff;
+  padding: 60px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.gdpr h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.gdpr .container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.gdpr p {
+  margin-bottom: 24px;
+}
+
+.gdpr strong {
+  color: #4ea1ff;
+}
+
+.gdpr a {
+  color: #4ea1ff;
+  text-decoration: underline;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
+
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+
+    <nav>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="gdpr.html">GDPR</a>
+       <a href="podmienky.html">Obchodné podmienky</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy...</p>
+  </div>
+</section>
+
+<section class="gdpr">
+  <div class="container">
+    <h1>Ochrana osobných údajov (GDPR) – Viktor Boguský</h1>
+
+    <p><strong>Úvod:</strong><br>
+    Táto stránka obsahuje informácie o spracovaní osobných údajov podľa nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 – GDPR. Poskytovateľom osobných údajov je Viktor Boguský (ďalej len „poskytovateľ“). Používaním služieb klient (ďalej len „klient“) alebo návštevník webovej stránky potvrdzuje, že bol oboznámený s týmito zásadami a súhlasí s nimi v rozsahu potrebnom na poskytovanie služieb a komunikáciu.</p>
+
+    <p><strong>Spracúvané údaje:</strong><br>
+    Poskytovateľ spracúva nasledujúce osobné údaje:  
+    - meno, priezvisko, kontaktné údaje (e-mail, telefónne číslo),  
+    - údaje poskytnuté v rámci objednávky služieb (adresy, termíny, špecifikácia videí),  
+    - údaje získané z webovej stránky prostredníctvom kontaktného formulára alebo newsletteru, ak je k dispozícii,  
+    - technické údaje o zariadení a prehliadači návštevníka (logy, cookies, IP adresa).</p>
+
+    <p><strong>Účel spracovania:</strong><br>
+    Osobné údaje sú spracovávané výlučne na tieto účely:  
+    - poskytovanie objednaných služieb (natáčanie, postprodukcia, dodanie materiálu),  
+    - komunikácia s klientom a vypracovanie cenovej ponuky,  
+    - administrácia fakturácie a účtovníctva,  
+    - zlepšenie služieb a marketingové účely (iba v prípade súhlasu klienta),  
+    - splnenie zákonných povinností poskytovateľa.</p>
+
+    <p><strong>Právny základ spracovania:</strong><br>
+    Spracovanie osobných údajov sa vykonáva na základe:  
+    - súhlasu klienta,  
+    - plnenia zmluvy alebo prijatých opatrení pred uzavretím zmluvy,  
+    - oprávneného záujmu poskytovateľa pri zabezpečení poskytovania služieb a vedení obchodnej agendy,  
+    - splnenia zákonných povinností poskytovateľa.</p>
+
+    <p><strong>Ukladanie a ochrana údajov:</strong><br>
+    Poskytovateľ sa zaväzuje uchovávať osobné údaje len po dobu nevyhnutnú na splnenie účelu spracovania alebo podľa zákonných požiadaviek. Osobné údaje sú chránené vhodnými technickými a organizačnými opatreniami proti zneužitiu, strate, neoprávnenému prístupu alebo zverejneniu.</p>
+
+    <p><strong>Práva dotknutej osoby:</strong><br>
+    Každá fyzická osoba, ktorej osobné údaje sú spracovávané, má právo:  
+    - prístup k svojim osobným údajom,  
+    - opravu nesprávnych alebo neúplných údajov,  
+    - vymazanie údajov („právo byť zabudnutý“) v prípadoch stanovených GDPR,  
+    - obmedzenie spracovania,  
+    - právo namietať proti spracovaniu,  
+    - právo na prenosnosť údajov,  
+    - podať sťažnosť dozornému orgánu (Úrad na ochranu osobných údajov SR) v prípade porušenia práv.</p>
+
+    <p><strong>Poskytovanie údajov tretím stranám:</strong><br>
+    Osobné údaje sa neposkytujú tretím stranám, okrem:  
+    - externých spracovateľov údajov, ktorí zabezpečujú služby administrácie, IT, cloudového úložiska alebo účtovníctva,  
+    - v prípadoch, kde je to potrebné podľa zákona alebo rozhodnutia súdu.</p>
+
+    <p><strong>Cookies a technológie sledovania:</strong><br>
+    Webová stránka používa cookies a podobné technológie na optimalizáciu používateľského zážitku, analýzu návštevnosti a zabezpečenie funkčnosti stránky. Použitie cookies podlieha súhlasu používateľa, ktorý je možné vyjadriť kliknutím na tlačidlo „Akceptovať cookies“. Nepovinné cookies (analytické alebo marketingové) sa aktivujú až po súhlase návštevníka.</p>
+
+    <p><strong>Kontakt a otázky:</strong><br>
+    V prípade otázok ohľadom spracovania osobných údajov, uplatnenia práv alebo podania sťažnosti je možné kontaktovať poskytovateľa na e-mail: <a href="mailto:kontakt@viktorbogusky.sk">kontakt@viktorbogusky.sk</a> alebo telefonicky: +421 948 933 109.</p>
+
+    <p><strong>Zmeny v zásadách ochrany osobných údajov:</strong><br>
+    Poskytovateľ si vyhradzuje právo meniť tieto zásady. Aktuálna verzia bude vždy dostupná na webovej stránke. Každá zmena nadobúda účinnosť dňom zverejnenia.</p>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-contact">
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100079203706823" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    Vytvoril: Viktor Boguský
+  </div>
+</footer>
+
+
+ 
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
