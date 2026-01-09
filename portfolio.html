@@ -311,18 +311,22 @@ body{
 
 <section class="portfolio">
 
+  <section class="portfolio">
+
   <div class="portfolio-grid">
-    <div class="video"><iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/OFbEqTHUjWs" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/gsAweub-Gak" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/eMUl9JdsNG0" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/NDVJBNPrBe0" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/4qI7UFOcfo4" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/OFbEqTHUjWs" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/gsAweub-Gak" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/eMUl9JdsNG0" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/NDVJBNPrBe0" allowfullscreen></iframe></div>
+    <div class="video"><iframe data-src="https://www.youtube.com/embed/4qI7UFOcfo4" allowfullscreen></iframe></div>
   </div>
+
 </section>
+
 
 
 
@@ -353,6 +357,27 @@ toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 </script>
+  <script>
+const COOKIE_KEY = 'youtube_cookies_consent';
+
+function enableVideos() {
+  document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+    if (!iframe.src) {
+      iframe.src = iframe.dataset.src;
+    }
+  });
+}
+
+if (localStorage.getItem(COOKIE_KEY) === 'accepted') {
+  enableVideos();
+}
+
+document.getElementById('acceptCookies')?.addEventListener('click', () => {
+  localStorage.setItem(COOKIE_KEY, 'accepted');
+  enableVideos();
+});
+</script>
+
 
 </body>
 </html>
