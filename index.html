@@ -164,7 +164,7 @@ body{
 
 /* ================= VIDEOS ================= */
 
-.videos iframe{
+.videos{
   max-width:1200px;
   margin:auto;
   padding:80px 20px;
@@ -173,6 +173,13 @@ body{
   gap:30px;
 }
 
+
+  .videos iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* zachová pomer videa */
+  border: none;
+  border-radius: 8px;
+}
 /* ================= FOOTER ================= */
 
 .footer{
