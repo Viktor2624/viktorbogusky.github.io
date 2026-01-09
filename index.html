@@ -237,11 +237,6 @@ body{
   font-size: 14px;
 }
 
-.cookie-banner a {
-  color: #4ea1ff;
-  text-decoration: underline;
-}
-
 .cookie-buttons button {
   margin-left: 10px;
   padding: 8px 14px;
@@ -249,14 +244,14 @@ body{
   cursor: pointer;
 }
 
-#accept-cookies {
+#acceptCookies {
   background: #4CAF50;
-  color: white;
+  color: #fff;
 }
 
-#reject-cookies {
+#rejectCookies {
   background: #555;
-  color: white;
+  color: #fff;
 }
 
 .hidden {
@@ -297,11 +292,12 @@ body{
 </section>
 
 <section class="videos">
-  <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe> 
-  <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/9Z8BojDP5no&t=70s" allowfullscreen></iframe>
+  <iframe data-src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
+  <iframe data-src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
+  <iframe data-src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
+  <iframe data-src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
 </section>
+
 
 <footer class="footer">
   <div class="footer-top">
@@ -321,161 +317,41 @@ body{
     Vytvoril: Viktor Boguský
   </div>
 </footer>
-  <!-- Embed Consent Tool by TermsBox - https://termsbox.com/embed-consent -->
-<script>
-(function() {
-  'use strict';
+<div id="cookieBanner" class="cookie-banner">
+  <span>
+    Tento web používa cookies na prehrávanie videí z YouTube.
+  </span>
+  <div class="cookie-buttons">
+    <button id="rejectCookies">Odmietnuť</button>
+    <button id="acceptCookies">Akceptovať</button>
+  </div>
+</div>
 
-  var TERMSBOX_EMBED_CONFIG = {
-    blockedDomains: ["youtube.com","youtu.be"],
-    placeholderText: "Toto video nie je možné prehrať bez povolenia cookies.",
-    buttonText: "Akceptovať a pokračovať",
-    theme: "light",
-    rememberConsent: true,
-    consentDays: 30,
-    storageKey: 'termsbox_embed_consent'
-  };
+  <script>
+const COOKIE_KEY = 'youtube_cookies_consent';
 
-  function hasConsent() {
-    if (!TERMSBOX_EMBED_CONFIG.rememberConsent) return false;
-    try {
-      var consent = localStorage.getItem(TERMSBOX_EMBED_CONFIG.storageKey);
-      if (!consent) return false;
-      var data = JSON.parse(consent);
-      return data.granted && data.expires > Date.now();
-    } catch (e) {
-      return false;
-    }
-  }
+function enableVideos() {
+  document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+    iframe.src = iframe.dataset.src;
+  });
+}
 
-  function saveConsent() {
-    if (!TERMSBOX_EMBED_CONFIG.rememberConsent) return;
-    try {
-      var expires = Date.now() + (TERMSBOX_EMBED_CONFIG.consentDays * 24 * 60 * 60 * 1000);
-      localStorage.setItem(TERMSBOX_EMBED_CONFIG.storageKey, JSON.stringify({
-        granted: true,
-        expires: expires
-      }));
-    } catch (e) {
-      // localStorage not available
-    }
-  }
+if (localStorage.getItem(COOKIE_KEY) === 'accepted') {
+  enableVideos();
+  document.getElementById('cookieBanner')?.classList.add('hidden');
+}
 
-  function shouldBlock(src) {
-    if (!src) return false;
-    var srcLower = src.toLowerCase();
-    return TERMSBOX_EMBED_CONFIG.blockedDomains.some(function(domain) {
-      return srcLower.indexOf(domain) !== -1;
-    });
-  }
+document.getElementById('acceptCookies')?.addEventListener('click', () => {
+  localStorage.setItem(COOKIE_KEY, 'accepted');
+  enableVideos();
+  document.getElementById('cookieBanner').classList.add('hidden');
+});
 
-  function createPlaceholder(iframe) {
-    var placeholder = document.createElement('div');
-    placeholder.className = 'termsbox-embed-placeholder';
-    placeholder.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;' +
-      'padding:40px 20px;text-align:center;border-radius:8px;min-height:200px;' +
-      (TERMSBOX_EMBED_CONFIG.theme === 'dark'
-        ? 'background:#1f2937;color:#f3f4f6;border:1px solid #374151;'
-        : 'background:#f3f4f6;color:#1f2937;border:1px solid #e5e7eb;');
-
-    var icon = document.createElement('div');
-    icon.innerHTML = '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="m7 11V7a5 5 0 0 1 10 0v4"/></svg>';
-    icon.style.cssText = 'margin-bottom:16px;opacity:0.6;';
-
-    var text = document.createElement('p');
-    text.textContent = TERMSBOX_EMBED_CONFIG.placeholderText;
-    text.style.cssText = 'margin:0 0 16px 0;font-size:14px;max-width:300px;';
-
-    var button = document.createElement('button');
-    button.textContent = TERMSBOX_EMBED_CONFIG.buttonText;
-    button.style.cssText = 'padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:500;font-size:14px;' +
-      'border:none;transition:opacity 0.2s;' +
-      (TERMSBOX_EMBED_CONFIG.theme === 'dark'
-        ? 'background:#3b82f6;color:#ffffff;'
-        : 'background:#2563eb;color:#ffffff;');
-
-    button.onmouseover = function() { this.style.opacity = '0.9'; };
-    button.onmouseout = function() { this.style.opacity = '1'; };
-
-    button.onclick = function() {
-      saveConsent();
-      loadAllEmbeds();
-    };
-
-    placeholder.appendChild(icon);
-    placeholder.appendChild(text);
-    placeholder.appendChild(button);
-
-    return placeholder;
-  }
-
-  function loadAllEmbeds() {
-    var placeholders = document.querySelectorAll('.termsbox-embed-placeholder');
-    placeholders.forEach(function(placeholder) {
-      var iframe = placeholder.termsboxOriginalIframe;
-      if (iframe && placeholder.parentNode) {
-        placeholder.parentNode.replaceChild(iframe, placeholder);
-      }
-    });
-  }
-
-  function processIframes() {
-    if (hasConsent()) return;
-
-    var iframes = document.querySelectorAll('iframe[src]');
-    iframes.forEach(function(iframe) {
-      if (shouldBlock(iframe.src)) {
-        var placeholder = createPlaceholder(iframe);
-        placeholder.termsboxOriginalIframe = iframe.cloneNode(true);
-
-        if (iframe.width) placeholder.style.width = iframe.width + (isNaN(iframe.width) ? '' : 'px');
-        if (iframe.height) placeholder.style.height = iframe.height + (isNaN(iframe.height) ? '' : 'px');
-
-        iframe.parentNode.replaceChild(placeholder, iframe);
-      }
-    });
-  }
-
-  // Run on DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', processIframes);
-  } else {
-    processIframes();
-  }
-
-  // Also observe for dynamically added iframes
-  if (typeof MutationObserver !== 'undefined') {
-    var observer = new MutationObserver(function(mutations) {
-      if (!hasConsent()) {
-        mutations.forEach(function(mutation) {
-          mutation.addedNodes.forEach(function(node) {
-            if (node.nodeType === 1) {
-              if (node.tagName === 'IFRAME' && shouldBlock(node.src)) {
-                var placeholder = createPlaceholder(node);
-                placeholder.termsboxOriginalIframe = node.cloneNode(true);
-                node.parentNode.replaceChild(placeholder, node);
-              }
-              // Check child iframes
-              var childIframes = node.querySelectorAll && node.querySelectorAll('iframe[src]');
-              if (childIframes) {
-                childIframes.forEach(function(iframe) {
-                  if (shouldBlock(iframe.src)) {
-                    var p = createPlaceholder(iframe);
-                    p.termsboxOriginalIframe = iframe.cloneNode(true);
-                    iframe.parentNode.replaceChild(p, iframe);
-                  }
-                });
-              }
-            }
-          });
-        });
-      }
-    });
-    observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
-  }
-})();
+document.getElementById('rejectCookies')?.addEventListener('click', () => {
+  document.getElementById('cookieBanner').classList.add('hidden');
+});
 </script>
-<!-- Get your free Embed Consent tool at https://termsbox.com/embed-consent -->
+
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
