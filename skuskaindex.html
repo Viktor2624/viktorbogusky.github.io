@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Boguský | Kamera & Postprodukcia</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#000;
+  color:#fff;
+  padding-top:60px;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+nav{
+  display:flex;
+  gap:24px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.85;
+}
+
+nav a:hover{opacity:1;}
+
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+}
+
+@media(max-width:768px){
+  .menu-toggle{display:block;}
+  nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+  nav.active{display:flex;}
+  nav a{padding:12px 0;}
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
+
+.hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-text{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-text h2{
+  font-size:48px;
+  letter-spacing:3px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-text p{
+  font-size:18px;
+  opacity:0.85;
+  margin-top:10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* VIDEOS */
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:30px;
+}
+
+.videos iframe{
+  width:100%;
+  height:250px;
+  border:none;
+}
+
+/* FOOTER */
+.footer{
+  padding:50px 20px;
+}
+
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  opacity:0.6;
+  font-size:13px;
+}
+
+/* COOKIE BANNER */
+.cookie-banner{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#111;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:9999;
+  font-size:14px;
+}
+
+.cookie-banner button{
+  padding:8px 14px;
+  border:none;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+#acceptCookies{background:#4CAF50;color:#fff;}
+#rejectCookies{background:#555;color:#fff;}
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo">Viktor Boguský</a>
+    <button class="menu-toggle">☰</button>
+    <nav>
+      <a href="#">Referencie</a>
+      <a href="#">O mne</a>
+      <a href="#">Služby</a>
+      <a href="#">Portfólio</a>
+      <a href="#">Cenník</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>Kamera & Postprodukcia</h2>
+    <p>Stužkové, svadby, eventy, klipy...</p>
+  </div>
+</section>
+
+<section class="videos">
+  <iframe data-src="https://www.youtube.com/embed/3zES1AlxCd4"></iframe>
+  <iframe data-src="https://www.youtube.com/embed/V8z1SuHkfCk"></iframe>
+  <iframe data-src="https://www.youtube.com/embed/LnRKT-GFs0k"></iframe>
+  <iframe data-src="https://www.youtube.com/embed/9Z8BojDP5no"></iframe>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <p>kontakt@viktorbogusky.sk</p>
+      <p>+421 948 933 109</p>
+    </div>
+  </div>
+  <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
+</footer>
+
+<div id="cookieBanner" class="cookie-banner">
+  <span>Tento web používa cookies na prehrávanie videí z YouTube.</span>
+  <div>
+    <button id="rejectCookies">Odmietnuť</button>
+    <button id="acceptCookies">Akceptovať</button>
+  </div>
+</div>
+
+<script>
+const KEY = 'yt_cookies';
+
+function enableVideos(){
+  document.querySelectorAll('iframe[data-src]').forEach(i=>{
+    i.src = i.dataset.src;
+  });
+}
+
+if(localStorage.getItem(KEY)==='yes'){
+  enableVideos();
+  document.getElementById('cookieBanner').classList.add('hidden');
+}
+
+document.getElementById('acceptCookies').onclick = ()=>{
+  localStorage.setItem(KEY,'yes');
+  enableVideos();
+  document.getElementById('cookieBanner').classList.add('hidden');
+};
+
+document.getElementById('rejectCookies').onclick = ()=>{
+  document.getElementById('cookieBanner').classList.add('hidden');
+};
+
+document.querySelector('.menu-toggle').onclick=()=>{
+  document.querySelector('nav').classList.toggle('active');
+};
+</script>
+
+</body>
+</html>
