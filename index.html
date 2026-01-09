@@ -294,10 +294,10 @@ body{
 </section>
 
 <section class="videos">
-  <iframe data-src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
-  <iframe data-src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
-  <iframe data-src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
-  <iframe data-src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
 </section>
 
 
@@ -319,41 +319,9 @@ body{
     Vytvoril: Viktor Boguský
   </div>
 </footer>
-<div id="cookieBanner" class="cookie-banner">
-  <span>
-    Tento web používa cookies na prehrávanie videí z YouTube.
-  </span>
-  <div class="cookie-buttons">
-    <button id="rejectCookies">Odmietnuť</button>
-    <button id="acceptCookies">Akceptovať</button>
-  </div>
-</div>
 
-  <script>
-const COOKIE_KEY = 'youtube_cookies_consent';
 
-function enableVideos() {
-  document.querySelectorAll('iframe[data-src]').forEach(iframe => {
-    iframe.src = iframe.dataset.src;
-  });
-}
-
-if (localStorage.getItem(COOKIE_KEY) === 'accepted') {
-  enableVideos();
-  document.getElementById('cookieBanner')?.classList.add('hidden');
-}
-
-document.getElementById('acceptCookies')?.addEventListener('click', () => {
-  localStorage.setItem(COOKIE_KEY, 'accepted');
-  enableVideos();
-  document.getElementById('cookieBanner').classList.add('hidden');
-});
-
-document.getElementById('rejectCookies')?.addEventListener('click', () => {
-  document.getElementById('cookieBanner').classList.add('hidden');
-});
-</script>
-
+ 
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
