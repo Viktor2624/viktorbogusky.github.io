@@ -374,7 +374,7 @@ button{
     <label>Typ</label>
     <select id="typeOrder">
       <option value="order">Objednávka – platba celej sumy</option>
-      <option value="reservation">Rezervácia – 50 % záloha</option>
+      <option value="reservation">Rezervácia – 50 % rezervačný poplatok</option>
     </select>
 
     <div class="price-box">
@@ -557,7 +557,7 @@ function calculate() {
     let now = price * 0.5;
     let later = price * 0.5;
     reservationInfo.textContent =
-      `Záloha teraz: ${now.toFixed(2)} € | Doplatok neskôr: ${later.toFixed(2)} €`;
+      `Rezervačný poplatok teraz: ${now.toFixed(2)} € | Doplatok neskôr: ${later.toFixed(2)} €`;
   } else {
     reservationInfo.textContent = "";
   }
