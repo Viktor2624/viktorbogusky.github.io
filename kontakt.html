@@ -370,6 +370,8 @@ button{
 
     <label>Zľavový kód</label>
     <input type="text" id="discount" placeholder="Zadajte kód">
+    <p id="discountMessage" style="margin-top:6px;font-size:13px;"></p>
+
 
     <label>Typ</label>
     <select id="typeOrder">
@@ -541,14 +543,23 @@ function calculate() {
   let paidUsb = Math.max(usbCount - freeUsb, 0);
   price += paidUsb * 20;
 
-  // Zľava 10 %
-  if (discount.value.trim() === "STUZKOVA2610") {
-    price *= 0.9;
-  }
-  // Zľava 25 %
-  if (discount.value.trim() === "STUZKOVA25") {
-    price *= 0.75;
-  }
+  const discountMsg = document.getElementById("discountMessage");
+const code = discount.value.trim();
+
+discountMsg.textContent = "";
+discountMsg.style.color = "#e74c3c";
+
+// platný kód
+if (code === "STUZKOVA25") {
+  price *= 0.75;
+  discountMsg.textContent = "Zľavový kód bol úspešne použitý ✔";
+  discountMsg.style.color = "#2ecc71";
+}
+// neplatný kód
+else if (code !== "") {
+  discountMsg.textContent = "Zľavový kód je neplatný alebo už expiroval ✖";
+}
+
 
   total.textContent = price.toFixed(2);
 
