@@ -396,8 +396,14 @@ button{
 
     <form action="https://formspree.io/f/xjknzwew" method="POST">
       <input type="text" name="meno" placeholder="Meno a priezvisko*" required>
+      <input type="tel" name="telefon" placeholder="Telefónne číslo*" required>
+<input type="text" name="ulica" placeholder="Ulica a číslo*" required>
+<div style="display:flex;gap:10px">
+  <input type="text" name="mesto" placeholder="Mesto*" required style="flex:2">
+  <input type="text" name="psc" placeholder="PSČ*" required style="flex:1">
+</div>
       <input type="email" name="email" placeholder="Email*" required>
-      <input type="text" name="lokacia" placeholder="Lokalita*" required>
+      <input type="text" name="lokacia" placeholder="Lokalita natáčania*" required>
       <input type="date" name="datum" required>
 
       <textarea name="objednavka" id="orderSummary" placeholder="Zhrnutie objednávky" readonly></textarea>
