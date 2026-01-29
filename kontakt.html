@@ -683,6 +683,52 @@ toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+// Získame formulár
+const contactForm = document.querySelector(".contact-form-wrapper form");
+
+// Pridáme event listener na submit
+contactForm.addEventListener("submit", function(e) {
+    // Prevent default submit
+    e.preventDefault();
+
+    const email = contactForm.querySelector('input[name="email"]').value.trim();
+
+    // jednoduchá kontrola e-mailu
+    if(!validateEmail(email)) {
+        alert("Prosím, zadajte platný e-mail.");
+        return;
+    }
+
+    // honeypot kontrola
+    const gotcha = contactForm.querySelector('input[name="_gotcha"]');
+    if(gotcha && gotcha.value !== "") {
+        alert("Spam detekovaný!");
+        return;
+    }
+
+    // skontrolujeme reCAPTCHA (ak ju pridáš)
+    if(typeof grecaptcha !== "undefined") {
+        const recaptchaResponse = grecaptcha.getResponse();
+        if(recaptchaResponse.length === 0) {
+            alert("Potvrďte, že nie ste robot.");
+            return;
+        }
+    }
+
+    // Všetko OK → odošleme formulár
+    contactForm.submit();
+});
+
+// funkcia na kontrolu e-mailu
+function validateEmail(email) {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+</script>
+
 
 
 
