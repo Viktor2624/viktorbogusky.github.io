@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odporuč a získaj zľavu | Viktor Boguský</title>
+<link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#000;color:#fff;padding-top:60px}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;width:100%;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
+  z-index:1000;
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:12px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{color:#fff;text-decoration:none;font-weight:600;letter-spacing:2px}
+nav{display:flex;gap:24px}
+nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.8}
+nav a:hover{opacity:1}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px}
+
+@media(max-width:768px){
+  .menu-toggle{display:block}
+  nav{
+    position:absolute;top:56px;left:0;width:100%;
+    background:#000;flex-direction:column;
+    align-items:center;display:none
+  }
+  nav.active{display:flex}
+  nav a{padding:12px 0}
+}
+
+/* ===== HERO ===== */
+.hero{
+  height:420px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg,#111,#000);
+}
+
+.hero h1{
+  font-size:42px;
+  letter-spacing:3px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:.85;
+}
+
+/* ===== CONTENT ===== */
+.section{
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 20px;
+}
+
+.card{
+  background:#111;
+  padding:40px;
+  border-radius:16px;
+  margin-bottom:40px;
+}
+
+.card h2{
+  margin-bottom:20px;
+  font-size:28px;
+}
+
+.highlight{
+  color:#f1c40f;
+  font-weight:bold;
+}
+
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:30px;
+}
+
+.benefit-box{
+  background:#1a1a1a;
+  padding:25px;
+  border-radius:14px;
+  border:1px solid #222;
+}
+
+.benefit-box h3{
+  margin-bottom:10px;
+}
+
+.conditions{
+  font-size:14px;
+  opacity:.8;
+  line-height:1.7;
+}
+
+.cta{
+  text-align:center;
+  margin-top:50px;
+}
+
+.cta a{
+  display:inline-block;
+  padding:15px 35px;
+  border-radius:40px;
+  background:#fff;
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.cta a:hover{
+  opacity:.85;
+}
+
+/* ===== FOOTER ===== */
+.footer{padding:50px 20px;background:#000;text-align:center}
+.footer-bottom{margin-top:20px;font-size:13px;opacity:.6}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
+    <button class="menu-toggle">☰</button>
+    <nav>
+      <a href="referencie.html">Referencie</a>
+      <a href="omne.html">O mne</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="cennik.html">Cenník</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>ODPORUČ A ZÍSKAJ ZĽAVU</h1>
+    <p>Vaša stužková môže byť ešte výhodnejšia.</p>
+  </div>
+</section>
+
+<section class="section">
+
+  <div class="card">
+    <h2>Ako to funguje?</h2>
+    <p>
+      Ak vaša trieda odporučí moje služby ďalšej triede a tá si objedná natáčanie,
+      získavate <span class="highlight">finančný bonus alebo zľavu z balíka</span>.
+    </p>
+
+    <div class="benefits">
+      <div class="benefit-box">
+        <h3>1 odporúčaná trieda</h3>
+        <p><span class="highlight">–50 €</span> z vašej ceny<br>
+        alebo 50 € cashback pre triedu</p>
+      </div>
+
+      <div class="benefit-box">
+        <h3>2 odporúčané triedy</h3>
+        <p><span class="highlight">–120 €</span> z vašej ceny<br>
+        alebo bonusové video navyše</p>
+      </div>
+
+      <div class="benefit-box">
+        <h3>3 a viac tried</h3>
+        <p><span class="highlight">Individuálna dohoda</span><br>
+        extra výhody, darčeky alebo výrazná zľava</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Podmienky programu</h2>
+    <div class="conditions">
+      • Odporúčaná trieda musí uviesť vašu triedu ako zdroj odporúčania.<br>
+      • Zmluva musí byť podpísaná a záloha uhradená.<br>
+      • Bonus sa uplatňuje po potvrdení objednávky druhej triedy.<br>
+      • Zľavy nie je možné kombinovať s inými akciami.<br>
+      • Program platí pre stužkové v školskom roku 2026/2027.
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Zaujalo vás to?</h2>
+    <p style="margin:15px 0;opacity:.8">
+      Spojte sa so mnou a dohodnime si detaily pre vašu školu.
+    </p>
+    <a href="kontakt.html">Kontaktovať ma</a>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div>kontakt@viktorbogusky.sk | +421 948 933 109</div>
+  <div class="footer-bottom">Vytvoril: Viktor Boguský</div>
+</footer>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
