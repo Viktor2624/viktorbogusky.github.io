@@ -360,10 +360,6 @@ border-radius:8px;
 margin:10px 0;
 }
 
-.combo-extras h3{
-margin-bottom:5px;
-}
-
 .price-box{
 margin-top:20px;
 font-size:20px;
@@ -372,7 +368,7 @@ font-weight:bold;
 
 .summary{
 margin-top:15px;
-height:150px;
+height:140px;
 resize:none;
 }
 
@@ -392,7 +388,6 @@ transition:0.3s;
 background:#ccc;
 }
 
-/* RESPONSIVE */
 @media(max-width:900px){
 .order-grid{
 flex-direction:column;
@@ -449,10 +444,7 @@ flex-direction:column;
 
 <section id="order" class="order-section">
 
-<form action="https://formsubmit.co/kontakt@viktorbogusky.sk" method="POST" class="order-form">
-
-<input type="hidden" name="_subject" value="Nová objednávka z webu">
-<input type="hidden" name="_captcha" value="false">
+<form action="https://formspree.io/f/xjknzwew" method="POST" class="order-form">
 
 <div class="order-grid">
 
@@ -462,7 +454,7 @@ flex-direction:column;
 <h2>Výber služby</h2>
 
 <label>Služba</label>
-<select id="service" name="sluzba" required>
+<select id="service" name="Služba" required>
 <option value="">-- Vyber službu --</option>
 <option value="200">Combo Start – 200€</option>
 <option value="300">Combo Memory – 300€</option>
@@ -471,29 +463,32 @@ flex-direction:column;
 <option value="500">Wedding Complete – 500€</option>
 </select>
 
-<!-- EXTRA ČASTI PRE COMBO START -->
+<!-- EXTRA ČASTI (iba pre Combo Start) -->
 <div id="comboExtras" class="combo-extras">
 <h3>Celé časti programu</h3>
 <p>+50€ za každú vybranú časť</p>
 
-<label><input type="checkbox" class="extraPart" value="Príchod"> Príchod</label>
-<label><input type="checkbox" class="extraPart" value="Nástup"> Nástup</label>
-<label><input type="checkbox" class="extraPart" value="Program"> Program</label>
-<label><input type="checkbox" class="extraPart" value="Šerpy"> Šerpy</label>
-<label><input type="checkbox" class="extraPart" value="Afterparty"> Afterparty</label>
+<label><input type="checkbox" class="extraPart" value="Príchod"> Príhovor</label>
+<label><input type="checkbox" class="extraPart" value="Nástup"> Rodičovský tanec</label>
+<label><input type="checkbox" class="extraPart" value="Program"> Učiteľský tanec</label>
+<label><input type="checkbox" class="extraPart" value="Šerpy"> Program</label>
+<label><input type="checkbox" class="extraPart" value="Afterparty"> Zábava</label>
 </div>
 
 <label>USB v krabičke (20€ / ks)</label>
-<input type="number" id="usbBox" name="usb_krabicka" min="0" value="0">
+<input type="number" id="usbBox" name="USB v krabičke" min="0" value="0">
 
 <label>USB bez krabičky (10€ / ks)</label>
-<input type="number" id="usbNoBox" name="usb_bez_krabicky" min="0" value="0">
+<input type="number" id="usbNoBox" name="USB bez krabičky" min="0" value="0">
 
 <label>Dátum akcie</label>
-<input type="date" name="datum" required>
+<input type="date" name="Dátum akcie" required>
+
+<label>Lokalita natáčania</label>
+<input type="text" name="Lokalita natáčania" required>
 
 <label>Správa / poznámka</label>
-<textarea name="sprava" rows="4"></textarea>
+<textarea name="Správa" rows="4"></textarea>
 
 </div>
 
@@ -503,15 +498,19 @@ flex-direction:column;
 
 <h2>Osobné údaje</h2>
 
-<input type="text" name="meno" placeholder="Meno a priezvisko*" required>
-<input type="email" name="email" placeholder="Email*" required>
-<input type="tel" name="telefon" placeholder="Telefón*" required>
+<input type="text" name="Meno a priezvisko" placeholder="Meno a priezvisko*" required>
+<input type="email" name="Email" placeholder="Email*" required>
+<input type="tel" name="Telefón" placeholder="Telefónne číslo*" required>
+
+<input type="text" name="Adresa bydliska" placeholder="Adresa bydliska*" required>
+<input type="text" name="Mesto" placeholder="Mesto*" required>
+<input type="text" name="PSČ" placeholder="PSČ*" required>
 
 <div class="price-box">
 Celková cena: <span id="totalPrice">0€</span>
 </div>
 
-<textarea id="summary" name="zhrnutie_objednavky" class="summary" readonly placeholder="Tu sa zobrazí zhrnutie objednávky..."></textarea>
+<textarea id="summary" name="Zhrnutie objednávky" class="summary" readonly></textarea>
 
 <button type="submit" class="submit-btn">Odoslať objednávku</button>
 
