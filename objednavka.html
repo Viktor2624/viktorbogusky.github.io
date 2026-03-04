@@ -229,6 +229,15 @@ const typeOrder = document.getElementById('typeOrder');
 const orderSummary = document.getElementById('orderSummary');
 const addBtn = document.getElementById('addToOrder');
 const calcBtn = document.getElementById('calcOnly');
+  const delivery = document.getElementById('delivery');
+
+function calculatePrice(){
+  let price = Number(balik.value);
+  if(balik.value==="200"){checkboxes.forEach(cb=>{if(cb.checked) price+=50;});}
+  price += Number(usbBoxed.value)*20 + Number(usbPlain.value)*10;
+  price += Number(delivery.value); // pripočíta príplatok za rýchle dodanie
+  return price;
+}
 
 balik.addEventListener('change', ()=>{extraParts.style.display = balik.value==="200"?"block":"none";});
 
