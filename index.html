@@ -17,10 +17,10 @@
 body{
   background:#000;
   color:#fff;
+  padding-top:60px; /* offset pre fixed header */
 }
 
 /* ================= HEADER ================= */
-
 header{
   position:fixed;
   top:0;
@@ -47,8 +47,67 @@ header{
   font-weight:600;
 }
 
+/* ================= NAVIGATION ================= */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
 
-/* HAMBURGER */
+.main-nav a,
+.nav-btn {
+  background: none;
+  border: none;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+  opacity:0.85;
+  padding:8px 0;
+  font-family: inherit;
+}
+
+.main-nav a:hover,
+.nav-btn:hover {
+  opacity:1;
+}
+
+/* NAV ITEM */
+.nav-item {
+  position: relative;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top:100%;
+  left:0;
+  background:#111;
+  display:none;
+  flex-direction: column;
+  min-width:190px;
+  padding:10px 0;
+  border-radius:6px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  z-index:2000;
+}
+
+.dropdown a {
+  padding:8px 16px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.dropdown a:hover {
+  background:#1c1c1c;
+}
+
+/* SHOW DROPDOWN */
+.nav-item.active .dropdown {
+  display:flex;
+}
+
+/* ================= HAMBURGER ================= */
 .menu-toggle{
   display:none;
   background:none;
@@ -58,21 +117,47 @@ header{
   cursor:pointer;
 }
 
-/* MOBILE MENU */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
   .menu-toggle{
     display:block;
   }
 
- 
+  .main-nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    display:none; /* defaultne skryté */
+    background: rgba(0,0,0,0.95);
+    z-index:999;
+    gap:0;
+  }
 
-/* BODY OFFSET */
-body{
-  padding-top:60px;
+  .main-nav.active{
+    display:flex;
+  }
+
+  .main-nav a,
+  .nav-btn{
+    padding:12px 0;
+    width:100%;
+    text-align:center;
+    font-size:15px;
+  }
+
+  /* Dropdowny v mobile */
+  .nav-item .dropdown{
+    position: static;
+    box-shadow:none;
+    border-radius:0;
+    width:100%;
+  }
 }
 
 /* ================= HERO ================= */
-
 .hero{
   position:relative;
   height:520px;
@@ -128,27 +213,25 @@ body{
 }
 
 /* ================= VIDEOS ================= */
-
 .videos{
   max-width:1200px;
   margin:auto;
   padding:80px 20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
 }
 
-
-  .videos iframe {
-   width:100%;
+.videos iframe{
+  width:100%;
   aspect-ratio:16/9;
   border:none;
 }
-/* ================= FOOTER ================= */
 
+/* ================= FOOTER ================= */
 .footer{
   background:#000;
-  padding:50px 20px;
+  padding:50px 20px 20px 20px;
 }
 
 .footer-top{
@@ -180,6 +263,19 @@ body{
   text-align:center;
   font-size:13px;
   opacity:0.6;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.footer-bottom a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-bottom a:hover{
+  opacity:1;
 }
 
 @media(max-width:768px){
@@ -187,136 +283,28 @@ body{
     flex-direction:column;
     gap:20px;
   }
-
   .footer-socials a{
     margin:0 10px;
   }
 }
 
+/* ================= HERO CTA ================= */
 .hero-cta {
-  margin-top: 25px;
-  padding: 12px 28px;
-  background: #fff;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  transition: 0.3s ease;
-  font-size: 14px;
+  margin-top:25px;
+  padding:12px 28px;
+  background:#fff;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:30px;
+  transition:0.3s ease;
+  font-size:14px;
 }
 
-.hero-cta:hover {
-  background: #ddd;
+.hero-cta:hover{
+  background:#ddd;
 }
 
-  /* ================= NAVIGATION ================= */
-
-@media(max-width:768px){
-  .menu-toggle{
-    display:block;
-  }
-
-/* ================= NAVIGATION ================= */
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.main-nav a,
-.nav-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  cursor: pointer;
-  opacity: 0.85;
-  padding: 8px 0;
-  font-family: inherit;
-}
-
-.main-nav a:hover,
-.nav-btn:hover {
-  opacity: 1;
-}
-
-/* NAV ITEM */
-.nav-item {
-  position: relative;
-}
-
-/* DROPDOWN */
-.dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #111;
-  display: none;
-  flex-direction: column;
-  min-width: 190px;
-  padding: 10px 0;
-  border-radius: 6px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  z-index: 2000;
-}
-
-.dropdown a {
-  padding: 8px 16px;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.dropdown a:hover {
-  background: #1c1c1c;
-}
-
-/* SHOW DROPDOWN */
-.nav-item.active .dropdown {
-  display: flex;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .main-nav {
-    position: absolute;
-    top: 56px;
-    left: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.95);
-    flex-direction: column;
-    align-items: center;
-    display: none; /* menu defaultne skryté */
-    gap: 0;
-    z-index: 999;
-  }
-
-  .main-nav a,
-  .nav-btn {
-    padding: 12px 0;
-    font-size: 15px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .main-nav.active {
-    display: flex;
-  }
-
-  /* Dropdowny v mobile */
-  .nav-item .dropdown {
-    position: static;
-    box-shadow: none;
-    border-radius: 0;
-    width: 100%;
-  }
-}
 </style>
 </head>
 
@@ -325,33 +313,32 @@ body{
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">Viktor Boguský</a>
-
     <button class="menu-toggle" aria-label="Menu">☰</button>
 
-   <nav class="main-nav">
-  <a href="index.html">Domov</a>
+    <nav class="main-nav">
+      <a href="index.html">Domov</a>
 
-  <div class="nav-item">
-    <button class="nav-btn">Služby ▾</button>
-    <div class="dropdown">
-      <a href="sluzby.html">Prehľad služieb</a>
-      <a href="cennik.html">Cenník</a>
-      <a href="odporucanie.html">Zľavy</a>
-    </div>
-  </div>
+      <div class="nav-item">
+        <button class="nav-btn">Služby ▾</button>
+        <div class="dropdown">
+          <a href="sluzby.html">Prehľad služieb</a>
+          <a href="cennik.html">Cenník</a>
+          <a href="odporucanie.html">Zľavy</a>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <button class="nav-btn">Portfólio ▾</button>
-    <div class="dropdown">
-      <a href="portfolio.html">Video projekty</a>
-      <a href="referencie.html">Referencie</a>
-    </div>
-  </div>
+      <div class="nav-item">
+        <button class="nav-btn">Portfólio ▾</button>
+        <div class="dropdown">
+          <a href="portfolio.html">Video projekty</a>
+          <a href="referencie.html">Referencie</a>
+        </div>
+      </div>
 
-  <a href="omne.html">O mne</a>
-  <a href="kontakt.html">Kontakt</a>
-  <a href="objednavka.html">Rezervovať termín</a>
-</nav>
+      <a href="omne.html">O mne</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="objednavka.html">Rezervovať termín</a>
+    </nav>
   </div>
 </header>
 
@@ -374,49 +361,41 @@ body{
   <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
 </section>
 
-
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-contact">
       <p>kontakt@viktorbogusky.sk</p>
       <p>+421 948 933 109</p>
     </div>
-
     <div class="footer-socials">
       <a href="https://www.instagram.com/vittquoo/" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/profile.php?id=100079203706823" target="_blank">Facebook</a>
       <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
     </div>
   </div>
-
   <div class="footer-bottom">
-    Vytvoril: Viktor Boguský
-  <a href="gdpr.html">GDPR</a> |
-  <a href="podmienky.html">Obchodné podmienky</a>
+    <span>Vytvoril: Viktor Boguský</span>
+    <span><a href="gdpr.html">GDPR</a> | <a href="podmienky.html">Obchodné podmienky</a></span>
   </div>
 </footer>
-
-
- 
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const navItems = document.querySelectorAll('.nav-item');
 
-// hamburger toggle
+// Hamburger toggle
 toggle.addEventListener('click', (e) => {
   e.stopPropagation();
   nav.classList.toggle('active');
 });
 
-// dropdown toggle
+// Dropdown toggle
 navItems.forEach(item => {
   const btn = item.querySelector('.nav-btn');
 
   btn.addEventListener('click', (e) => {
-    e.stopPropagation(); // aby sa nezatvorilo menu
-    // zatvor ostatné dropdowny
+    e.stopPropagation(); 
     navItems.forEach(i => {
       if(i !== item) i.classList.remove('active');
     });
@@ -424,7 +403,7 @@ navItems.forEach(item => {
   });
 });
 
-// klik mimo -> zatvori menu aj dropdowny
+// Klik mimo -> zatvori menu aj dropdowny
 document.addEventListener('click', () => {
   nav.classList.remove('active');
   navItems.forEach(item => item.classList.remove('active'));
