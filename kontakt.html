@@ -534,26 +534,6 @@ button{
   </div>
 </section>
 
-<!-- ===== KALENDÁR ===== -->
-<section class="events-calendar">
-  <h2>Kalendár akcií</h2>
-
-  <div class="calendar-legend">
-    <span><i class="dot reserved"></i> Rezervované</span>
-    <span><i class="dot ordered"></i> Objednané</span>
-    <span><i class="dot private"></i> Súkromné</span>
-  </div>
-
-  <div class="calendar-header">
-    <button id="prevMonth">‹</button>
-    <h3 id="monthYear"></h3>
-    <button id="nextMonth">›</button>
-  </div>
-
-  <div class="calendar-grid" id="calendar"></div>
-</section>
-
-
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-contact">
@@ -602,54 +582,6 @@ document.addEventListener('click', e=>{
     navItems.forEach(item=>item.classList.remove('active'));
   }
 });
-</script>
-  <script>
-const events = {
-  "2026-05-30": {type:"ordered"},
-  "2026-11-07": {type:"reserved"},
-  "2026-11-16": {type:"private"}
-};
-
-const calendar = document.getElementById('calendar');
-const monthYear = document.getElementById('monthYear');
-const prevMonthBtn = document.getElementById('prevMonth');
-const nextMonthBtn = document.getElementById('nextMonth');
-
-let currentDate = new Date();
-
-function renderCalendar(){
-  calendar.innerHTML="";
-  const year=currentDate.getFullYear();
-  const month=currentDate.getMonth();
-  monthYear.textContent=currentDate.toLocaleDateString("sk-SK",{month:"long",year:"numeric"});
-  const firstDay=new Date(year,month,1).getDay();
-  const daysInMonth=new Date(year,month+1,0).getDate();
-
-  for(let i=0;i<(firstDay+6)%7;i++){
-    calendar.appendChild(document.createElement("div"));
-  }
-
-  for(let day=1;day<=daysInMonth;day++){
-    const dayDiv=document.createElement("div");
-    dayDiv.classList.add("calendar-day");
-
-    const key=`${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-    if(events[key]){
-      dayDiv.classList.add(events[key].type);
-    }
-
-    dayDiv.textContent=day;
-    calendar.appendChild(dayDiv);
-  }
-}
-
-prevMonthBtn.onclick=()=>{currentDate.setMonth(currentDate.getMonth()-1);renderCalendar();}
-nextMonthBtn.onclick=()=>{currentDate.setMonth(currentDate.getMonth()+1);renderCalendar();}
-renderCalendar();
-
-const toggle=document.querySelector('.menu-toggle');
-const nav=document.querySelector('nav');
-toggle.addEventListener('click',()=>{nav.classList.toggle('active');});
 </script>
 
 </body>
