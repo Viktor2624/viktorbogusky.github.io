@@ -253,21 +253,20 @@ body{
   display: flex;
 }
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  height: 32px;              /* rovnaká vizuálna výška ako linky */
-  padding: 0 14px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 600;
+.hero-cta {
+  margin-top: 25px;
+  padding: 12px 28px;
   background: #fff;
   color: #000;
-  transition: 0.2s ease;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s ease;
+  font-size: 14px;
 }
 
-.cta:hover {
-  background: #e5e5e5;
+.hero-cta:hover {
+  background: #ddd;
 }
 </style>
 </head>
@@ -303,7 +302,7 @@ body{
   <a href="omne.html">O mne</a>
   <a href="kontakt.html">Kontakt</a>
 
-  <a href="objednavka.html" class="cta">Rezervovať termín</a>
+  <a href="objednavka.html">Rezervovať termín</a>
 </nav>
   </div>
 </header>
@@ -316,6 +315,7 @@ body{
   <div class="hero-text">
     <h2>Kamera & Postprodukcia</h2>
     <p>Stužkové, svadby, eventy, klipy...</p>
+    <a href="objednavka.html" class="hero-cta">Rezervovať termín</a>
   </div>
 </section>
 
