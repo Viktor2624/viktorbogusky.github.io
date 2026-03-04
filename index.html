@@ -228,31 +228,6 @@ body{
   }
 }
 
-/* DROPDOWN */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  background: rgba(0,0,0,0.95);
-  display: none;
-  flex-direction: column;
-  min-width: 180px;
-  padding: 10px 0;
-}
-
-.dropdown-menu a {
-  padding: 8px 15px;
-  font-size: 14px;
-}
-
-.dropdown-menu.show {
-  display: flex;
-}
-
 .hero-cta {
   margin-top: 25px;
   padding: 12px 28px;
@@ -268,6 +243,66 @@ body{
 .hero-cta:hover {
   background: #ddd;
 }
+
+  /* ================= NAVIGATION ================= */
+
+.main-nav {
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.main-nav a,
+.nav-btn {
+  background:none;
+  border:none;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+  opacity:0.85;
+  padding:8px 0;
+}
+
+.main-nav a:hover,
+.nav-btn:hover {
+  opacity:1;
+}
+
+/* NAV ITEM */
+.nav-item {
+  position:relative;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#111;
+  display:none;
+  flex-direction:column;
+  min-width:190px;
+  padding:10px 0;
+  border-radius:6px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  z-index:2000;
+}
+
+.dropdown a {
+  padding:8px 16px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.dropdown a:hover {
+  background:#1c1c1c;
+}
+
+/* SHOW */
+.nav-item.active .dropdown {
+  display:flex;
+}
 </style>
 </head>
 
@@ -279,21 +314,21 @@ body{
 
     <button class="menu-toggle" aria-label="Menu">☰</button>
 
-   <nav>
+   <nav class="main-nav">
   <a href="index.html">Domov</a>
 
-  <div class="dropdown">
-    <a href="#" class="dropdown-toggle">Služby ▾</a>
-    <div class="dropdown-menu">
+  <div class="nav-item">
+    <button class="nav-btn">Služby ▾</button>
+    <div class="dropdown">
       <a href="sluzby.html">Prehľad služieb</a>
       <a href="cennik.html">Cenník</a>
       <a href="odporucanie.html">Zľavy</a>
     </div>
   </div>
 
-  <div class="dropdown">
-    <a href="#" class="dropdown-toggle">Portfólio ▾</a>
-    <div class="dropdown-menu">
+  <div class="nav-item">
+    <button class="nav-btn">Portfólio ▾</button>
+    <div class="dropdown">
       <a href="portfolio.html">Video projekty</a>
       <a href="referencie.html">Referencie</a>
     </div>
@@ -301,7 +336,6 @@ body{
 
   <a href="omne.html">O mne</a>
   <a href="kontakt.html">Kontakt</a>
-
   <a href="objednavka.html">Rezervovať termín</a>
 </nav>
   </div>
@@ -353,20 +387,33 @@ body{
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+const nav = document.querySelector('.main-nav');
+const navItems = document.querySelectorAll('.nav-item');
 
 // mobile menu
 toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 
-// dropdown click (mobile aj desktop)
-dropdownToggles.forEach(btn => {
+// dropdown toggle
+navItems.forEach(item => {
+  const btn = item.querySelector('.nav-btn');
+
   btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    btn.nextElementSibling.classList.toggle('show');
+    e.stopPropagation();
+
+    // zatvor ostatné
+    navItems.forEach(i => {
+      if(i !== item) i.classList.remove('active');
+    });
+
+    item.classList.toggle('active');
   });
+});
+
+// klik mimo -> zavrie
+document.addEventListener('click', () => {
+  navItems.forEach(item => item.classList.remove('active'));
 });
 </script>
 
