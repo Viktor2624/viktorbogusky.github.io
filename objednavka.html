@@ -7,77 +7,410 @@
 <link rel="icon" type="image/png" href="Viktor-removebg-preview.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family: Arial, Helvetica, sans-serif;}
-body{background:#000;color:#fff;padding-top:60px;}
-
-/* ===== HEADER ===== */
-header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filter: blur(8px);z-index:1000;}
-.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
-.logo{color:#fff;text-decoration:none;font-size:18px;letter-spacing:2px;font-weight:600;}
-.main-nav{display:flex;align-items:center;gap:28px;}
-.main-nav a,.nav-btn{background:none;border:none;color:#fff;text-decoration:none;font-size:14px;cursor:pointer;opacity:0.85;padding:8px 0;font-family: inherit;}
-.main-nav a:hover,.nav-btn:hover{opacity:1;}
-.nav-item{position:relative;}
-.dropdown{position:absolute;top:100%;left:0;background:#111;display:none;flex-direction: column;min-width:190px;padding:10px 0;border-radius:6px;box-shadow:0 10px 25px rgba(0,0,0,0.5);z-index:2000;}
-.dropdown a{padding:8px 16px;font-size:13px;white-space:nowrap;}
-.dropdown a:hover{background:#1c1c1c;}
-.nav-item.active .dropdown{display:flex;}
-.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
-@media(max-width:768px){
-  .menu-toggle{display:block;}
-  .main-nav{position:absolute;top:56px;left:0;width:100%;flex-direction:column;align-items:center;display:none;background: rgba(0,0,0,0.95);z-index:999;gap:0;}
-  .main-nav.active{display:flex;}
-  .main-nav a,.nav-btn{padding:12px 0;width:100%;text-align:center;font-size:15px;}
-  .nav-item .dropdown{position: static;box-shadow:none;border-radius:0;width:100%;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== HERO ===== */
-.hero{position:relative;height:520px;overflow:hidden;}
-.hero video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;object-fit:cover;}
-.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);}
-.hero-text{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-.hero-text h2{font-size:48px;letter-spacing:3px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
-.hero-text p{font-size:18px;opacity:0.85;margin-top:10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
-.hero-cta {margin-top:25px;padding:12px 28px;background:#fff;color:#000;text-decoration:none;font-weight:bold;border-radius:30px;transition:0.3s ease;font-size:14px;}
-.hero-cta:hover{background:#ddd;}
-@media(max-width:768px){.hero{height:420px;}.hero-text h2{font-size:32px;}}
+body{
+  background:#000;
+  color:#fff;
+  padding-top:60px; /* offset pre fixed header */
+}
 
-/* ===== VIDEOS ===== */
-.videos{max-width:1200px;margin:auto;padding:80px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
-.videos iframe{width:100%;aspect-ratio:16/9;border:none;}
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
+}
 
-/* ===== ORDER FORM ===== */
-.order-wrapper{max-width:1200px;margin:80px auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:0 20px; text-align: center;}
-.order-wrapper input, .order-wrapper select, .order-wrapper textarea{width:100%;padding:10px;margin:8px 0;border-radius:6px;border:none;background:#222;color:#fff;font-family:inherit;}
-.order-wrapper textarea{resize:none;}
-.order-wrapper label{display:block;margin-top:12px;margin-bottom:4px;}
-.order-wrapper h2{margin-bottom:15px;}
-.order-wrapper button{cursor:pointer;}
-.order-wrapper .buttons button{width:100%;}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-/* ===== FOOTER ===== */
-.footer{background:#000;padding:50px 20px 20px 20px;}
-.footer-top{max-width:900px;margin:auto;display:flex;justify-content:space-between;align-items:center;text-align:center;}
-.footer-contact p{opacity:0.8;}
-.footer-socials a{margin-left:20px;color:#fff;text-decoration:none;opacity:0.7;}
-.footer-socials a:hover{opacity:1;}
-.footer-bottom{margin-top:30px;text-align:center;font-size:13px;opacity:0.6;display:flex;flex-direction:column;gap:6px;}
-.footer-bottom a{color:#fff;text-decoration:none;opacity:0.6;}
-.footer-bottom a:hover{opacity:1;}
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+/* ================= NAVIGATION ================= */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.main-nav a,
+.nav-btn {
+  background: none;
+  border: none;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+  opacity:0.85;
+  padding:8px 0;
+  font-family: inherit;
+}
+
+.main-nav a:hover,
+.nav-btn:hover {
+  opacity:1;
+}
+
+/* NAV ITEM */
+.nav-item {
+  position: relative;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top:100%;
+  left:0;
+  background:#111;
+  display:none;
+  flex-direction: column;
+  min-width:190px;
+  padding:10px 0;
+  border-radius:6px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  z-index:2000;
+}
+
+.dropdown a {
+  padding:8px 16px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.dropdown a:hover {
+  background:#1c1c1c;
+}
+
+/* SHOW DROPDOWN */
+.nav-item.active .dropdown {
+  display:flex;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  .footer-top{flex-direction:column;gap:20px;}
-  .footer-socials a{margin:0 10px;}
+  .menu-toggle{
+    display:block;
+  }
+
+  .main-nav{
+    position:absolute;
+    top:56px;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    display:none; /* defaultne skryté */
+    background: rgba(0,0,0,0.95);
+    z-index:999;
+    gap:0;
+  }
+
+  .main-nav.active{
+    display:flex;
+  }
+
+  .main-nav a,
+  .nav-btn{
+    padding:12px 0;
+    width:100%;
+    text-align:center;
+    font-size:15px;
+  }
+
+  /* Dropdowny v mobile */
+  .nav-item .dropdown{
+    position: static;
+    box-shadow:none;
+    border-radius:0;
+    width:100%;
+  }
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
+
+.hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-text{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-text h2{
+  font-size:48px;
+  letter-spacing:3px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-text p{
+  font-size:18px;
+  opacity:0.85;
+  margin-top:10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+@media(max-width:768px){
+  .hero{
+    height:420px;
+  }
+  .hero-text h2{
+    font-size:32px;
+  }
+}
+
+/* ================= VIDEOS ================= */
+.videos{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.videos iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  background:#000;
+  padding:50px 20px 20px 20px;
+}
+
+.footer-top{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+}
+
+.footer-contact p{
+  opacity:0.8;
+}
+
+.footer-socials a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
+}
+
+.footer-socials a:hover{
+  opacity:1;
+}
+
+.footer-bottom{
+  margin-top:30px;
+  text-align:center;
+  font-size:13px;
+  opacity:0.6;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.footer-bottom a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-bottom a:hover{
+  opacity:1;
+}
+
+@media(max-width:768px){
+  .footer-top{
+    flex-direction:column;
+    gap:20px;
+  }
+  .footer-socials a{
+    margin:0 10px;
+  }
+}
+
+/* ================= HERO CTA ================= */
+.hero-cta {
+  margin-top:25px;
+  padding:12px 28px;
+  background:#fff;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:30px;
+  transition:0.3s ease;
+  font-size:14px;
+}
+
+.hero-cta:hover{
+  background:#ddd;
+}
+.order-section{
+padding:80px 20px;
+background:#0f0f0f;
+color:white;
+}
+
+.order-form{
+max-width:1200px;
+margin:auto;
+}
+
+.order-grid{
+display:flex;
+gap:40px;
+}
+
+.order-card{
+flex:1;
+background:#1a1a1a;
+padding:40px;
+border-radius:12px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.order-card h2{
+margin-bottom:10px;
+}
+
+label{
+font-size:14px;
+opacity:0.8;
+}
+
+input, select, textarea{
+padding:12px;
+border-radius:6px;
+border:none;
+background:#111;
+color:white;
+}
+
+input:focus, select:focus, textarea:focus{
+outline:2px solid white;
+}
+
+.combo-extras{
+display:none;
+background:#111;
+padding:15px;
+border-radius:8px;
+margin:10px 0;
+}
+
+.combo-extras h3{
+margin-bottom:5px;
+}
+
+.price-box{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+.summary{
+margin-top:15px;
+height:150px;
+resize:none;
+}
+
+.submit-btn{
+margin-top:20px;
+padding:15px;
+border:none;
+background:white;
+color:black;
+font-weight:bold;
+cursor:pointer;
+border-radius:8px;
+transition:0.3s;
+}
+
+.submit-btn:hover{
+background:#ccc;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.order-grid{
+flex-direction:column;
+}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">Viktor Boguský</a>
     <button class="menu-toggle" aria-label="Menu">☰</button>
+
     <nav class="main-nav">
       <a href="index.html">Domov</a>
+
       <div class="nav-item">
         <button class="nav-btn">Služby ▾</button>
         <div class="dropdown">
@@ -86,6 +419,7 @@ header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filt
           <a href="odporucanie.html">Zľavy</a>
         </div>
       </div>
+
       <div class="nav-item">
         <button class="nav-btn">Portfólio ▾</button>
         <div class="dropdown">
@@ -93,6 +427,7 @@ header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filt
           <a href="referencie.html">Referencie</a>
         </div>
       </div>
+
       <a href="omne.html">O mne</a>
       <a href="kontakt.html">Kontakt</a>
       <a href="objednavka.html">Rezervovať termín</a>
@@ -108,77 +443,82 @@ header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filt
   <div class="hero-text">
     <h2>Kamera & Postprodukcia</h2>
     <p>Stužkové, svadby, eventy, klipy...</p>
-    <a href="#order" class="hero-cta">Rezervovať termín</a>
+    <a href="objednavka.html" class="hero-cta">Rezervovať termín</a>
   </div>
 </section>
 
-<section id="order" class="order-wrapper">
-   <form action="https://formspree.io/f/xjknzwew" method="POST" id="orderForm">
-  <!-- LEFT: service -->
-  <div style="background:#111;padding:30px;border-radius:14px;">
-    <h2>Výber služby</h2>
-    <label>Služba / balík</label>
-    <select id="balik">
-      <option value="0">-- Vyber službu --</option>
-      <optgroup label="Stužková">
-        <option value="200">Combo Start – 200€</option>
-        <option value="300">Combo Memory – 300€</option>
-        <option value="350">Combo Premium – 350€</option>
-        <option value="400">Combo Deluxe – 400€</option>
-      </optgroup>
-      <optgroup label="Svadba">
-        <option value="400">Wedding Record – 400€</option>
-        <option value="250">Wedding Clip – 250€</option>
-        <option value="500">Wedding Complete – 500€</option>
-      </optgroup>
-    </select>
+<section id="order" class="order-section">
 
-    <div id="extraParts" style="display:none;margin-top:15px;">
-      <label>Vyberte časti (50€/časť – len Combo Start)</label>
-      <label><input type="checkbox" value="Príhovory"> Príhovory</label>
-      <label><input type="checkbox" value="Rodičovský tanec"> Rodičovský tanec</label>
-      <label><input type="checkbox" value="Učiteľský tanec"> Učiteľský tanec</label>
-      <label><input type="checkbox" value="Program"> Program</label>
-      <label><input type="checkbox" value="Zábava"> Zábava</label>
-      <label><input type="checkbox" value="Stužkovanie"> Stužkovanie</label>
-    </div>
+<form action="https://formsubmit.co/kontakt@viktorbogusky.sk" method="POST" class="order-form">
 
-    <label>Počet USB</label>
-    <input type="number" id="usbBoxed" min="0" placeholder="V krabičke – 20€/ks">
-    <input type="number" id="usbPlain" min="0" placeholder="Bez krabičky – 10€/ks">
-    <label>Dátum konania akcie</label>
-    <input type="date" id="datum">
-    <label>Správa / poznámky</label>
-    <textarea id="userMessage" placeholder="Napr. špeciálne požiadavky"></textarea>
-    <label>Typ platby</label>
-    <select id="typeOrder">
-      <option value="order">Objednávka – platba celej sumy</option>
-      <option value="reservation">Rezervácia – 50 % vopred</option>
-    </select>
-  </div>
+<input type="hidden" name="_subject" value="Nová objednávka z webu">
+<input type="hidden" name="_captcha" value="false">
 
-  <!-- RIGHT: personal -->
-  <div style="background:#111;padding:30px;border-radius:14px;">
-    <h2>Osobné údaje</h2>
-    <input type="text" id="meno" placeholder="Meno a priezvisko*">
-    <input type="text" id="ulica" placeholder="Ulica a číslo*">
-    <div style="display:flex;gap:10px">
-      <input type="text" id="mesto" placeholder="Mesto*" style="flex:2">
-      <input type="text" id="psc" placeholder="PSČ*" style="flex:1">
-    </div>
-    <input type="email" id="email" placeholder="Email*">
-    <input type="tel" id="telefon" placeholder="Telefón*">
-    <label style="font-size:13px;opacity:.8;margin-top:15px">
-      <input type="checkbox" id="gdpr" required>
-      Súhlasím s GDPR a obchodnými podmienkami
-    </label>
-    <div class="buttons" style="margin-top:20px;display:flex;gap:15px;flex-direction:column;">
-      <button type="button" id="calcOnly" style="background:#333;color:#fff;padding:14px;border-radius:30px;font-weight:700;">Zobraziť objednávku</button>
-      <button type="submit" id="addToOrder" style="background:#fff;color:#000;padding:14px;border-radius:30px;font-weight:700;">Odoslať objednávku</button>
-    </div>
-    <textarea id="orderSummary" placeholder="Tu sa zobrazí objednávka..." readonly style="margin-top:20px;height:200px;"></textarea>
-  </div>
-     </form>
+<div class="order-grid">
+
+<!-- ĽAVÁ STRANA -->
+<div class="order-card">
+
+<h2>Výber služby</h2>
+
+<label>Služba</label>
+<select id="service" name="sluzba" required>
+<option value="">-- Vyber službu --</option>
+<option value="200">Combo Start – 200€</option>
+<option value="300">Combo Memory – 300€</option>
+<option value="350">Combo Premium – 350€</option>
+<option value="400">Combo Deluxe – 400€</option>
+<option value="500">Wedding Complete – 500€</option>
+</select>
+
+<!-- EXTRA ČASTI PRE COMBO START -->
+<div id="comboExtras" class="combo-extras">
+<h3>Celé časti programu</h3>
+<p>+50€ za každú vybranú časť</p>
+
+<label><input type="checkbox" class="extraPart" value="Príchod"> Príchod</label>
+<label><input type="checkbox" class="extraPart" value="Nástup"> Nástup</label>
+<label><input type="checkbox" class="extraPart" value="Program"> Program</label>
+<label><input type="checkbox" class="extraPart" value="Šerpy"> Šerpy</label>
+<label><input type="checkbox" class="extraPart" value="Afterparty"> Afterparty</label>
+</div>
+
+<label>USB v krabičke (20€ / ks)</label>
+<input type="number" id="usbBox" name="usb_krabicka" min="0" value="0">
+
+<label>USB bez krabičky (10€ / ks)</label>
+<input type="number" id="usbNoBox" name="usb_bez_krabicky" min="0" value="0">
+
+<label>Dátum akcie</label>
+<input type="date" name="datum" required>
+
+<label>Správa / poznámka</label>
+<textarea name="sprava" rows="4"></textarea>
+
+</div>
+
+
+<!-- PRAVÁ STRANA -->
+<div class="order-card">
+
+<h2>Osobné údaje</h2>
+
+<input type="text" name="meno" placeholder="Meno a priezvisko*" required>
+<input type="email" name="email" placeholder="Email*" required>
+<input type="tel" name="telefon" placeholder="Telefón*" required>
+
+<div class="price-box">
+Celková cena: <span id="totalPrice">0€</span>
+</div>
+
+<textarea id="summary" name="zhrnutie_objednavky" class="summary" readonly placeholder="Tu sa zobrazí zhrnutie objednávky..."></textarea>
+
+<button type="submit" class="submit-btn">Odoslať objednávku</button>
+
+</div>
+
+</div>
+</form>
 </section>
 
 <footer class="footer">
@@ -200,59 +540,89 @@ header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filt
 </footer>
 
 <script>
-// Hamburger + dropdown
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const navItems = document.querySelectorAll('.nav-item');
-toggle.addEventListener('click', e=>{e.stopPropagation();nav.classList.toggle('active');});
-navItems.forEach(item=>{
+
+// Hamburger toggle
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nav.classList.toggle('active');
+});
+
+// Dropdown toggle
+navItems.forEach(item => {
   const btn = item.querySelector('.nav-btn');
-  btn.addEventListener('click', e=>{
+
+  btn.addEventListener('click', (e) => {
     e.stopPropagation(); 
-    navItems.forEach(i=>{if(i!==item)i.classList.remove('active');});
+    navItems.forEach(i => {
+      if(i !== item) i.classList.remove('active');
+    });
     item.classList.toggle('active');
   });
 });
-document.addEventListener('click', ()=>{nav.classList.remove('active');navItems.forEach(i=>i.classList.remove('active'));});
 
-// Objednávka kalkulácia
-const balik = document.getElementById('balik');
-const extraParts = document.getElementById('extraParts');
-const checkboxes = extraParts.querySelectorAll('input[type="checkbox"]');
-const usbBoxed = document.getElementById('usbBoxed');
-const usbPlain = document.getElementById('usbPlain');
-const typeOrder = document.getElementById('typeOrder');
-const orderSummary = document.getElementById('orderSummary');
-const addBtn = document.getElementById('addToOrder');
-const calcBtn = document.getElementById('calcOnly');
-  const delivery = document.getElementById('delivery');
-
-function calculatePrice(){
-  let price = Number(balik.value);
-  if(balik.value==="200"){checkboxes.forEach(cb=>{if(cb.checked) price+=50;});}
-  price += Number(usbBoxed.value)*20 + Number(usbPlain.value)*10;
-  price += Number(delivery.value); // pripočíta príplatok za rýchle dodanie
-  return price;
-}
-
-balik.addEventListener('change', ()=>{extraParts.style.display = balik.value==="200"?"block":"none";});
+// Klik mimo -> zatvori menu aj dropdowny
+document.addEventListener('click', () => {
+  nav.classList.remove('active');
+  navItems.forEach(item => item.classList.remove('active'));
+});
+</script>
+<script>
+const service = document.getElementById("service");
+const comboExtras = document.getElementById("comboExtras");
+const extraParts = document.querySelectorAll(".extraPart");
+const usbBox = document.getElementById("usbBox");
+const usbNoBox = document.getElementById("usbNoBox");
+const totalPrice = document.getElementById("totalPrice");
+const summary = document.getElementById("summary");
 
 function calculatePrice(){
-  let price = Number(balik.value);
-  if(balik.value==="200"){checkboxes.forEach(cb=>{if(cb.checked) price+=50;});}
-  price += Number(usbBoxed.value)*20 + Number(usbPlain.value)*10;
-  return price;
+
+let base = parseInt(service.value) || 0;
+let usb1 = parseInt(usbBox.value) * 20 || 0;
+let usb2 = parseInt(usbNoBox.value) * 10 || 0;
+
+let extras = 0;
+let selectedParts = [];
+
+if(service.value === "200"){
+extraParts.forEach(part=>{
+if(part.checked){
+extras += 50;
+selectedParts.push(part.value);
+}
+});
 }
 
-calcBtn.addEventListener('click', ()=>{
-  const price = calculatePrice();
-  let text = `Služba: ${balik.options[balik.selectedIndex].text}\n`;
-  if(balik.value==="200"){const parts=[];checkboxes.forEach(cb=>{if(cb.checked) parts.push(cb.value)});text+=`Vybrané časti: ${parts.join(", ")}\n`;}
-  text += `USB v krabici: ${usbBoxed.value} ks\nUSB bez krabice: ${usbPlain.value} ks\nDátum: ${document.getElementById('datum').value}\nSpráva: ${document.getElementById('userMessage').value}\nTyp platby: ${typeOrder.options[typeOrder.selectedIndex].text}\nCelková cena: ${price.toFixed(2)} €`;
-  orderSummary.value = text;
+let total = base + usb1 + usb2 + extras;
+totalPrice.textContent = total + "€";
+
+summary.value =
+"Vybraná služba: " + (service.options[service.selectedIndex]?.text || "") + "\n" +
+"USB v krabičke: " + usbBox.value + " ks\n" +
+"USB bez krabičky: " + usbNoBox.value + " ks\n" +
+(selectedParts.length ? "Celé časti: " + selectedParts.join(", ") + "\n" : "") +
+"---------------------------------\n" +
+"Celková cena: " + total + "€";
+}
+
+service.addEventListener("change", function(){
+if(this.value === "200"){
+comboExtras.style.display = "block";
+}else{
+comboExtras.style.display = "none";
+extraParts.forEach(p=>p.checked=false);
+}
+calculatePrice();
 });
 
-addBtn.addEventListener('click', ()=>{alert("Objednávka bola odoslaná!");});
+usbBox.addEventListener("input", calculatePrice);
+usbNoBox.addEventListener("input", calculatePrice);
+extraParts.forEach(p=>p.addEventListener("change", calculatePrice));
+
+calculatePrice();
 </script>
 </body>
 </html>
