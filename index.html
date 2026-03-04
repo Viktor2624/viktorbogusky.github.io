@@ -228,7 +228,43 @@ body{
   }
 }
 
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
 
+.dropdown-menu {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  padding: 10px 0;
+}
+
+.dropdown-menu a {
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+/* CTA BUTTON */
+.cta {
+  background: #fff;
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.cta:hover {
+  background: #ddd;
+}
 </style>
 </head>
 
@@ -240,17 +276,31 @@ body{
 
     <button class="menu-toggle" aria-label="Menu">☰</button>
 
-    <nav>
-      <a href="referencie.html">Referencie</a>
-      <a href="omne.html">O mne</a>
-      <a href="sluzby.html">Služby</a>
-      <a href="portfolio.html">Portfólio</a>
+   <nav>
+  <a href="index.html">Domov</a>
+
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">Služby ▾</a>
+    <div class="dropdown-menu">
+      <a href="sluzby.html">Prehľad služieb</a>
       <a href="cennik.html">Cenník</a>
-      <a href="kontakt.html">Kontakt</a>
       <a href="odporucanie.html">Zľavy</a>
-      <a href="gdpr.html">GDPR</a>
-       <a href="podmienky.html">Obchodné podmienky</a>
-    </nav>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">Portfólio ▾</a>
+    <div class="dropdown-menu">
+      <a href="portfolio.html">Video projekty</a>
+      <a href="referencie.html">Referencie</a>
+    </div>
+  </div>
+
+  <a href="omne.html">O mne</a>
+  <a href="kontakt.html">Kontakt</a>
+
+  <a href="objednavka.html" class="cta">Rezervovať termín</a>
+</nav>
   </div>
 </header>
 
@@ -286,6 +336,8 @@ body{
       <a href="https://www.tiktok.com/@viktorbogusky" target="_blank">TikTok</a>
     </div>
   </div>
+  <a href="gdpr.html">GDPR</a> |
+  <a href="podmienky.html">Obchodné podmienky</a>
 
   <div class="footer-bottom">
     Vytvoril: Viktor Boguský
@@ -298,9 +350,19 @@ body{
 <script>
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
+// mobile menu
 toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
+});
+
+// dropdown click (mobile aj desktop)
+dropdownToggles.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    btn.nextElementSibling.classList.toggle('show');
+  });
 });
 </script>
 
