@@ -456,10 +456,10 @@ flex-direction:column;
 <label>Služba</label>
 <select id="service" name="Služba" required>
 <option value="">-- Vyber službu --</option>
-<option value="200">Combo Start – 200€</option>
-<option value="300">Combo Memory – 300€</option>
-<option value="350">Combo Premium – 350€</option>
-<option value="400">Combo Deluxe – 400€</option>
+<option value="200">Stužková Combo Start – 200€</option>
+<option value="300">Stužková Combo Memory – 300€</option>
+<option value="350">Stužková Combo Premium – 350€</option>
+<option value="400">Stužková Combo Deluxe – 400€</option>
 <option value="400">Svadba – Wedding Record (400€)</option>
   <option value="250">Svadba – Wedding Clip (250€)</option>
   <option value="500">Svadba – Wedding Complete (500€)</option>
@@ -484,6 +484,11 @@ flex-direction:column;
 
 <label>USB bez krabičky (10€ / ks)</label>
 <input type="number" id="usbNoBox" name="USB bez krabičky" min="0" value="0">
+
+  <label>Zľavový kód</label>
+<input type="text" id="discountCode" placeholder="Zadaj kód">
+
+<div id="discountInfo" style="font-size:13px; opacity:0.8;"></div>
 
 <label>Dátum akcie</label>
 <input type="date" name="Dátum akcie" required>
@@ -543,6 +548,9 @@ Celková cena: <span id="totalPrice">0€</span>
 </footer>
 
 <script>
+const discountCode = document.getElementById("discountCode");
+const discountInfo = document.getElementById("discountInfo");
+
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const navItems = document.querySelectorAll('.nav-item');
@@ -572,6 +580,7 @@ document.addEventListener('click', () => {
   navItems.forEach(item => item.classList.remove('active'));
 });
 </script>
+
 <script>
 const service = document.getElementById("service");
 const comboExtras = document.getElementById("comboExtras");
@@ -600,6 +609,20 @@ selectedParts.push(part.value);
 }
 
 let total = base + usb1 + usb2 + extras;
+
+/* ===== ZĽAVOVÝ KÓD ===== */
+let discount = 0;
+
+if(discountCode && discountCode.value.trim().toLowerCase() === "zlava150"){
+discount = total * 0.5; // 50% zľava
+if(discountInfo) discountInfo.textContent = "Použitý kód: -50%";
+}else{
+if(discountInfo) discountInfo.textContent = "";
+}
+
+total = total - discount;
+/* ======================= */
+
 totalPrice.textContent = total + "€";
 
 summary.value =
@@ -607,6 +630,7 @@ summary.value =
 "USB v krabičke: " + usbBox.value + " ks\n" +
 "USB bez krabičky: " + usbNoBox.value + " ks\n" +
 (selectedParts.length ? "Celé časti: " + selectedParts.join(", ") + "\n" : "") +
+(discount ? "Zľava: -" + discount + "€\n" : "") +
 "---------------------------------\n" +
 "Celková cena: " + total + "€";
 }
@@ -624,6 +648,11 @@ calculatePrice();
 usbBox.addEventListener("input", calculatePrice);
 usbNoBox.addEventListener("input", calculatePrice);
 extraParts.forEach(p=>p.addEventListener("change", calculatePrice));
+
+// 👉 nový listener na zľavový kód
+if(discountCode){
+discountCode.addEventListener("input", calculatePrice);
+}
 
 calculatePrice();
 </script>
