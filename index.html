@@ -409,6 +409,36 @@ document.addEventListener('click', () => {
   navItems.forEach(item => item.classList.remove('active'));
 });
 </script>
+<div id="topBanner" style="
+position: fixed;
+top: 0;
+width: 100%;
+background: #000;
+color: white;
+text-align: center;
+padding: 10px;
+z-index: 9999;
+">
 
+  10.4.2026 vo večerných hodinách bude prebiehať upgrade stránky - stránka Kontakt a Cenník nebudú dostupné.
+  Kontaktovať ma bude možné emailom kontakt@viktorbogusky.sk alebo na instagrame @vittquoo
+
+  <button onclick="closeBanner()" style="
+  margin-left: 10px;
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  ">
+    Rozumiem
+  </button>
+
+</div>
+
+<script>
+function closeBanner() {
+  document.getElementById("topBanner").style.display = "none";
+}
+</script>
 </body>
 </html>
