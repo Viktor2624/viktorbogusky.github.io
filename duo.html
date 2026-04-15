@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duo balíky | Viktor Boguský</title>
+
+<style>
+/* ================= BASE ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#000;
+  color:#fff;
+  padding-top:60px;
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+/* ================= HERO ================= */
+.hero{
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:linear-gradient(to bottom, #000, #111);
+}
+
+.hero h1{
+  font-size:42px;
+  letter-spacing:2px;
+}
+
+.hero p{
+  opacity:0.7;
+  margin-top:10px;
+}
+
+/* ================= PRICING ================= */
+.pricing{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+/* CARD */
+.card{
+  background:#1a1a1a;
+  border:1px solid #333;
+  padding:35px 25px;
+  text-align:center;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* glow efekt */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+  opacity:0;
+  transition:0.5s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:#fff;
+}
+
+/* highlight */
+.card.highlight{
+  border:2px solid #fff;
+  transform:scale(1.03);
+}
+
+/* badge */
+.badge{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:#fff;
+  color:#000;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+/* TEXT */
+.card h3{
+  font-size:22px;
+}
+
+.price{
+  font-size:36px;
+  margin:15px 0;
+  font-weight:bold;
+}
+
+ul{
+  list-style:none;
+  margin-top:15px;
+}
+
+li{
+  padding:8px 0;
+  border-bottom:1px solid #333;
+  font-size:14px;
+}
+
+li:last-child{
+  border-bottom:none;
+}
+
+/* CTA */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 25px;
+  border:1px solid #fff;
+  text-decoration:none;
+  color:#fff;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* EXTRA SECTION */
+.extra{
+  text-align:center;
+  margin-top:80px;
+}
+
+.extra h2{
+  font-size:28px;
+}
+
+.extra p{
+  opacity:0.7;
+  margin:15px 0;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero h1{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Viktor Boguský</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>DUO balíky</h1>
+    <p>Fotograf + kameraman pre stužkové</p>
+  </div>
+</section>
+
+<section class="pricing">
+
+  <div class="pricing-grid">
+
+    <!-- START -->
+    <div class="card">
+      <h3>Duo Start</h3>
+      <div class="price">350 €</div>
+      <ul>
+        <li>Fotograf + kameraman</li>
+        <li>Krátky klip zo stužkovej</li>
+        <li>50+ upravených fotiek</li>
+        <li>Online galéria</li>
+      </ul>
+      <a href="objednavka.html" class="btn">Rezervovať</a>
+    </div>
+
+    <!-- PLUS -->
+    <div class="card">
+      <h3>Duo Plus</h3>
+      <div class="price">500 €</div>
+      <ul>
+        <li>Fotograf + kameraman</li>
+        <li>Záznam zo stužkovej</li>
+        <li>100+ upravených fotiek</li>
+        <li>Online galéria + USB</li>
+      </ul>
+      <a href="objednavka.html" class="btn">Rezervovať</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="card highlight">
+      <div class="badge">NAJOBĽÚBENEJŠÍ</div>
+      <h3>Duo Premium</h3>
+      <div class="price">650 €</div>
+      <ul>
+        <li>Fotograf + kameraman</li>
+        <li>Záznam + klip</li>
+        <li>150+ upravených fotiek</li>
+        <li>Online galéria + USB</li>
+        <li>Prioritné dodanie</li>
+      </ul>
+      <a href="objednavka.html" class="btn">Rezervovať</a>
+    </div>
+
+  </div>
+
+  <!-- EXTRA -->
+  <div class="extra">
+    <h2>Chceš niečo navyše?</h2>
+    <p>
+      Dron, rýchle dodanie alebo individuálny balík?<br>
+      Napíš mi a vyskladáme to presne pre vás.
+    </p>
+    <a href="kontakt.html" class="btn">Kontaktovať</a>
+  </div>
+
+</section>
+
+</body>
+</html>
