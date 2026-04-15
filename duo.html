@@ -573,14 +573,21 @@ document.addEventListener('click', () => {
   nav.classList.remove('active');
   navItems.forEach(item => item.classList.remove('active'));
 });
-  const cards = document.querySelectorAll('.duo-card');
+const cards = document.querySelectorAll('.duo-card');
 
 cards.forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (e) => {
+
+    // ak klikol na tlačidlo → nechaj ho ísť normálne
+    if(e.target.tagName === "A") return;
+
     cards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
   });
 });
+
+
+  
 </script>
   
 
