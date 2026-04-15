@@ -556,6 +556,8 @@ Cena: <span id="total">0</span> €
 <form action="https://formspree.io/f/xjknzwew" method="POST">
 
 <input type="hidden" name="balik" id="selectedPackage">
+  <input type="hidden" name="custom_detaily" id="customDetails">
+<input type="hidden" name="custom_cena" id="customPrice">
 
 <input placeholder="Meno a priezvisko" name="meno" required>
 <input placeholder="Email" name="email" required>
@@ -664,12 +666,50 @@ document.getElementById('form').style.display = "block";
 window.scrollTo({top:document.getElementById('form').offsetTop,behavior:'smooth'});
 }
 
-// CUSTOM
 function selectCustom(){
-const price = document.getElementById('total').textContent;
-document.getElementById('selectedPackage').value = "Custom balík - " + price + "€";
+
+let details = [];
+
+// checkboxy
+document.querySelectorAll('.builder input[type="checkbox"]').forEach(i=>{
+  if(i.checked){
+    let text = i.parentElement.textContent.trim();
+    details.push(text);
+  }
+});
+
+// fotky
+let photosText = document.getElementById('photos').selectedOptions[0].text;
+details.push("Fotky: " + photosText);
+
+// USB
+let usbBox = document.getElementById('usbBox').value;
+let usb = document.getElementById('usb').value;
+
+details.push("USB v krabičke: " + usbBox);
+details.push("USB bez krabičky: " + usb);
+
+// zlava
+let code = document.getElementById('discount').value;
+if(code){
+  details.push("Zľavový kód: " + code);
+}
+
+// cena
+let price = document.getElementById('total').textContent;
+
+// zapíš do hidden inputov
+document.getElementById('selectedPackage').value = "Custom DUO";
+document.getElementById('customDetails').value = details.join(" | ");
+document.getElementById('customPrice').value = price + "€";
+
+// zobraz form
 document.getElementById('form').style.display = "block";
-window.scrollTo({top:document.getElementById('form').offsetTop,behavior:'smooth'});
+
+window.scrollTo({
+  top:document.getElementById('form').offsetTop,
+  behavior:'smooth'
+});
 }
 </script>
 
