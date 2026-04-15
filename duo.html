@@ -304,51 +304,72 @@ header{
 .hero-cta:hover{
   background:#ddd;
 }
-  /* ===== CENNÍK ===== */
+/* ===== DUO PRICING PREMIUM ===== */
 
-/* ===== PREMIUM DUO CARDS ===== */
-
-.price-card{
-  background: linear-gradient(145deg, #1a1a1a, #111);
-  border:1px solid #2a2a2a;
-  padding:35px 25px;
+.duo-section{
+  max-width:1200px;
+  margin:auto;
+  padding:100px 20px;
   text-align:center;
-  transition:0.4s ease;
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
 }
 
-/* jemný glow efekt */
-.price-card::before{
+.duo-title{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.duo-sub{
+  opacity:0.7;
+  margin-bottom:60px;
+}
+
+.duo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+/* CARD */
+.duo-card{
+  background:linear-gradient(145deg,#1a1a1a,#111);
+  border:1px solid #2a2a2a;
+  padding:35px 25px;
+  border-radius:14px;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+/* glow */
+.duo-card::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.15),transparent);
   opacity:0;
   transition:0.6s;
 }
 
-/* hover */
-.price-card:hover{
-  transform:translateY(-10px) scale(1.03);
-  border-color:#fff;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-}
-
-.price-card:hover::before{
+.duo-card:hover::before{
   opacity:1;
 }
 
-/* highlight karta */
-.price-card.highlight{
+/* hover lift */
+.duo-card:hover{
+  transform:translateY(-12px) scale(1.03);
+  border-color:#fff;
+  box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+/* highlight */
+.duo-card.best{
   border:2px solid #fff;
-  transform:scale(1.04);
-  box-shadow:0 0 30px rgba(255,255,255,0.08);
+  transform:scale(1.05);
 }
 
 /* badge */
-.badge{
+.duo-badge{
   position:absolute;
   top:15px;
   right:15px;
@@ -358,19 +379,50 @@ header{
   padding:5px 12px;
   border-radius:20px;
   font-weight:bold;
-  letter-spacing:0.5px;
 }
 
-/* cena lepší look */
-.price{
-  font-size:38px;
+/* price */
+.duo-price{
+  font-size:40px;
+  margin:20px 0;
   font-weight:bold;
-  margin:18px 0 22px;
 }
 
-/* hover na text */
-.price-card:hover h4{
-  letter-spacing:1px;
+/* list */
+.duo-card ul{
+  list-style:none;
+}
+
+.duo-card li{
+  padding:8px 0;
+  border-bottom:1px solid #333;
+  font-size:14px;
+}
+
+.duo-card li:last-child{
+  border:none;
+}
+
+/* CTA */
+.duo-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 25px;
+  border:1px solid #fff;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.duo-btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* CLICK EFFECT (interaktivita) */
+.duo-card.active{
+  border-color:#fff;
+  box-shadow:0 0 30px rgba(255,255,255,0.15);
 }
 </style>
 </head>
@@ -420,64 +472,70 @@ header{
     <a href="objednavka.html" class="hero-cta">Rezervovať termín</a>
   </div>
 </section>
-<div class="pricing-section">
 
-  <h3 class="pricing-title">DUO – Fotograf + Kameraman (Stužkové)</h3>
+  <section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="uvod_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h2>DUO balíky</h2>
+    <p>Fotograf + kameraman pre stužkové</p>
+    <a href="#duo" class="hero-cta">Pozrieť balíky</a>
+  </div>
+</section>
 
-  <div class="pricing-grid">
+<section class="duo-section" id="duo">
+
+  <h2 class="duo-title">Vyber si svoj balík</h2>
+  <p class="duo-sub">Kompletné zachytenie stužkovej – foto aj video</p>
+
+  <div class="duo-grid">
 
     <!-- START -->
-    <div class="price-card">
-      <h4>Duo Start</h4>
-      <div class="price">350 €</div>
+    <div class="duo-card">
+      <h3>Duo Start</h3>
+      <div class="duo-price">350 €</div>
       <ul>
         <li>Fotograf + kameraman</li>
-        <li>Krátky klip zo stužkovej</li>
-        <li>50+ upravených fotiek</li>
+        <li>Krátky klip</li>
+        <li>50+ fotiek</li>
         <li>Online galéria</li>
       </ul>
+      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
     </div>
 
     <!-- PLUS -->
-    <div class="price-card">
-      <h4>Duo Plus</h4>
-      <div class="price">500 €</div>
+    <div class="duo-card">
+      <h3>Duo Plus</h3>
+      <div class="duo-price">500 €</div>
       <ul>
         <li>Fotograf + kameraman</li>
-        <li>Záznam zo stužkovej</li>
-        <li>100+ upravených fotiek</li>
+        <li>Záznam stužkovej</li>
+        <li>100+ fotiek</li>
         <li>Online galéria + USB</li>
       </ul>
+      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
     </div>
 
     <!-- PREMIUM -->
-    <div class="price-card highlight">
-      <div class="badge">NAJOBĽÚBENEJŠÍ</div>
-      <h4>Duo Premium</h4>
-      <div class="price">650 €</div>
+    <div class="duo-card best">
+      <div class="duo-badge">NAJOBĽÚBENEJŠÍ</div>
+      <h3>Duo Premium</h3>
+      <div class="duo-price">650 €</div>
       <ul>
         <li>Fotograf + kameraman</li>
         <li>Záznam + klip</li>
-        <li>150+ upravených fotiek</li>
+        <li>150+ fotiek</li>
         <li>Online galéria + USB</li>
         <li>Prioritné dodanie</li>
       </ul>
+      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
     </div>
 
   </div>
 
-  <div class="pricing-contact">
-    <h3>Chceš niečo navyše?</h3>
-    <p>
-      Dron, rýchle dodanie alebo individuálny balík?<br>
-      Napíš mi a vyskladáme to presne pre vás.
-    </p>
-    <a href="kontakt.html" class="contact-btn">Kontaktovať</a>
-  </div>
-
-</div>
-
-
+</section>
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-contact">
@@ -525,7 +583,16 @@ document.addEventListener('click', () => {
   nav.classList.remove('active');
   navItems.forEach(item => item.classList.remove('active'));
 });
+  const cards = document.querySelectorAll('.duo-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
 </script>
+  
 
 </body>
 </html>
