@@ -304,23 +304,19 @@ header{
 .hero-cta:hover{
   background:#ddd;
 }
-/* ===== DUO PRICING PREMIUM ===== */
 
+
+
+
+
+
+
+  /* ===== DUO PRICING ===== */
 .duo-section{
   max-width:1200px;
   margin:auto;
   padding:100px 20px;
   text-align:center;
-}
-
-.duo-title{
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.duo-sub{
-  opacity:0.7;
-  margin-bottom:60px;
 }
 
 .duo-grid{
@@ -329,81 +325,28 @@ header{
   gap:30px;
 }
 
-/* CARD */
 .duo-card{
   background:linear-gradient(145deg,#1a1a1a,#111);
-  border:1px solid #2a2a2a;
-  padding:35px 25px;
+  border:1px solid #333;
+  padding:30px;
   border-radius:14px;
   transition:0.4s;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
 }
 
-/* glow */
-.duo-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.15),transparent);
-  opacity:0;
-  transition:0.6s;
-}
-
-.duo-card:hover::before{
-  opacity:1;
-}
-
-/* hover lift */
 .duo-card:hover{
-  transform:translateY(-12px) scale(1.03);
+  transform:translateY(-10px) scale(1.03);
   border-color:#fff;
-  box-shadow:0 20px 50px rgba(0,0,0,0.7);
 }
 
-/* highlight */
 .duo-card.best{
   border:2px solid #fff;
-  transform:scale(1.05);
 }
 
-/* badge */
-.duo-badge{
-  position:absolute;
-  top:15px;
-  right:15px;
-  background:#fff;
-  color:#000;
-  font-size:11px;
-  padding:5px 12px;
-  border-radius:20px;
-  font-weight:bold;
-}
-
-/* price */
 .duo-price{
-  font-size:40px;
-  margin:20px 0;
-  font-weight:bold;
+  font-size:36px;
+  margin:15px 0;
 }
 
-/* list */
-.duo-card ul{
-  list-style:none;
-}
-
-.duo-card li{
-  padding:8px 0;
-  border-bottom:1px solid #333;
-  font-size:14px;
-}
-
-.duo-card li:last-child{
-  border:none;
-}
-
-/* CTA */
 .duo-btn{
   display:inline-block;
   margin-top:20px;
@@ -411,7 +354,6 @@ header{
   border:1px solid #fff;
   color:#fff;
   text-decoration:none;
-  transition:0.3s;
 }
 
 .duo-btn:hover{
@@ -419,10 +361,49 @@ header{
   color:#000;
 }
 
-/* CLICK EFFECT (interaktivita) */
-.duo-card.active{
-  border-color:#fff;
-  box-shadow:0 0 30px rgba(255,255,255,0.15);
+/* ===== BUILDER ===== */
+.builder{
+  margin-top:100px;
+}
+
+.builder-box{
+  max-width:700px;
+  margin:auto;
+  background:#111;
+  padding:30px;
+  border-radius:12px;
+  border:1px solid #333;
+}
+
+.builder-item{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #333;
+}
+
+.builder-total{
+  margin-top:20px;
+  font-size:26px;
+}
+
+/* ===== FORM ===== */
+.form-section{
+  display:none;
+  max-width:700px;
+  margin:50px auto;
+  background:#111;
+  padding:30px;
+  border-radius:12px;
+}
+
+.form-section input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  background:#000;
+  border:1px solid #333;
+  color:#fff;
 }
 </style>
 </head>
@@ -472,60 +453,126 @@ header{
     <a href="objednavka.html" class="hero-cta">Rezervovať termín</a>
   </div>
 </section>
+<section class="duo-section">
 
-  
+<h2>DUO balíky – Stužkové</h2>
 
-<section class="duo-section" id="duo">
+<div class="duo-grid">
 
-  <h2 class="duo-title">Vyber si svoj balík</h2>
-  <p class="duo-sub">Kompletné zachytenie stužkovej – foto aj video</p>
+<div class="duo-card">
+<h3>Duo Start</h3>
+<div class="duo-price">350€</div>
+<ul>
+<li>5–10 min klip</li>
+<li>Pozvánka / úvodné video</li>
+<li>Natáčanie častí</li>
+<li>150–250 fotiek</li>
+<li>USB</li>
+</ul>
+<button class="duo-btn" onclick="selectPackage('Duo Start - 350€')">Rezervovať</button>
+</div>
 
-  <div class="duo-grid">
+<div class="duo-card">
+<h3>Duo Memory</h3>
+<div class="duo-price">550€</div>
+<ul>
+<li>Záznam</li>
+<li>Pozvánka alebo klip</li>
+<li>250–400 fotiek</li>
+<li>Online galéria</li>
+<li>USB</li>
+</ul>
+<button class="duo-btn" onclick="selectPackage('Duo Memory - 550€')">Rezervovať</button>
+</div>
 
-    <!-- START -->
-    <div class="duo-card">
-      <h3>Duo Start</h3>
-      <div class="duo-price">350 €</div>
-      <ul>
-        <li>Fotograf + kameraman</li>
-        <li>Krátky klip</li>
-        <li>50+ fotiek</li>
-        <li>Online galéria</li>
-      </ul>
-      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
-    </div>
+<div class="duo-card best">
+<h3>Duo Premium</h3>
+<div class="duo-price">700€</div>
+<ul>
+<li>Klip + záznam</li>
+<li>Pozvánka / úvodné video</li>
+<li>400–600 fotiek</li>
+<li>Online galéria</li>
+<li>USB</li>
+</ul>
+<button class="duo-btn" onclick="selectPackage('Duo Premium - 700€')">Rezervovať</button>
+</div>
 
-    <!-- PLUS -->
-    <div class="duo-card">
-      <h3>Duo Plus</h3>
-      <div class="duo-price">500 €</div>
-      <ul>
-        <li>Fotograf + kameraman</li>
-        <li>Záznam stužkovej</li>
-        <li>100+ fotiek</li>
-        <li>Online galéria + USB</li>
-      </ul>
-      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
-    </div>
+</div>
 
-    <!-- PREMIUM -->
-    <div class="duo-card best">
-      <div class="duo-badge">NAJOBĽÚBENEJŠÍ</div>
-      <h3>Duo Premium</h3>
-      <div class="duo-price">650 €</div>
-      <ul>
-        <li>Fotograf + kameraman</li>
-        <li>Záznam + klip</li>
-        <li>150+ fotiek</li>
-        <li>Online galéria + USB</li>
-        <li>Prioritné dodanie</li>
-      </ul>
-      <a href="objednavka.html" class="duo-btn">Rezervovať</a>
-    </div>
+<!-- BUILDER -->
+<div class="builder">
+<h2>Custom DUO balík</h2>
 
-  </div>
+<div class="builder-box">
+
+<div class="builder-item">Klip <input type="checkbox" data-price="150"></div>
+<div class="builder-item">Záznam <input type="checkbox" data-price="200"></div>
+<div class="builder-item">Úvodné video / pozvánka <input type="checkbox" data-price="80"></div>
+
+<div class="builder-item">
+Fotky:
+<select id="photos">
+<option value="150">150–250 (150€)</option>
+<option value="250">250–400 (250€)</option>
+<option value="350">400–600 (350€)</option>
+</select>
+</div>
+
+<div class="builder-item">
+Online galéria <input type="checkbox" data-price="30">
+</div>
+
+<div class="builder-item">
+USB v krabičke (1 zdarma): 
+<input type="number" id="usbBox" value="1" min="1">
+</div>
+
+<div class="builder-item">
+USB bez krabičky: 
+<input type="number" id="usb" value="0" min="0">
+</div>
+
+<div class="builder-item">
+Zľavový kód:
+<input type="text" id="discount">
+</div>
+
+<div class="builder-total">
+Cena: <span id="total">0</span> €
+</div>
+
+<button class="duo-btn" onclick="selectCustom()">Rezervovať custom balík</button>
+
+</div>
+</div>
 
 </section>
+
+<!-- FORM -->
+<div class="form-section" id="form">
+<h3>Vyplň údaje (ozveme sa do 48h)</h3>
+
+<form action="https://formspree.io/f/xjknzwew" method="POST">
+
+<input type="hidden" name="balik" id="selectedPackage">
+
+<input placeholder="Meno a priezvisko" name="meno" required>
+<input placeholder="Email" name="email" required>
+<input placeholder="Telefón" name="telefon" required>
+<input placeholder="Dátum akcie" name="datum">
+<input placeholder="Škola" name="skola">
+<input placeholder="Miesto konania" name="miesto">
+<input placeholder="Trieda">
+<input placeholder="Adresa">
+<input placeholder="Mesto">
+<input placeholder="PSČ">
+
+<button type="submit" class="duo-btn">Odoslať rezerváciu</button>
+
+</form>
+</div>
+
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-contact">
@@ -573,23 +620,58 @@ document.addEventListener('click', () => {
   nav.classList.remove('active');
   navItems.forEach(item => item.classList.remove('active'));
 });
-const cards = document.querySelectorAll('.duo-card');
 
-cards.forEach(card => {
-  card.addEventListener('click', (e) => {
 
-    // ak klikol na tlačidlo → nechaj ho ísť normálne
-    if(e.target.tagName === "A") return;
 
-    cards.forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-  });
+
+
+  const inputs = document.querySelectorAll('.builder input[type="checkbox"]');
+const totalEl = document.getElementById('total');
+
+function calculate(){
+let total = 0;
+
+inputs.forEach(i=>{
+if(i.checked) total += Number(i.dataset.price);
 });
 
+total += Number(document.getElementById('photos').value);
 
-  
+// USB
+let usbBox = document.getElementById('usbBox').value;
+let usb = document.getElementById('usb').value;
+
+if(usbBox > 1) total += (usbBox - 1) * 20;
+total += usb * 10;
+
+// discount
+let code = document.getElementById('discount').value;
+if(code === "STUZKOVASKUSKA10"){
+total = total * 0.9;
+}
+
+totalEl.textContent = Math.round(total);
+}
+
+document.querySelectorAll('.builder input, #photos').forEach(el=>{
+el.addEventListener('change', calculate);
+});
+
+// SELECT PACKAGE
+function selectPackage(name){
+document.getElementById('selectedPackage').value = name;
+document.getElementById('form').style.display = "block";
+window.scrollTo({top:document.getElementById('form').offsetTop,behavior:'smooth'});
+}
+
+// CUSTOM
+function selectCustom(){
+const price = document.getElementById('total').textContent;
+document.getElementById('selectedPackage').value = "Custom balík - " + price + "€";
+document.getElementById('form').style.display = "block";
+window.scrollTo({top:document.getElementById('form').offsetTop,behavior:'smooth'});
+}
 </script>
-  
 
 </body>
 </html>
