@@ -532,11 +532,11 @@ header{
 <h3>Duo Start</h3>
 <div class="duo-price">350€</div>
 <ul>
-<li>5–10 min klip</li>
+<li>5-10 min klip</li>
 <li>Pozvánka / úvodné video</li>
-<li>Natáčanie častí</li>
+<li>Natáčanie určitých častí podľa dohody</li>
 <li>150–250 fotiek</li>
-<li>USB</li>
+<li>Odovzdanie v USB</li>
 </ul>
 <button class="duo-btn" onclick="selectPackage('Duo Start - 350€')">Rezervovať</button>
 </div>
@@ -545,11 +545,11 @@ header{
 <h3>Duo Memory</h3>
 <div class="duo-price">550€</div>
 <ul>
-<li>Záznam</li>
+<li>Záznam v plnej dĺžke</li>
 <li>Pozvánka alebo klip</li>
 <li>250–400 fotiek</li>
 <li>Online galéria</li>
-<li>USB</li>
+<li>Odovzdanie v USB</li>
 </ul>
 <button class="duo-btn" onclick="selectPackage('Duo Memory - 550€')">Rezervovať</button>
 </div>
@@ -558,11 +558,11 @@ header{
 <h3>Duo Premium</h3>
 <div class="duo-price">700€</div>
 <ul>
-<li>Klip + záznam</li>
+<li>Klip + záznam v plnej dĺžke</li>
 <li>Pozvánka / úvodné video</li>
 <li>400–600 fotiek</li>
 <li>Online galéria</li>
-<li>USB</li>
+<li>Odovzdanie v USB</li>
 </ul>
 <button class="duo-btn" onclick="selectPackage('Duo Premium - 700€')">Rezervovať</button>
 </div>
@@ -576,7 +576,7 @@ header{
 <div class="builder-box">
 
 <div class="builder-item">Klip <input type="checkbox" data-price="150"></div>
-<div class="builder-item">Záznam <input type="checkbox" data-price="200"></div>
+<div class="builder-item">Záznam v plnej dlžke <input type="checkbox" data-price="200"></div>
 <div class="builder-item">Úvodné video / pozvánka <input type="checkbox" data-price="80"></div>
 
 <div class="builder-item">
@@ -593,12 +593,12 @@ Online galéria <input type="checkbox" data-price="30">
 </div>
 
 <div class="builder-item">
-USB v krabičke (1 zdarma): 
+USB v krabičke (1 zdarma, každé ďalšie 20€/ks): 
 <input type="number" id="usbBox" value="1" min="1">
 </div>
 
 <div class="builder-item">
-USB bez krabičky: 
+USB bez krabičky (10€/ks): 
 <input type="number" id="usb" value="0" min="0">
 </div>
 
@@ -620,7 +620,7 @@ Cena: <span id="total">0</span> €
 
 <!-- FORM -->
 <div class="form-section" id="form">
-<h3>Vyplň údaje (ozveme sa do 48h)</h3>
+<h3>Vyplň údaje (ozveme sa do 48 hodín)</h3>
 
 <form action="https://formspree.io/f/xjknzwew" method="POST">
 
