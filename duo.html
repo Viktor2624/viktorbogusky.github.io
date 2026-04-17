@@ -733,6 +733,16 @@ document.querySelectorAll('.builder input, #photos').forEach(el=>{
 el.addEventListener('change', calculate);
 });
 
+  let code = document.getElementById('discount').value;
+
+if(code === "STUZKOVASKUSKA10"){
+  total = total * 0.9; // -10%
+}
+
+if(code === "NEWDUO50"){
+  total = total - 50; // -50€
+}
+
 // SELECT PACKAGE
 function selectPackage(name){
 document.getElementById('selectedPackage').value = name;
