@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viktor Boguský | Kamera & Postprodukcia</title>
-
 <link rel="icon" type="image/png" href="logo_1.png">
 
 <style>
@@ -18,15 +17,8 @@
   --max:1180px;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
   font-family:Arial, Helvetica, sans-serif;
@@ -35,10 +27,7 @@ body{
   overflow-x:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
+a{color:inherit;text-decoration:none;}
 
 /* INTRO */
 
@@ -71,13 +60,13 @@ a{
 }
 
 @keyframes introHide{
-  0%,70%{opacity:1; visibility:visible;}
-  100%{opacity:0; visibility:hidden; pointer-events:none;}
+  0%,70%{opacity:1;visibility:visible;}
+  100%{opacity:0;visibility:hidden;pointer-events:none;}
 }
 
 @keyframes introText{
-  from{opacity:0; transform:translateY(18px) scale(.96);}
-  to{opacity:1; transform:translateY(0) scale(1);}
+  from{opacity:0;transform:translateY(18px) scale(.96);}
+  to{opacity:1;transform:translateY(0) scale(1);}
 }
 
 /* HEADER */
@@ -109,6 +98,16 @@ a{
   width:auto;
 }
 
+.menu-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+  justify-self:end;
+}
+
 .menu{
   grid-column:2;
   display:flex;
@@ -131,16 +130,6 @@ a{
   color:var(--gold2);
 }
 
-.menu-toggle{
-  display:none;
-  background:none;
-  border:0;
-  color:#fff;
-  font-size:28px;
-  cursor:pointer;
-  justify-self:end;
-}
-
 /* HERO */
 
 .hero{
@@ -160,7 +149,7 @@ a{
   height:100%;
   object-fit:cover;
   z-index:0;
-  filter:brightness(.88);
+  filter:brightness(.82);
 }
 
 .hero::before{
@@ -179,6 +168,16 @@ a{
   text-align:center;
   padding:0 22px;
   margin-top:40px;
+  max-width:1100px;
+}
+
+.hero-label{
+  color:rgba(255,255,255,.58);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:18px;
 }
 
 .hero h1{
@@ -201,8 +200,10 @@ a{
 }
 
 .hero p{
-  margin-top:24px;
+  margin:24px auto 0;
+  max-width:760px;
   font-size:15px;
+  line-height:1.8;
   color:rgba(255,255,255,.88);
 }
 
@@ -263,15 +264,15 @@ a{
 }
 
 @keyframes scroll{
-  0%{opacity:1; transform:translate(-50%,0);}
-  100%{opacity:0; transform:translate(-50%,12px);}
+  0%{opacity:1;transform:translate(-50%,0);}
+  100%{opacity:0;transform:translate(-50%,12px);}
 }
 
 /* GENERAL */
 
 .section{
   position:relative;
-  padding:78px 24px;
+  padding:86px 24px;
   border-bottom:1px solid var(--line);
 }
 
@@ -292,29 +293,24 @@ a{
 
 .section-label{
   text-align:center;
-  color:rgba(255,255,255,.45);
+  color:rgba(201,154,74,.78);
   font-size:11px;
   text-transform:uppercase;
-  letter-spacing:3px;
+  letter-spacing:4px;
   font-weight:800;
   margin-bottom:8px;
 }
 
 .section-title{
   text-align:center;
-  font-size:clamp(26px, 4vw, 36px);
+  font-size:clamp(28px, 4vw, 42px);
   text-transform:uppercase;
-  letter-spacing:7px;
+  letter-spacing:8px;
   font-weight:900;
-  margin-bottom:38px;
+  margin-bottom:44px;
 }
 
 /* LENS */
-
-.lens-section{
-  padding-top:85px;
-  padding-bottom:95px;
-}
 
 .lens-wrap{
   max-width:980px;
@@ -410,34 +406,35 @@ a{
 
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:42px;
-  max-width:1100px;
-  margin:0 auto;
+  grid-template-columns:repeat(6, 1fr);
+  gap:38px;
+  row-gap:46px;
 }
 
 .video-card{
+  grid-column:span 2;
   position:relative;
   aspect-ratio:16 / 9;
-  border-radius:16px;
+  min-height:245px;
+  border-radius:13px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
   background:#111;
-  box-shadow:0 22px 60px rgba(0,0,0,.42);
-  transition:.3s ease;
+  box-shadow:0 24px 60px rgba(0,0,0,.42);
+  transition:.3s;
 }
 
 .video-card:hover{
   transform:translateY(-6px);
   border-color:rgba(201,154,74,.45);
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
 }
 
-.video-card.last{
-  grid-column:1 / -1;
-  max-width:530px;
-  width:100%;
-  justify-self:center;
+.video-card.big-left{
+  grid-column:2 / span 2;
+}
+
+.video-card.big-right{
+  grid-column:4 / span 2;
 }
 
 .video-card iframe{
@@ -447,25 +444,9 @@ a{
 }
 
 .more-btn-wrap{
-  margin-top:46px;
+  margin-top:42px;
   display:flex;
   justify-content:center;
-}
-
-.small-btn{
-  border:1px solid var(--gold);
-  border-radius:999px;
-  padding:12px 44px;
-  text-transform:uppercase;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:1.5px;
-  transition:.25s;
-}
-
-.small-btn:hover{
-  background:var(--gold);
-  color:#000;
 }
 
 /* FOOTER */
@@ -561,7 +542,20 @@ a{
   font-size:13px;
 }
 
-/* RESPONSIVE */
+/* ANIMATION */
+
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE MENU */
 
 @media(max-width:1050px){
   .nav{
@@ -587,7 +581,7 @@ a{
     padding:18px 24px;
     background:rgba(5,5,5,.96);
     border-bottom:1px solid rgba(255,255,255,.08);
-    z-index:200;
+    backdrop-filter:blur(16px);
   }
 
   .menu.active{
@@ -598,16 +592,11 @@ a{
     width:100%;
     text-align:center;
     padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
   }
 
-  .portfolio-grid{
-    grid-template-columns:1fr;
-    gap:32px;
-  }
-
-  .video-card.last{
-    grid-column:auto;
-    max-width:none;
+  .menu a:last-child{
+    border-bottom:0;
   }
 
   .lens-wrap{
@@ -623,7 +612,8 @@ a{
     margin:30px 0;
   }
 
-  .lens-item{
+  .lens-item,
+  .lens-item.left{
     position:relative;
     left:auto;
     right:auto;
@@ -633,28 +623,19 @@ a{
     width:100%;
     justify-content:center;
     text-align:left;
-  }
-
-  .lens-item.left{
-    text-align:left;
     flex-direction:row;
   }
 
-  .footer-inner{
-    grid-template-columns:1fr;
-    text-align:center;
+  .portfolio-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:32px;
   }
 
-  .footer-brand{
-    justify-content:center;
-  }
-
-  .footer-contact{
-    justify-self:center;
-  }
-
-  .socials{
-    justify-content:center;
+  .video-card,
+  .video-card.big-left,
+  .video-card.big-right{
+    grid-column:auto;
+    min-height:220px;
   }
 }
 
@@ -691,6 +672,34 @@ a{
 
   .section-title{
     letter-spacing:4px;
+  }
+
+  .portfolio-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .video-card,
+  .video-card.big-left,
+  .video-card.big-right{
+    min-height:auto;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .footer-brand{
+    justify-content:center;
+  }
+
+  .footer-contact{
+    justify-self:center;
+  }
+
+  .socials{
+    justify-content:center;
   }
 }
 </style>
@@ -734,10 +743,14 @@ a{
     <source src="video_1.mp4" type="video/mp4">
   </video>
 
-  <div class="hero-content">
-    <h1>Viktor Boguský</h1>
-    <div class="signature">Kamera & Postprodukcia</div>
-    <p>Zachytím momenty, ktoré už nikdy nezažiješ znova.</p>
+  <div class="hero-content reveal">
+    <div class="hero-label">Viktor Boguský</div>
+    <h1>Kamera</h1>
+    <div class="signature">& Postprodukcia</div>
+    <p>
+      Zachytím momenty, ktoré už nikdy nezažiješ znova.
+      Stužkové, svadby, promo videá, eventy a postprodukcia v čistom filmovom štýle.
+    </p>
 
     <div class="hero-actions">
       <a href="cennik.html" class="btn primary">Pozrieť cenník</a>
@@ -749,12 +762,12 @@ a{
   <div class="scroll-icon"></div>
 </section>
 
-<section class="section lens-section" id="sluzby">
+<section class="section" id="sluzby">
   <div class="inner">
-    <div class="section-label">Služby</div>
-    <h2 class="section-title">Čo pre vás tvorím</h2>
+    <div class="section-label reveal">Služby</div>
+    <h2 class="section-title reveal">Čo pre vás tvorím</h2>
 
-    <div class="lens-wrap">
+    <div class="lens-wrap reveal">
 
       <div class="lens-item left item-stuzkove">
         <div class="lens-icon">▱</div>
@@ -796,33 +809,35 @@ a{
 
 <section class="section" id="portfolio">
   <div class="inner">
-    <div class="section-label">Portfólio</div>
-    <h2 class="section-title">Najnovšie práce</h2>
+    <div class="section-label reveal">Portfólio</div>
+    <h2 class="section-title reveal">Najnovšie práce</h2>
 
     <div class="portfolio-grid">
-      <div class="video-card">
+
+      <div class="video-card reveal">
         <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card">
+      <div class="video-card reveal">
         <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card">
+      <div class="video-card reveal">
         <iframe src="https://www.youtube.com/embed/LiYAjlk7jZg" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card">
+      <div class="video-card big-left reveal">
         <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card last">
+      <div class="video-card big-right reveal">
         <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
       </div>
+
     </div>
 
-    <div class="more-btn-wrap">
-      <a href="portfolio.html" class="small-btn">Zobraziť viac</a>
+    <div class="more-btn-wrap reveal">
+      <a href="portfolio.html" class="btn primary">Zobraziť viac</a>
     </div>
   </div>
 </section>
@@ -867,11 +882,32 @@ a{
 </footer>
 
 <script>
+const revealItems = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+revealItems.forEach(item => observer.observe(item));
+</script>
+
+<script>
 const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu');
 
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', function(e){
+  e.stopPropagation();
   menu.classList.toggle('active');
+});
+
+document.addEventListener('click', function(e){
+  if(!menu.contains(e.target) && !menuToggle.contains(e.target)){
+    menu.classList.remove('active');
+  }
 });
 </script>
 
