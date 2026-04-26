@@ -569,7 +569,7 @@ a{
     display:grid;
     grid-template-columns:auto auto;
     justify-content:space-between;
-    padding:0 24px;
+    position:relative;
   }
 
   .menu-toggle{
@@ -589,6 +589,7 @@ a{
     background:rgba(5,5,5,.97);
     border-bottom:1px solid rgba(255,255,255,.10);
     backdrop-filter:blur(16px);
+    z-index:110;
   }
 
   .menu.active{
@@ -667,6 +668,10 @@ a{
 @media(max-width:620px){
   .header{
     height:76px;
+  }
+
+  .nav{
+    padding:0 20px;
   }
 
   .logo img{
@@ -810,7 +815,6 @@ a{
     <h2 class="section-title">Najnovšie práce</h2>
 
     <div class="portfolio-grid">
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
       </div>
@@ -830,7 +834,6 @@ a{
       <div class="video-card last">
         <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
       </div>
-
     </div>
 
     <div class="more-btn-wrap">
