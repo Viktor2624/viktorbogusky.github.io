@@ -270,7 +270,7 @@ a{
 
 .section{
   position:relative;
-  padding:70px 24px;
+  padding:78px 24px;
   border-bottom:1px solid var(--line);
 }
 
@@ -305,14 +305,14 @@ a{
   text-transform:uppercase;
   letter-spacing:7px;
   font-weight:900;
-  margin-bottom:34px;
+  margin-bottom:38px;
 }
 
 /* LENS SERVICES */
 
 .lens-section{
-  padding-top:80px;
-  padding-bottom:90px;
+  padding-top:85px;
+  padding-bottom:95px;
 }
 
 .lens-wrap{
@@ -409,29 +409,34 @@ a{
 
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(6, 1fr);
-  gap:38px;
-  row-gap:46px;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:42px;
+  max-width:1100px;
+  margin:0 auto;
 }
 
 .video-card{
-  grid-column:span 2;
   position:relative;
   aspect-ratio:16 / 9;
-  min-height:235px;
-  border-radius:12px;
+  border-radius:16px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
   background:#111;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  box-shadow:0 22px 60px rgba(0,0,0,.42);
+  transition:.3s ease;
 }
 
-.video-card.big-left{
-  grid-column:2 / span 2;
+.video-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(201,154,74,.45);
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
 }
 
-.video-card.big-right{
-  grid-column:4 / span 2;
+.video-card.last{
+  grid-column:1 / -1;
+  max-width:530px;
+  width:100%;
+  justify-self:center;
 }
 
 .video-card iframe{
@@ -443,7 +448,7 @@ a{
 /* BUTTON */
 
 .more-btn-wrap{
-  margin-top:38px;
+  margin-top:46px;
   display:flex;
   justify-content:center;
 }
@@ -451,7 +456,7 @@ a{
 .small-btn{
   border:1px solid var(--gold);
   border-radius:999px;
-  padding:11px 42px;
+  padding:12px 44px;
   text-transform:uppercase;
   font-size:12px;
   font-weight:800;
@@ -602,15 +607,13 @@ a{
   }
 
   .portfolio-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:28px;
+    grid-template-columns:1fr;
+    gap:32px;
   }
 
-  .video-card,
-  .video-card.big-left,
-  .video-card.big-right{
+  .video-card.last{
     grid-column:auto;
-    min-height:210px;
+    max-width:none;
   }
 
   .lens-wrap{
@@ -693,14 +696,7 @@ a{
   }
 
   .portfolio-grid{
-    grid-template-columns:1fr;
     gap:28px;
-  }
-
-  .video-card,
-  .video-card.big-left,
-  .video-card.big-right{
-    min-height:auto;
   }
 
   .section-title{
@@ -827,12 +823,12 @@ a{
         <iframe src="https://www.youtube.com/embed/LiYAjlk7jZg" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card big-left">
+      <div class="video-card">
         <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
       </div>
 
-      <div class="video-card big-right">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_TU" allowfullscreen></iframe>
+      <div class="video-card last">
+        <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
       </div>
 
     </div>
