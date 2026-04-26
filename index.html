@@ -18,6 +18,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+
 html{scroll-behavior:smooth;}
 
 body{
@@ -27,14 +28,19 @@ body{
   overflow-x:hidden;
 }
 
-a{color:inherit;text-decoration:none;}
+body.menu-open{overflow:hidden;}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
 /* INTRO */
 
 .intro-loader{
   position:fixed;
   inset:0;
-  z-index:9999;
+  z-index:99999;
   background:#050505;
   display:flex;
   align-items:center;
@@ -44,7 +50,7 @@ a{color:inherit;text-decoration:none;}
 }
 
 .intro-loader h1{
-  font-size:clamp(38px, 7vw, 82px);
+  font-size:clamp(36px, 7vw, 82px);
   text-transform:uppercase;
   letter-spacing:8px;
   font-weight:900;
@@ -77,7 +83,7 @@ a{color:inherit;text-decoration:none;}
   left:0;
   width:100%;
   height:86px;
-  z-index:100;
+  z-index:1000;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -94,18 +100,9 @@ a{color:inherit;text-decoration:none;}
 }
 
 .logo img{
-  height:48px;
+  height:52px;
   width:auto;
-}
-
-.menu-toggle{
-  display:none;
-  background:none;
-  border:0;
-  color:#fff;
-  font-size:28px;
-  cursor:pointer;
-  justify-self:end;
+  display:block;
 }
 
 .menu{
@@ -130,6 +127,16 @@ a{color:inherit;text-decoration:none;}
   color:var(--gold2);
 }
 
+.menu-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:32px;
+  cursor:pointer;
+  z-index:10001;
+}
+
 /* HERO */
 
 .hero{
@@ -149,7 +156,7 @@ a{color:inherit;text-decoration:none;}
   height:100%;
   object-fit:cover;
   z-index:0;
-  filter:brightness(.82);
+  filter:brightness(.88);
 }
 
 .hero::before{
@@ -159,7 +166,7 @@ a{color:inherit;text-decoration:none;}
   z-index:1;
   background:
     radial-gradient(circle at center, rgba(0,0,0,.08), rgba(0,0,0,.55) 68%, #000 100%),
-    linear-gradient(to bottom, rgba(0,0,0,.20), rgba(0,0,0,.34), #050505 98%);
+    linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.38), #050505 98%);
 }
 
 .hero-content{
@@ -168,14 +175,14 @@ a{color:inherit;text-decoration:none;}
   text-align:center;
   padding:0 22px;
   margin-top:40px;
-  max-width:1100px;
+  max-width:1120px;
 }
 
 .hero-label{
   color:rgba(255,255,255,.58);
   text-transform:uppercase;
-  letter-spacing:4px;
-  font-size:12px;
+  letter-spacing:5px;
+  font-size:13px;
   font-weight:800;
   margin-bottom:18px;
 }
@@ -193,7 +200,7 @@ a{color:inherit;text-decoration:none;}
   margin-top:8px;
   font-family:"Brush Script MT", cursive;
   color:var(--gold2);
-  font-size:clamp(32px, 5vw, 58px);
+  font-size:clamp(34px, 5vw, 60px);
   font-weight:400;
   letter-spacing:2px;
   transform:rotate(-2deg);
@@ -202,20 +209,21 @@ a{color:inherit;text-decoration:none;}
 .hero p{
   margin:24px auto 0;
   max-width:760px;
-  font-size:15px;
+  font-size:16px;
   line-height:1.8;
   color:rgba(255,255,255,.88);
 }
 
 .hero-actions{
-  margin-top:32px;
+  margin-top:34px;
   display:flex;
   justify-content:center;
   gap:18px;
   flex-wrap:wrap;
 }
 
-.btn{
+.btn,
+.small-btn{
   min-width:175px;
   padding:14px 25px;
   border-radius:4px;
@@ -227,13 +235,17 @@ a{color:inherit;text-decoration:none;}
   transition:.25s;
   background:rgba(0,0,0,.35);
   color:#fff;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .btn.primary{
   background:rgba(201,154,74,.13);
 }
 
-.btn:hover{
+.btn:hover,
+.small-btn:hover{
   background:var(--gold);
   color:#000;
 }
@@ -268,11 +280,11 @@ a{color:inherit;text-decoration:none;}
   100%{opacity:0;transform:translate(-50%,12px);}
 }
 
-/* GENERAL */
+/* SECTIONS */
 
 .section{
   position:relative;
-  padding:86px 24px;
+  padding:76px 24px;
   border-bottom:1px solid var(--line);
 }
 
@@ -307,10 +319,15 @@ a{color:inherit;text-decoration:none;}
   text-transform:uppercase;
   letter-spacing:8px;
   font-weight:900;
-  margin-bottom:44px;
+  margin-bottom:38px;
 }
 
 /* LENS */
+
+.lens-section{
+  padding-top:86px;
+  padding-bottom:96px;
+}
 
 .lens-wrap{
   max-width:980px;
@@ -406,9 +423,9 @@ a{color:inherit;text-decoration:none;}
 
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(6, 1fr);
-  gap:38px;
-  row-gap:46px;
+  grid-template-columns:repeat(6,1fr);
+  gap:42px;
+  row-gap:48px;
 }
 
 .video-card{
@@ -416,11 +433,11 @@ a{color:inherit;text-decoration:none;}
   position:relative;
   aspect-ratio:16 / 9;
   min-height:245px;
-  border-radius:13px;
+  border-radius:14px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
   background:#111;
-  box-shadow:0 24px 60px rgba(0,0,0,.42);
+  box-shadow:0 24px 60px rgba(0,0,0,.38);
   transition:.3s;
 }
 
@@ -447,6 +464,12 @@ a{color:inherit;text-decoration:none;}
   margin-top:42px;
   display:flex;
   justify-content:center;
+}
+
+.small-btn{
+  min-width:auto;
+  border-radius:999px;
+  padding:12px 44px;
 }
 
 /* FOOTER */
@@ -570,33 +593,56 @@ a{color:inherit;text-decoration:none;}
   }
 
   .menu{
-    position:absolute;
-    top:86px;
-    left:0;
+    position:fixed;
+    top:0;
+    right:0;
     width:100%;
-    display:none;
+    height:100vh;
+    background:rgba(5,5,5,.97);
+    backdrop-filter:blur(18px);
+    display:flex;
     flex-direction:column;
     align-items:center;
-    gap:0;
-    padding:18px 24px;
-    background:rgba(5,5,5,.96);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(16px);
+    justify-content:center;
+    gap:26px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(100%);
+    transition:.35s ease;
+    z-index:10000;
   }
 
   .menu.active{
-    display:flex;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
   }
 
   .menu a{
-    width:100%;
+    width:auto;
     text-align:center;
-    padding:14px 0;
-    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:18px;
+    letter-spacing:5px;
+    padding:0;
+    color:rgba(255,255,255,.82);
   }
 
-  .menu a:last-child{
-    border-bottom:0;
+  .menu a:hover{
+    color:var(--gold2);
+  }
+
+  .portfolio-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+
+  .video-card,
+  .video-card.big-left,
+  .video-card.big-right{
+    grid-column:auto;
+    min-height:215px;
   }
 
   .lens-wrap{
@@ -612,77 +658,21 @@ a{color:inherit;text-decoration:none;}
     margin:30px 0;
   }
 
-  .lens-item,
-  .lens-item.left{
+  .lens-item{
     position:relative;
     left:auto;
     right:auto;
     top:auto;
     bottom:auto;
-    max-width:420px;
+    max-width:430px;
     width:100%;
     justify-content:center;
     text-align:left;
+  }
+
+  .lens-item.left{
+    text-align:left;
     flex-direction:row;
-  }
-
-  .portfolio-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:32px;
-  }
-
-  .video-card,
-  .video-card.big-left,
-  .video-card.big-right{
-    grid-column:auto;
-    min-height:220px;
-  }
-}
-
-@media(max-width:700px){
-  .nav{
-    padding:0 20px;
-  }
-
-  .logo img{
-    height:42px;
-  }
-
-  .hero h1{
-    letter-spacing:4px;
-  }
-
-  .signature{
-    font-size:36px;
-  }
-
-  .hero-actions{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .btn{
-    width:100%;
-    max-width:280px;
-  }
-
-  .section{
-    padding:64px 18px;
-  }
-
-  .section-title{
-    letter-spacing:4px;
-  }
-
-  .portfolio-grid{
-    grid-template-columns:1fr;
-    gap:30px;
-  }
-
-  .video-card,
-  .video-card.big-left,
-  .video-card.big-right{
-    min-height:auto;
   }
 
   .footer-inner{
@@ -700,6 +690,67 @@ a{color:inherit;text-decoration:none;}
 
   .socials{
     justify-content:center;
+  }
+}
+
+@media(max-width:700px){
+  .nav{
+    padding:0 22px;
+  }
+
+  .logo img{
+    height:44px;
+  }
+
+  .hero-content{
+    margin-top:20px;
+  }
+
+  .hero h1{
+    letter-spacing:4px;
+    font-size:clamp(42px, 13vw, 64px);
+  }
+
+  .signature{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .btn{
+    width:100%;
+    max-width:300px;
+  }
+
+  .section{
+    padding:64px 18px;
+  }
+
+  .section-title{
+    letter-spacing:4px;
+  }
+
+  .portfolio-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+
+  .video-card,
+  .video-card.big-left,
+  .video-card.big-right{
+    min-height:auto;
+  }
+
+  .menu a{
+    font-size:17px;
+    letter-spacing:4px;
   }
 }
 </style>
@@ -720,7 +771,7 @@ a{color:inherit;text-decoration:none;}
       <img src="logo_1.png" alt="Viktor Boguský logo">
     </a>
 
-    <button class="menu-toggle" aria-label="Menu">☰</button>
+    <button class="menu-toggle" aria-label="Otvoriť menu">☰</button>
 
     <div class="menu">
       <a href="index.html" class="active">Domov</a>
@@ -746,7 +797,7 @@ a{color:inherit;text-decoration:none;}
   <div class="hero-content reveal">
     <div class="hero-label">Viktor Boguský</div>
     <h1>Kamera</h1>
-    <div class="signature">& Postprodukcia</div>
+    <div class="signature">&amp; Postprodukcia</div>
     <p>
       Zachytím momenty, ktoré už nikdy nezažiješ znova.
       Stužkové, svadby, promo videá, eventy a postprodukcia v čistom filmovom štýle.
@@ -762,7 +813,7 @@ a{color:inherit;text-decoration:none;}
   <div class="scroll-icon"></div>
 </section>
 
-<section class="section" id="sluzby">
+<section class="section lens-section" id="sluzby">
   <div class="inner">
     <div class="section-label reveal">Služby</div>
     <h2 class="section-title reveal">Čo pre vás tvorím</h2>
@@ -815,29 +866,29 @@ a{color:inherit;text-decoration:none;}
     <div class="portfolio-grid">
 
       <div class="video-card reveal">
-        <iframe src="https://www.youtube.com/embed/3zES1AlxCd4" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3zES1AlxCd4?rel=0" allowfullscreen></iframe>
       </div>
 
       <div class="video-card reveal">
-        <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/V8z1SuHkfCk?rel=0" allowfullscreen></iframe>
       </div>
 
       <div class="video-card reveal">
-        <iframe src="https://www.youtube.com/embed/LiYAjlk7jZg" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/LiYAjlk7jZg?rel=0" allowfullscreen></iframe>
       </div>
 
       <div class="video-card big-left reveal">
-        <iframe src="https://www.youtube.com/embed/9Z8BojDP5no" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/9Z8BojDP5no?rel=0" allowfullscreen></iframe>
       </div>
 
       <div class="video-card big-right reveal">
-        <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/LnRKT-GFs0k?rel=0" allowfullscreen></iframe>
       </div>
 
     </div>
 
     <div class="more-btn-wrap reveal">
-      <a href="portfolio.html" class="btn primary">Zobraziť viac</a>
+      <a href="portfolio.html" class="small-btn">Zobraziť viac</a>
     </div>
   </div>
 </section>
@@ -902,12 +953,14 @@ const menu = document.querySelector('.menu');
 menuToggle.addEventListener('click', function(e){
   e.stopPropagation();
   menu.classList.toggle('active');
+  document.body.classList.toggle('menu-open');
 });
 
-document.addEventListener('click', function(e){
-  if(!menu.contains(e.target) && !menuToggle.contains(e.target)){
+document.querySelectorAll('.menu a').forEach(link => {
+  link.addEventListener('click', function(){
     menu.classList.remove('active');
-  }
+    document.body.classList.remove('menu-open');
+  });
 });
 </script>
 
